@@ -1,0 +1,60 @@
+.slideshow{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding:25px 0;
+}
+.slideshow .carousel-inner{
+    height: 550px;
+    margin: auto;
+}
+.slideshow .carousel-inner .carousel-item{
+    margin: auto;
+    width: 95%;
+}
+.slideshow .carousel-inner img{
+    height: 550px;
+    width: 100%;
+}
+
+.carousel-text{
+    position: absolute;
+    top: 200px;
+    left: 150px;
+
+}
+.carousel-text .heading{
+    position: relative;
+    width: 75%;
+
+}
+.carousel-text .heading h2{
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: 800;
+    color: brown;
+}
+.carousel-text .post-script{
+    position: relative;
+    width: 75%;
+}
+.carousel-text .post-script p{
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(105, 8, 37);
+}
+
+/* ..............................................bestsellers.......................... */
+
+.slide-table{
+    width: 95%;
+    padding: 25px 0;
+    margin: auto;
+}
+
+.slide-table .slideshow{
+    width: 100%;
+    margin: auto;
+}
+
+
