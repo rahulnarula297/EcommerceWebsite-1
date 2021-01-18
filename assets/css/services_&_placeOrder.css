@@ -1,0 +1,135 @@
+/* This css is for services section */
+#services {
+    background-color: #ecf0f3;
+}
+
+#services .services-h1 {
+    text-align: center;
+    padding-top: 50px;
+    font-family: cursive;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.table{
+    
+    margin: auto;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 95%;
+}
+
+.service-box{
+    height: auto;
+    width: 325px;
+    margin-bottom: 15px;
+    padding: 15px 10px ;
+}
+
+.service-box .icon {
+    margin-bottom: 15px;
+}
+
+.service-box .icon i{
+    position: relative;
+    font-size: 70px;
+    left: 35%;
+    color: rgb(3, 11, 43);
+}
+
+.service-box .service-h2{
+    padding-bottom:10px ;
+    text-align: center;
+}
+
+.service-box .service-h2 h2{
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.service-box .service-p
+{
+    height: fit-content;
+    text-overflow: ellipsis;
+}
+
+.service-box .service-p p{
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* This css is for place_order section */
+#place-order .table{
+    padding: 50px 0 100px 0;
+}
+
+#place-order .service-box .icon {
+    margin-left: 15px;
+}
+
+#place-order .place-order-h1{
+    text-align: center;
+    margin-top: 100px;
+    font-family: cursive;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.service-box .table-h1 {
+    height: auto;
+    width: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+#place-order .table .icon i {
+    transition: 6s ease-in-out;
+}
+
+.next-step {
+    height: auto;
+    width: 53px;
+    display: inline-block;
+    transform: translate(274px,-210px);
+}
+
+.next-step i{
+    font-size: 50px;
+    color: darkgrey;
+    font-weight: 900;
+}
+
+@media (max-width:1385px) {
+    #place-order .table #step-3 {
+        transform-origin: left;
+        transform: translate(150px,22px) rotate(145deg);
+    }
+}
+
+@media (max-width:1043px) {
+    #place-order .table #step-3 {
+        transform-origin: left;
+        transform: translate(280px,-200px) rotate(0deg);
+    }
+
+    #place-order .table #step-2 {
+        transform-origin: left;
+        transform: translate(-4px,12px) rotate(145deg);
+    }
+}
+
+@media (max-width:700px) {
+    #place-order .table #step-3, #place-order .table #step-2 {
+        transform-origin: left;
+        transform: translate(146px,-4px) rotate(90deg);
+    }
+
+    #place-order .table #step-1 {
+        transform-origin: left;
+        transform: translate(146px,8px) rotate(90deg);
+    }
+}

@@ -1,8 +1,7 @@
 #members-list{
     margin-top: 10%;
-    /* background: #292929; */
-    
 }
+
 .member-table{
     margin: auto;
     display: flex;
@@ -10,9 +9,8 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 90%;
-    /* background:pink; */
     border-radius: 10px;
-     background: #ece9e9;
+    background: #ece9e9;
     box-shadow: inset -2px -2px 8px white,
     inset -2px -2px 12px rgba(255, 255, 255, 0.1),
     inset 2px 2px 4px rgba(255, 255, 255, 0),
@@ -22,6 +20,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .member{
     margin:10px 15px;
     padding: 0 10px;
@@ -29,16 +28,17 @@
     align-items: center;
     justify-content: center;
     border-radius: 5%;
-    /* background: #e0dede; */
     background: inherit;
     box-shadow: inset -2px -2px 8px white,
     inset -2px -2px 12px rgba(173, 52, 52, 0.1),
     inset 2px 2px 4px rgba(255, 255, 255, 0),
     inset 2px 2px 8px rgba(0, 0, 0, 0.15);
 }
+
 .member .member-pic{
     padding: 10px 10px;
 }
+
 .member .member-pic img{
     width: 175px;
     height: 150px;
@@ -49,12 +49,13 @@
 }
 .member .member-info{
     padding-bottom: 10px;
-    text-align: center;
-    
+    text-align: center;    
 }
+
 .member .member-info .name, .experience{
     padding-bottom:10px ;
 }
+
 .member .member-info .name h2{
     text-transform: uppercase;
     font-size: 22px;
@@ -62,11 +63,13 @@
     font-weight: 800;
     color: rgb(26, 166, 209);
 }
+
 .member .member-info .experience h3{
     font-family: cursive ;
     font-size: 18px;
     font-weight: 600;
 }
+
 .member .member-info .specialisation h3{
     font-family: cursive ;
     font-size: 18px;

@@ -1,5 +1,4 @@
 footer{
-    /* position: fixed; */
     bottom: 0;
     width: 100%;
     background: #111;
@@ -37,6 +36,7 @@ footer{
     
     .left  .content .social a{
         padding: 0 2px;
+        color: aqua;
     
     }
     .left  .content .social a span{
@@ -64,10 +64,11 @@ footer{
         text-transform: uppercase;
         
     }
-    .right .nav-link a{
+    .right .content-links a{
         text-decoration: none;
+        color: aqua;
     }
-    .right .nav-link a:hover{
+    .right .content-links a:hover{
         color:#f12020;
         transition: 0.3s;
     
@@ -78,6 +79,15 @@ footer{
             display:flex ; 
             flex-direction: column;
             text-align: center;
-         }
-         
+         }  
     }
+
+    @media (max-width:750px){
+        .right .content{
+            display: flex;
+            flex-direction: row;
+        }
+        .right .content .content-links{
+           margin: auto;
+        }
+    } 
