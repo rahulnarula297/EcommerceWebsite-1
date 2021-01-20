@@ -4,6 +4,6 @@ const router = express.Router();
 
 const contactPageController = require('../controllers/contactPage_controller.js');
 
-router.get('/contact', contactPageController.contactPage);
+router.get('/', contactPageController.contactPage);
 
 module.exports = router;
