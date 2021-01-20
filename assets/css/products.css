@@ -1,0 +1,197 @@
+body{
+    font-size: 16px;
+    color: #292929;
+    line-height: 1.7rem;
+    font-weight: 400;
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.section-bg{
+    /* background: #310c0c; */
+    background: url(../images/cupcake.jpg);
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    background-attachment: fixed;
+    padding: 60px 0;
+}
+.section-title{
+    margin-bottom: 25px;
+}
+.section-title h2{
+    position: relative;
+    color: wheat;
+    font-size: 32px;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 1;
+    text-transform: capitalize;
+    display: inline-block;
+}
+.single-product{
+    background: #ece9e9;
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+
+}
+.single-product .product-thumb{
+    margin-bottom: 10px;
+    text-align: center;
+}
+img{
+    display: inline-block;
+    max-width: 100%;
+    height: 175px;
+}
+.single-product .product-title{
+    margin-bottom: 20px;
+    text-align: center;
+    align-items: center;
+}
+.single-product .product-title h3{
+    font-size: 20px;
+    font-weight: 600;
+    
+}
+.single-product .product-title h3 a{
+    color: #292929;
+    text-decoration: none;
+}
+.single-product .product-title h3 a:hover{
+color: #7289ab;
+}
+.single-product .description{
+    display: inline-block;
+    margin-bottom: 5px;
+}
+.single-product .description p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #292929;
+    text-align: justify;
+
+}
+.single-product:hover{
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+.single-product .product-thumb:hover{
+    transform: scale(1.3) ;
+    transition: 0.2s;
+}
+.product-btns{
+    display: flex;
+    justify-content: center;
+}
+a{
+    text-decoration:none;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #292929;
+}
+.btn-small{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 8px 32px;
+    border-radius: 50px;
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+    transition: 0.4s;
+}
+
+.btn-round{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+
+}
+
+.btn-small:hover{
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+    color: #7289ab;
+    text-decoration: none;
+}
+.btn-round:hover{
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+    color: #7289ab;
+}
+.button-center{
+    justify-content: center;
+    text-align:center;
+
+}
+.bttn-def{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 42px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+    transition: 0.4s;
+    }
+.bttn-def:hover{
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+    color: #7289ab;
+}
+.bttn-def:hover span{
+    display: inline-block;
+    transform: scale(0.98);
+}
+
+@media (max-width:800px){
+
+    .section-bg{
+        
+        background-size:800px 700px;
+        background-repeat: no-repeat;
+        
+    }
+}
+
+@media (max-width:550px){
+    .section-bg{
+
+        background-position-x: -300px;
+    }
+
+}
