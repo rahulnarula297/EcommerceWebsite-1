@@ -10,5 +10,6 @@ router.get('/', homeController.home);
 
 router.use('/contact', require('./contact'));
 router.use('/products', require('./products'));
+router.use('/vendor', require('./vendor'));
 
 module.exports = router;
