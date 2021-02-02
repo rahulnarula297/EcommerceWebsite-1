@@ -21,3 +21,7 @@ module.exports.createProfile = async function(req, res) {
         return res.redirect('back');
     }
 }
+
+module.exports.addtem = async function(req, res) {
+    res.render('vendor_addItem');
+}

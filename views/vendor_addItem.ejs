@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/css/vendor_addItem.css">
+<section id="addItem">
+
+    <form action="">
+
+        <div class="addItem-heading">
+            <h1>ADD ITEM</h1>
+        </div>
+
+        <div class="item-img-container common-attr">
+            <h3>ITEM IMAGE</h3>
+            <input type="file" name="item-image" id="imageInput">
+            <img src="" alt="Item Image">
+        </div>
+
+        <div class="item-name-container common-attr">
+            <h3>ITEM NAME</h3>
+            <input type="text" name="item-name" id="item-name-input" placeholder="Enter Product Name Here" class="item-info">
+        </div>
+
+        <div class="item-category-container common-attr">
+            <h3>ITEM CATEGORY</h3>
+            <div class="custom-select-menu">
+
+                <select name="category" id="select-category">
+                    <option value="0">SELECT CATEGORY</option>
+                    <option value="1">CAKE</option>  
+                    <option value="2">COOKIE</option>  
+                    <option value="3">MUFFIN</option> 
+                    <option value="4">BREAD</option>                   
+                </select>
+
+            </div>
+        </div>
+
+        <div class="item-description-container common-attr">
+            <h3>ITEM DESCRIPTION</h3>
+            <textarea type="text" name="item-description" id="item-description-textarea" placeholder="Enter Description of Product Here" class="item-info"></textarea>
+        </div>
+        
+        <div class="item-flavour-container common-attr">
+            <h3>ITEM FLAVOUR</h3>
+            <input type="text" name="item-flavour" id="item-flavour-input" placeholder="Enter Product Flavour Here" class="item-info">
+        </div>
+
+        <div class="item-size-container common-attr">
+            <h3>ITEM SIZE</h3>
+            <div class="size-options">
+                
+                <ul>
+                    <li>
+                        <div class="size-container">
+                            <input type="checkbox">
+                            <span>250GM</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="size-container">
+                            <input type="checkbox">
+                            <span>500GM</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="size-container">
+                            <input type="checkbox">
+                            <span>750GM</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="size-container">
+                            <input type="checkbox">
+                            <span>1KG</span>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="item-price-container common-attr">
+            <h3>ITEM PRICE</h3>
+            <div class="item-info">
+                <span>₹</span><input type="number" name="item-price" id="item-price-input" placeholder="Enter Product Price Here">
+            </div>
+        </div>
+
+        <div class="item-btns">
+            <button id="submit-btn" type="submit">CONTINUE<i class="fas fa-arrow-right"></i></button>
+            <button id="reset-btn" type="reset">RESET</button>
+        </div>
+
+    </form>
+
+</section>
+<script src="/js/vendor_addItem.js"></script>
