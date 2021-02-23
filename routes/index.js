@@ -12,5 +12,6 @@ router.use('/contact', require('./contact'));
 router.use('/products', require('./products'));
 router.use('/vendor', require('./vendor'));
 router.use('/member-profile', require('./member-profile'));
+router.use('/categories', require('./categories'));
 
 module.exports = router;
