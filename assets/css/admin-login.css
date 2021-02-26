@@ -1,0 +1,89 @@
+body{  
+    background: url(../images/bakery.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+#login-page {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 220px;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.login .heading{
+    padding: 60px 0;
+}
+
+.login .heading h1{
+    font-size: 45px;
+    font-family: cursive;
+    font-weight: 800;
+    color: black;
+}
+
+.loginform .input{
+    margin-bottom: 12px;
+}
+
+.loginform .input input{ 
+    width: 250px;
+    height: 50px;
+    background:inherit;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border-style: double;
+    border-color: rgb(12, 12, 12);
+    border-width: thick;
+    font-size: 15px;
+}
+
+.loginform .input input::placeholder{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 16px;
+}
+
+.loginform .input input:focus{
+    background: chocolate;
+    outline: none;
+    color: whitesmoke;
+}
+
+.loginform .form-btn{
+    margin: 20px 0px;
+}
+
+.loginform .form-btn button {
+    width: 225px;
+    height: 50px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: thick;
+    border-color: rgb(12, 12, 12);
+    background: inherit;
+}
+
+.loginform .form-btn button:hover {
+    transform: scale(1.2);
+    transition: 0.3s;
+    color: royalblue;
+    background-color: black;
+}
+
+@media(max-width: 850px) {
+
+    body {
+        background-size: 100% 100%;
+    }
+}
+
