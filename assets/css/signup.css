@@ -1,0 +1,14 @@
+h1 {
+    text-align: center;
+    text-decoration-line: underline;
+}
+form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 500px;
+}
+form div {
+    padding: 30px;
+}

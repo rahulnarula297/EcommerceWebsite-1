@@ -15,5 +15,6 @@ router.use('/member-profile', require('./member-profile'));
 router.use('/shop', require('./shop'));
 router.use('/single-product', require('./single-product'));
 router.use('/admin-login', require('./admin-login'));
+router.use('/signup', require('./signup'));
 
 module.exports = router;
