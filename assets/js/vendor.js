@@ -14,7 +14,7 @@ $(window).on('scroll',function(){
             e.preventDefault();
             $.ajax({
                 type: 'post',
-                url: 'vendor/createProfile',
+                url: 'createProfile',
                 data: postForm.serialize(),
                 success: function(data) {
                     $('.display-firstname').text(`${data.data.info.firstname}`);
