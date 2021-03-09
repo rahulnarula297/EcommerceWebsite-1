@@ -46,116 +46,148 @@
 
         </div>
 
-        <div class="info-container">
+        <% if(profileExist == false) { %>
+            <div class="info-container">
 
-            <h1 class="info-heading">Create Profile</h1>
+                <h1 class="info-heading">Create Profile</h1>
 
-            <div class="info-form-container">
+                <div class="info-form-container">
 
-                <form action="/vendor/createProfile" method="post">
-                    <div class="inputbox">
-                        <label>FIRST NAME</label>
-                        <input type="text" name="firstname" id="first-name">
-                    </div>
-                    <div class="inputbox">
-                        <label>LAST NAME</label>
-                        <input type="text" name="lastname" id="last-name">
-                    </div>
-                    <div class="inputbox">
-                        <label>EMAIL</label>
-                        <input type="email" name="emailid" id="email-id">
-                    </div>
-                    <div class="inputbox">
-                        <label>BAKERY NAME</label>
-                        <input type="text" name="bakeryname" id="bakery-name">
-                    </div>
-                    <div class="textarea-container">
-                        <div class="textarea">
-                            <label>DESCRIPTION</label>
-                            <textarea rows="4" name="description" placeholder="Max-limit 30 Words" id="description"></textarea>
+                    <form action="/vendor/createProfile" method="post">
+                        <div class="inputbox">
+                            <label>FIRST NAME</label>
+                            <input type="text" name="firstname" id="first-name">
                         </div>
-                        <div class="textarea">
-                            <label>ABOUT BAKERY</label>
-                            <textarea rows="4" name="aboutbakery" placeholder="Max-limit 30 Words" id="about-bakery"></textarea>
+                        <div class="inputbox">
+                            <label>LAST NAME</label>
+                            <input type="text" name="lastname" id="last-name">
                         </div>
-                        <div class="textarea">
-                            <label>SPECIALITY</label>
-                            <textarea rows="4" name="speciality" placeholder="Max-limit 30 Words" id="speciality"></textarea>
+                        <div class="inputbox">
+                            <label>Contact Number</label>
+                            <input type="text" name="contact" id="contactNo-id">
                         </div>
-                    </div>
+                        <div class="inputbox">
+                            <label>BAKERY NAME</label>
+                            <input type="text" name="bakeryname" id="bakery-name">
+                        </div>
+                        <div class="inputbox">
+                            <label>Instagram Link</label>
+                            <input type="url" name="instaid" id="insta-id">
+                        </div>
+                        <div class="inputbox">
+                            <label>Facebook Link</label>
+                            <input type="url" name="fbid" id="fb-id">
+                        </div>
+                        <div class="textarea-container">
+                            <div class="textarea">
+                                <label>AREA COVERED</label>
+                                <textarea rows="4" name="areacovered" placeholder="Max-limit 30 Words" id="area-covered"></textarea>
+                            </div>
+                            <div class="textarea">
+                                <label>DESCRIPTION</label>
+                                <textarea rows="4" name="description" placeholder="Max-limit 30 Words" id="description"></textarea>
+                            </div>
+                            <div class="textarea">
+                                <label>SPECIALITY</label>
+                                <textarea rows="4" name="speciality" placeholder="Max-limit 30 Words" id="speciality"></textarea>
+                            </div>
+                        </div>
 
-                    <div class="save-btn">
-                        <button type="submit">SAVE DETAILS</button>
-                    </div>
-                </form>
+                        <div class="save-btn">
+                            <button type="submit">SAVE DETAILS</button>
+                        </div>
+                    </form>
+
+                </div>
 
             </div>
 
-        </div>
+           
+        
+            <% } else { %>
 
-        <div class="profile-details">
-            
-            <div class="profile-heading">
-                <h1 class="info-heading"><i class="fas fa-user"></i>My Profile</h1>   
-            </div>
-                
-            <div class="profile-container">
-
-                <div class="profile-info">
-                    <span class="info-title"><b>First Name</b></span>
-                    <i class="fas fa-pencil-alt edit-firstname"></i>
-                    <i class="fas fa-save save save-firstname"></i>
-                    <br>
-                    <span contenteditable="false" class="info-data display-firstname">ABCDE</span>
-                </div>
-
-                <div class="profile-info">
-                    <span class="info-title"><b>Last Name</b></span>
-                    <i class="fas fa-pencil-alt edit-lastname"></i>
-                    <i class="fas fa-save save save-lastname"></i>
-                    <br>
-                    <span contenteditable="false" class="info-data display-lastname">ABCDE</span>
-                </div>
-
-                <div class="profile-info">
-                    <span class="info-title"><b>Email Address</b></span>
-                    <i class="fas fa-pencil-alt edit-emailid"></i>
-                    <i class="fas fa-save save save-emailid"></i>
-                    <br>
-                    <span contenteditable="false" class="info-data display-emailid">ABCDE</span>
-                </div>
-                
-                <div class="profile-info">
-                    <span class="info-title"><b>Bakery Name</b></span>
-                    <i class="fas fa-pencil-alt edit-bakeryname"></i>
-                    <i class="fas fa-save save save-bakeryname"></i>
-                    <br>
-                    <span contenteditable="false" class="info-data display-bakeryname">ABCDE</span>
-                </div>
-
-                <div class="textarea-container">
-                    <div class="textarea-paragraph">
-                        <span class="info-title"><b>Description</b></span>
-                        <i class="fas fa-pencil-alt edit-description"></i>
-                        <i class="fas fa-save save save-description"></i>
-                        <p contenteditable="false" class="display-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi magnam doloremque nobis expedita, omnis aliquid assumenda fugit ipsum. Omnis vel autem amet, iusto id nostrum quasi. Culpa placeat incidunt natus.</p>
+                <div class="profile-details" style="display: <%= display %>;">
+                    
+                    <div class="profile-heading">
+                        <h1 class="info-heading"><i class="fas fa-user"></i>My Profile</h1>   
                     </div>
-                    <div class="textarea-paragraph">
-                        <span class="info-title"><b>About Bakery</b></span>
-                        <i class="fas fa-pencil-alt edit-aboutbakery"></i>
-                        <i class="fas fa-save save save-aboutbakery"></i>
-                        <p contenteditable="false" class="display-aboutbakery">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, sint animi mollitia tempore dolore veritatis debitis eos itaque saepe iusto, dicta obcaecati excepturi, quia consectetur nulla deserunt maxime recusandae in!</p>
-                    </div>
-                    <div class="textarea-paragraph">
-                        <span class="info-title"><b>Speciality</b></span>
-                        <i class="fas fa-pencil-alt edit-speciality"></i>
-                        <i class="fas fa-save save save-speciality"></i>
-                        <p contenteditable="false" class="display-speciality">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime dolore corrupti totam odio modi iste eum, rem consectetur labore tempora aspernatur facilis voluptatem, esse quasi impedit sint aliquam atque. Incidunt?</p>
-                    </div>
-                </div>
-            </div>
-        </div> 
+                        
+                    <div class="profile-container">
 
+                        <div class="profile-info">
+                            <span class="info-title"><b>First Name</b></span>
+                            <i class="fas fa-pencil-alt edit-firstname"></i>
+                            <i class="fas fa-save save save-firstname"></i>
+                            <br>
+                            <span contenteditable="false" class="info-data display-firstname"><%=profile.firstname%></span>
+                        </div>
+
+                        <div class="profile-info">
+                            <span class="info-title"><b>Last Name</b></span>
+                            <i class="fas fa-pencil-alt edit-lastname"></i>
+                            <i class="fas fa-save save save-lastname"></i>
+                            <br>
+                            <span contenteditable="false" class="info-data display-lastname"><%=profile.lastname%></span>
+                        </div>
+
+                        <div class="profile-info">
+                            <span class="info-title"><b>Contact Number</b></span>
+                            <i class="fas fa-pencil-alt edit-contactname"></i>
+                            <i class="fas fa-save save save-contactname"></i>
+                            <br>
+                            <span contenteditable="false" class="info-data display-contactname"><%=profile.contact%></span>
+                        </div>
+                        
+                        <div class="profile-info">
+                            <span class="info-title"><b>Bakery Name</b></span>
+                            <i class="fas fa-pencil-alt edit-bakeryname"></i>
+                            <i class="fas fa-save save save-bakeryname"></i>
+                            <br>
+                            <span contenteditable="false" class="info-data display-bakeryname"><%=profile.bakeryname%></span>
+                        </div>
+
+                        <div class="profile-info">
+                            <span class="info-title"><b>INSTAGRAM ID</b></span>
+                            <i class="fas fa-pencil-alt edit-instaid"></i>
+                            <i class="fas fa-save save save-instaid"></i>
+                            <br>
+                            <span contenteditable="false" class="info-data display-instaid"><a href="<%=profile.instaid%>" target="_blank"><%=profile.instaid%></a></span>
+                        </div>
+
+                        <div class="profile-info">
+                            <span class="info-title"><b>FACEBOOK ID</b></span>
+                            <i class="fas fa-pencil-alt edit-fbid"></i>
+                            <i class="fas fa-save save save-fbid"></i>
+                            <br>
+                            <span contenteditable="false" class="info-data display-fbid"><a href="<%=profile.fbid%>" target="_blank"><%=profile.fbid%></a></span>
+                        </div>
+
+                        <div class="textarea-container">
+                            <div class="textarea-paragraph">
+                                <span class="info-title"><b>AREA COVERED</b></span>
+                                <i class="fas fa-pencil-alt edit-area"></i>
+                                <i class="fas fa-save save save-area"></i>
+                                <p contenteditable="false" class="display-area"><%=profile.areacovered%></p>
+                            </div>
+                            <div class="textarea-paragraph">
+                                <span class="info-title"><b>Description</b></span>
+                                <i class="fas fa-pencil-alt edit-description"></i>
+                                <i class="fas fa-save save save-description"></i>
+                                <p contenteditable="false" class="display-description"><%=profile.description%></p>
+                            </div>
+                            
+                            <div class="textarea-paragraph">
+                                <span class="info-title"><b>Speciality</b></span>
+                                <i class="fas fa-pencil-alt edit-speciality"></i>
+                                <i class="fas fa-save save save-speciality"></i>
+                                <p contenteditable="false" class="display-speciality"><%=profile.speciality%></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            <% } %>
+        
         
         <div class="products-container">    
             <div class="products-container-nav">

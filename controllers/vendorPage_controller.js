@@ -1,8 +1,23 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const Profile = require('../models/profile');
 
 module.exports.vendorPage = async function(req, res) {
-    res.render('vendor');
+    Profile.findOne({user_id: req.user.id}, function(err, profile) {
+        if(profile) {
+            console.log(profile);
+            res.render('vendor', {
+                profile: profile,
+                profileExist: true,
+                display: 'initial'
+            });
+            return;      
+        }
+        res.render('vendor', {
+            profileExist: false,
+            display: 'none'
+        });
+    })
 }
 
 module.exports.create = async function(req, res) {
@@ -77,9 +92,27 @@ module.exports.signOut = function(req, res) {
 }
 
 module.exports.createProfile = async function(req, res) {
-    try {
-        
+    try {  
         if(req.xhr) {
+            Profile.create({
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                bakeryname: req.body.bakeryname,
+                contact: req.body.contact,
+                instaid: req.body.instaid,
+                fbid: req.body.fbid,
+                areacovered: req.body.areacovered,
+                description: req.body.description,
+                speciality: req.body.speciality,
+                user_id: req.user._id,
+                email: req.user.email
+            }, function(err, profile) {
+                if(err) {
+                    console.log('error', err);
+                    return;
+                }
+                console.log('Profile setup successful');
+            })
             return res.status(200).json({
                 data: {
                     info: req.body
@@ -87,9 +120,6 @@ module.exports.createProfile = async function(req, res) {
                 message: "Profile Created"
             })
         }
-
-        return res.redirect('back');
-
     } catch (error) {
         console.log('error : ',error);
         return res.redirect('back');

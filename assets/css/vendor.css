@@ -134,6 +134,7 @@ form .inputbox {
     width: 40%;
     height: 50px;
     margin: 20px 20px;
+    text-transform: uppercase;
 }
 
 form label {
@@ -196,7 +197,7 @@ form .inputbox input {
 .profile-details {
     width: 74%;
     height: 100%;
-    display: none;
+    /* display: none; */
 }
 
 .profile-heading {
