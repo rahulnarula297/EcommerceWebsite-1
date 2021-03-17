@@ -12,11 +12,15 @@ const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo').default;
 const { options } = require('./routes');
 
+const path = require('path');
+
 app.use(express.urlencoded({extended: false}));
 
 app.use(cookieParser());
 
 app.use(express.static('assets'));
+app.use('/uploads',express.static(__dirname + '/uploads'));
+
 app.use(expressLayouts);
 
 app.set('layout extractStyles', true);

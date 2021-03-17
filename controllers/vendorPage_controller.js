@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const Profile = require('../models/profile');
+const { response } = require('express');
 
 module.exports.vendorPage = async function(req, res) {
     Profile.findOne({user_id: req.user.id}, function(err, profile) {
@@ -94,31 +95,37 @@ module.exports.signOut = function(req, res) {
 module.exports.createProfile = async function(req, res) {
     try {  
         if(req.xhr) {
-            Profile.create({
-                firstname: req.body.firstname,
-                lastname: req.body.lastname,
-                bakeryname: req.body.bakeryname,
-                contact: req.body.contact,
-                instaid: req.body.instaid,
-                fbid: req.body.fbid,
-                areacovered: req.body.areacovered,
-                description: req.body.description,
-                speciality: req.body.speciality,
-                user_id: req.user._id,
-                email: req.user.email
-            }, function(err, profile) {
+            Profile.uploadedAvatar(req, res, function(err) {
                 if(err) {
-                    console.log('error', err);
-                    return;
+                    console.log('MULTER ERROR ---------------', err);
                 }
-                console.log('Profile setup successful');
-            })
-            return res.status(200).json({
-                data: {
-                    info: req.body
-                },
-                message: "Profile Created"
-            })
+                Profile.create({
+                    firstname: req.body.firstname,
+                    lastname: req.body.lastname,
+                    profileimage: Profile.avatarPath + '/' + req.file.filename,
+                    bakeryname: req.body.bakeryname,
+                    contact: req.body.contact,
+                    instaid: req.body.instaid,
+                    fbid: req.body.fbid,
+                    areacovered: req.body.areacovered,
+                    description: req.body.description,
+                    speciality: req.body.speciality,
+                    user_id: req.user._id,
+                    email: req.user.email
+                }, function(err, profile) {
+                    if(err) {
+                        console.log('error', err);
+                        return;
+                    }
+                    console.log('Profile setup successful');
+                    return res.status(200).json({
+                        data: {
+                            info: profile
+                        },
+                        message: "Profile Created"
+                    })
+                })
+            }) 
         }
     } catch (error) {
         console.log('error : ',error);

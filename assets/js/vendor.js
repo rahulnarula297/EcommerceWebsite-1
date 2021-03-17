@@ -8,16 +8,19 @@ $(window).on('scroll',function(){
 {
     let createProfile = function() {
 
-        let postForm = $('.info-form-container form');
+        let infoForm = $('.info-form-container form');
 
-        postForm.submit(function(e) {
+        infoForm.submit(function(e) {
             e.preventDefault();
+            let postForm = new FormData(this);
             $.ajax({
                 type: 'post',
                 url: 'createProfile',
-                data: postForm.serialize(),
+                data: postForm,
                 success: function(data) {
+                    let image_description = showImageDescription(data.data.info);
                     let Profile = showProfileDOM(data.data.info);
+                    $('.profile-board').append(image_description);
                     $('.main-container').append(Profile);
                     editProfile();
                     // $('.display-firstname').text(`${data.data.info.firstname}`);
@@ -29,7 +32,9 @@ $(window).on('scroll',function(){
                     // $('.display-area').text(`${data.data.info.areacovered}`);
                     // $('.display-description').text(`${data.data.info.description}`);
                     // $('.display-speciality').text(`${data.data.info.speciality}`);
-                }
+                },
+                contentType: false,
+                processData: false
             })
 
             $('.inputbox input').val('')
@@ -39,88 +44,104 @@ $(window).on('scroll',function(){
         })
     }
 
+    let showImageDescription = function(info) {
+        return $(`
+            <div class="profile-description">
+                    
+                <div class="profile-image">
+                    <img src="${info.profileimage}" alt="${info.firstname} + ' ' + ${info.lastname}">
+                </div>
+
+                <div class="profile-name-description">
+                    <h2>${info.bakeryname}</h2>
+                    <p>${info.description}</p>
+                </div>
+            </div>
+        `)
+    }
+
     let showProfileDOM = function(info) {
         return $(`
-        <div class="profile-details" style="display: initial;">
+            <div class="profile-details" style="display: initial;">
                     
-        <div class="profile-heading">
-            <h1 class="info-heading"><i class="fas fa-user"></i>My Profile</h1>   
-        </div>
-            
-        <div class="profile-container">
-
-            <div class="profile-info">
-                <span class="info-title"><b>First Name</b></span>
-                <i class="fas fa-pencil-alt edit-firstname"></i>
-                <i class="fas fa-save save save-firstname"></i>
-                <br>
-                <span contenteditable="false" class="info-data display-firstname">${info.firstname}</span>
-            </div>
-
-            <div class="profile-info">
-                <span class="info-title"><b>Last Name</b></span>
-                <i class="fas fa-pencil-alt edit-lastname"></i>
-                <i class="fas fa-save save save-lastname"></i>
-                <br>
-                <span contenteditable="false" class="info-data display-lastname">${info.lastname}</span>
-            </div>
-
-            <div class="profile-info">
-                <span class="info-title"><b>Contact Number</b></span>
-                <i class="fas fa-pencil-alt edit-contactname"></i>
-                <i class="fas fa-save save save-contactname"></i>
-                <br>
-                <span contenteditable="false" class="info-data display-contactname">${info.contact}></span>
-            </div>
-            
-            <div class="profile-info">
-                <span class="info-title"><b>Bakery Name</b></span>
-                <i class="fas fa-pencil-alt edit-bakeryname"></i>
-                <i class="fas fa-save save save-bakeryname"></i>
-                <br>
-                <span contenteditable="false" class="info-data display-bakeryname">${info.bakeryname}</span>
-            </div>
-
-            <div class="profile-info">
-                <span class="info-title"><b>INSTAGRAM ID</b></span>
-                <i class="fas fa-pencil-alt edit-instaid"></i>
-                <i class="fas fa-save save save-instaid"></i>
-                <br>
-                <span contenteditable="false" class="info-data display-instaid"><a href="${info.instaid}" target="_blank">${info.instaid}</a></span>
-            </div>
-
-            <div class="profile-info">
-                <span class="info-title"><b>FACEBOOK ID</b></span>
-                <i class="fas fa-pencil-alt edit-fbid"></i>
-                <i class="fas fa-save save save-fbid"></i>
-                <br>
-                <span contenteditable="false" class="info-data display-fbid"><a href="${info.fbid}" target="_blank">${info.fbid}</a></span>
-            </div>
-
-            <div class="textarea-container">
-                <div class="textarea-paragraph">
-                    <span class="info-title"><b>AREA COVERED</b></span>
-                    <i class="fas fa-pencil-alt edit-area"></i>
-                    <i class="fas fa-save save save-area"></i>
-                    <p contenteditable="false" class="display-area">${info.areacovered}</p>
+                <div class="profile-heading">
+                    <h1 class="info-heading"><i class="fas fa-user"></i>My Profile</h1>   
                 </div>
-                <div class="textarea-paragraph">
-                    <span class="info-title"><b>Description</b></span>
-                    <i class="fas fa-pencil-alt edit-description"></i>
-                    <i class="fas fa-save save save-description"></i>
-                    <p contenteditable="false" class="display-description">${info.description}</p>
-                </div>
-                
-                <div class="textarea-paragraph">
-                    <span class="info-title"><b>Speciality</b></span>
-                    <i class="fas fa-pencil-alt edit-speciality"></i>
-                    <i class="fas fa-save save save-speciality"></i>
-                    <p contenteditable="false" class="display-speciality">${info.speciality}</p>
+                    
+                <div class="profile-container">
 
+                    <div class="profile-info">
+                        <span class="info-title"><b>First Name</b></span>
+                        <i class="fas fa-pencil-alt edit-firstname"></i>
+                        <i class="fas fa-save save save-firstname"></i>
+                        <br>
+                        <span contenteditable="false" class="info-data display-firstname">${info.firstname}</span>
+                    </div>
+
+                    <div class="profile-info">
+                        <span class="info-title"><b>Last Name</b></span>
+                        <i class="fas fa-pencil-alt edit-lastname"></i>
+                        <i class="fas fa-save save save-lastname"></i>
+                        <br>
+                        <span contenteditable="false" class="info-data display-lastname">${info.lastname}</span>
+                    </div>
+
+                    <div class="profile-info">
+                        <span class="info-title"><b>Contact Number</b></span>
+                        <i class="fas fa-pencil-alt edit-contactname"></i>
+                        <i class="fas fa-save save save-contactname"></i>
+                        <br>
+                        <span contenteditable="false" class="info-data display-contactname">${info.contact}></span>
+                    </div>
+                    
+                    <div class="profile-info">
+                        <span class="info-title"><b>Bakery Name</b></span>
+                        <i class="fas fa-pencil-alt edit-bakeryname"></i>
+                        <i class="fas fa-save save save-bakeryname"></i>
+                        <br>
+                        <span contenteditable="false" class="info-data display-bakeryname">${info.bakeryname}</span>
+                    </div>
+
+                    <div class="profile-info">
+                        <span class="info-title"><b>INSTAGRAM ID</b></span>
+                        <i class="fas fa-pencil-alt edit-instaid"></i>
+                        <i class="fas fa-save save save-instaid"></i>
+                        <br>
+                        <span contenteditable="false" class="info-data display-instaid"><a href="${info.instaid}" target="_blank">${info.instaid}</a></span>
+                    </div>
+
+                    <div class="profile-info">
+                        <span class="info-title"><b>FACEBOOK ID</b></span>
+                        <i class="fas fa-pencil-alt edit-fbid"></i>
+                        <i class="fas fa-save save save-fbid"></i>
+                        <br>
+                        <span contenteditable="false" class="info-data display-fbid"><a href="${info.fbid}" target="_blank">${info.fbid}</a></span>
+                    </div>
+
+                    <div class="textarea-container">
+                        <div class="textarea-paragraph">
+                            <span class="info-title"><b>AREA COVERED</b></span>
+                            <i class="fas fa-pencil-alt edit-area"></i>
+                            <i class="fas fa-save save save-area"></i>
+                            <p contenteditable="false" class="display-area">${info.areacovered}</p>
+                        </div>
+                        <div class="textarea-paragraph">
+                            <span class="info-title"><b>Description</b></span>
+                            <i class="fas fa-pencil-alt edit-description"></i>
+                            <i class="fas fa-save save save-description"></i>
+                            <p contenteditable="false" class="display-description">${info.description}</p>
+                        </div>
+                        
+                        <div class="textarea-paragraph">
+                            <span class="info-title"><b>Speciality</b></span>
+                            <i class="fas fa-pencil-alt edit-speciality"></i>
+                            <i class="fas fa-save save save-speciality"></i>
+                            <p contenteditable="false" class="display-speciality">${info.speciality}</p>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div> 
+            </div> 
         `)
     }
 

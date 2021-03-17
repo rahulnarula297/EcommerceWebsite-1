@@ -1,6 +1,10 @@
 const mongoose=require('mongoose');
 
-const profileSchema=new mongoose.Schema({
+const multer = require('multer');
+const path = require('path');
+const AVATAR_PATH = path.join('/uploads/users/avatars');
+
+const profileSchema = new mongoose.Schema({
     firstname:{
         type:String,
         required:true
@@ -8,6 +12,9 @@ const profileSchema=new mongoose.Schema({
     lastname:{
         type:String,
         required:true
+    },
+    profileimage: {
+        type: String
     },
     bakeryname:{
         type:String,
@@ -46,6 +53,18 @@ const profileSchema=new mongoose.Schema({
         ref:'User'
     }
 });
+
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join(__dirname, '..', AVATAR_PATH));
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    }
+})
+
+profileSchema.statics.uploadedAvatar = multer({ storage: storage }).single('profileimage');
+profileSchema.statics.avatarPath = AVATAR_PATH;
 
 const Profile = mongoose.model('profile',profileSchema);
 module.exports = Profile;
