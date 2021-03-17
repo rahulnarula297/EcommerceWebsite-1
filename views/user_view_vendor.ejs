@@ -6,41 +6,41 @@
     <div class="profile-container">
 
         <div class="image-container">
-            <img src="/images/cake2.jpg" alt="Profile Photo">
+            <img src="<%= profile.profileimage %>" alt="Profile Photo">
         </div>
 
         <div class="description-container">
 
-            <h3 class="name">RAHUL NARULA</h3>
-            <h6 class="prof">BAKERY OWNER</h6>
+            <h3 class="name"><%=profile.firstname %> <%=profile.lastname%></h3>
+            <h6 class="prof"><%=profile.bakeryname%></h6>
 
             <div class="desc-links">
                 <ul>
-                    <li><a href="" class="insta"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://wa.me/919999770297" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
-                    <li><a href="" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="mailto:example@example.com?subject=CUSTOMER MAIL" class="mail"><i class="fas fa-envelope"></i></a></li>
+                    <li><a href="<%= profile.instaid %> " target="_blank" class="insta"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/<%= profile.contact %>"target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="<%= profile.fbid %>" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="mailto:<%= profile.email %>" target="_blank" class="mail"><i class="fas fa-envelope"></i></a></li>
                 </ul>
             </div>
 
             <div class="about-para desc-p">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia quam ipsum maiores laboriosam laborum sunt quo molestiae cupiditate vel provident. Atque praesentium mollitia iusto illo earum itaque illum in quo.</p>
+                <p><%= profile.description %></p>
             </div>
 
             <div class="area-para desc-p">
-                <p><span>AREA</span> : 4371 sugar camp road , owatonee , 552200</p>
+                <p><span>AREA</span> <%= profile.areacovered %></p>
             </div>
 
             <div class="experience-para desc-p">
-                <p><span>YEARS OF EXPERIENCE</span> : 7 YEARS </p>
+                <p><span>YEARS OF EXPERIENCE</span> 7 YEARS </p>
             </div>
 
             <div class="bakery-name-rating desc-p">
-                <p><span>BAKERY NAME</span> : BAKE IT FRESH </p>
+                <p><span>BAKERY NAME</span> <%= profile.bakeryname %> </p>
             </div>
 
             <div class="bakery-speciality-para desc-p">
-                <p><span>BAKERY SPECIALITY</span> : Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque voluptate laudantium exercitationem libero animi fugiat, obcaecati dolore deleniti eum architecto. </p>
+                <p><span>BAKERY SPECIALITY</span> <%= profile.speciality %> </p>
             </div>
 
             <div class="shop-now-btn">

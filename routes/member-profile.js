@@ -4,6 +4,6 @@ const router = express.Router();
 
 const memberProfilePage = require('../controllers/member-profile.js');
 
-router.get('/', memberProfilePage.member_profile);
+router.get('/:profileId', memberProfilePage.get_profile);
 
 module.exports = router;
