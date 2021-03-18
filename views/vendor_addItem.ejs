@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/vendor_addItem.css">
 <section id="addItem">
 
-    <form action="">
+    <form action="/vendor/addingItem" method="POST" enctype="multipart/form-data">
 
         <div class="addItem-heading">
             <h1>ADD ITEM</h1>
@@ -9,13 +9,13 @@
 
         <div class="item-img-container common-attr">
             <h3>ITEM IMAGE</h3>
-            <input type="file" name="item-image" id="imageInput">
+            <input type="file" name="productimage" id="imageInput">
             <img src="" alt="Item Image">
         </div>
 
         <div class="item-name-container common-attr">
             <h3>ITEM NAME</h3>
-            <input type="text" name="item-name" id="item-name-input" placeholder="Enter Product Name Here" class="item-info">
+            <input type="text" name="name" id="item-name-input" placeholder="Enter Product Name Here" class="item-info">
         </div>
 
         <div class="item-category-container common-attr">
@@ -24,10 +24,10 @@
 
                 <select name="category" id="select-category">
                     <option value="0">SELECT CATEGORY</option>
-                    <option value="1">CAKE</option>  
-                    <option value="2">COOKIE</option>  
-                    <option value="3">MUFFIN</option> 
-                    <option value="4">BREAD</option>                   
+                    <option value="CAKE">CAKE</option>  
+                    <option value="COOKIE">COOKIE</option>  
+                    <option value="MUFFIN">MUFFIN</option> 
+                    <option value="BREAD">BREAD</option>                   
                 </select>
 
             </div>
@@ -35,12 +35,12 @@
 
         <div class="item-description-container common-attr">
             <h3>ITEM DESCRIPTION</h3>
-            <textarea type="text" name="item-description" id="item-description-textarea" placeholder="Enter Description of Product Here" class="item-info"></textarea>
+            <textarea type="text" name="description" id="item-description-textarea" placeholder="Enter Description of Product Here" class="item-info"></textarea>
         </div>
         
         <div class="item-flavour-container common-attr">
             <h3>ITEM FLAVOUR</h3>
-            <input type="text" name="item-flavour" id="item-flavour-input" placeholder="Enter Product Flavour Here" class="item-info">
+            <input type="text" name="flavour" id="item-flavour-input" placeholder="Enter Product Flavour Here" class="item-info">
         </div>
 
         <div class="item-size-container common-attr">
@@ -50,25 +50,25 @@
                 <ul>
                     <li>
                         <div class="size-container">
-                            <input type="checkbox">
+                            <input type="checkbox" name="weight" value="250gm">
                             <span>250GM</span>
                         </div>
                     </li>
                     <li>
                         <div class="size-container">
-                            <input type="checkbox">
+                            <input type="checkbox" name="weight" value="500gm">
                             <span>500GM</span>
                         </div>
                     </li>
                     <li>
-                        <div class="size-container">
+                        <div class="size-container" name="weight" value="750gm">
                             <input type="checkbox">
                             <span>750GM</span>
                         </div>
                     </li>
                     <li>
                         <div class="size-container">
-                            <input type="checkbox">
+                            <input type="checkbox" name="weight" value="1000gm">
                             <span>1KG</span>
                         </div>
                     </li>
@@ -80,7 +80,7 @@
         <div class="item-price-container common-attr">
             <h3>ITEM PRICE</h3>
             <div class="item-info">
-                <span>₹</span><input type="number" name="item-price" id="item-price-input" placeholder="Enter Product Price Here">
+                <span>₹</span><input type="number" name="price" id="item-price-input" placeholder="Enter Product Price Here">
             </div>
         </div>
 

@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const Profile = require('../models/profile');
+const Product = require('../models/product');
 const { response } = require('express');
 
 module.exports.vendorPage = async function(req, res) {
@@ -135,4 +136,42 @@ module.exports.createProfile = async function(req, res) {
 
 module.exports.addtem = async function(req, res) {
     res.render('vendor_addItem');
+}
+
+module.exports.addingItem = async function(req,res){
+    try{
+        Profile.findOne({user_id : req.user._id},(err,profile)=>{
+
+            const bakery = profile.bakeryname;
+
+            Product.uploadedProductImage(req, res, function(err) {
+                if(err) {
+                    console.log('MULTER ERROR ---------------', err);
+                }
+                console.log(req.file)
+                Product.create({
+                    productimage: Product.productpath + '/' + req.file.filename,
+                    name: req.body.name,
+                    flavour: req.body.flavour,
+                    price: req.body.price,
+                    weight:req.body.weight,
+                    description: req.body.description,
+                    category:req.body.category,
+                    user: req.user._id,
+                    bakeryname: bakery
+                },(err,product)=>{
+                    if(err){
+                        console.log('error:', err);
+                        return res.redirect('back');
+                    }
+                    console.log('product added successfully');
+                    console.log(product);
+                    return res.redirect ('/vendor/profile');
+                });
+            })
+        });
+    }catch(error){
+        console.log('error', error);
+        return res.redirect('back');
+    }
 }

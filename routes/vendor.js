@@ -23,5 +23,6 @@ router.get('/sign-out', vendorController.signOut);
 router.post('/createProfile', passport.checkAuthenticated, vendorController.createProfile);
 
 router.get('/addItem', passport.checkAuthenticated, vendorController.addtem);
+router.post('/addingItem',passport.checkAuthenticated,vendorController.addingItem);
 
 module.exports = router;
