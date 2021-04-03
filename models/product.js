@@ -32,9 +32,9 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    user:{
+    profile:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Profile'
     },
     bakeryname:{
         type: mongoose.Schema.Types.String,

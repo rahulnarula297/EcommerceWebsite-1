@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
 
 const multer = require('multer');
+const { type } = require('os');
 const path = require('path');
 const AVATAR_PATH = path.join('/uploads/users/avatars');
 

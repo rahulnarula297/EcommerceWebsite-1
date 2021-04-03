@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const Profile = require('../models/profile');
+const Category = require('../models/category');
 const Product = require('../models/product');
 const { response } = require('express');
 
@@ -142,8 +143,6 @@ module.exports.addingItem = async function(req,res){
     try{
         Profile.findOne({user_id : req.user._id},(err,profile)=>{
 
-            const bakery = profile.bakeryname;
-
             Product.uploadedProductImage(req, res, function(err) {
                 if(err) {
                     console.log('MULTER ERROR ---------------', err);
@@ -154,16 +153,54 @@ module.exports.addingItem = async function(req,res){
                     name: req.body.name,
                     flavour: req.body.flavour,
                     price: req.body.price,
-                    weight:req.body.weight,
+                    weight: req.body.weight,
                     description: req.body.description,
-                    category:req.body.category,
-                    user: req.user._id,
-                    bakeryname: bakery
+                    category: req.body.category,
+                    profile: profile._id,
+                    bakeryname: profile.bakeryname
                 },(err,product)=>{
                     if(err){
                         console.log('error:', err);
                         return res.redirect('back');
                     }
+                    Category.findOne({profile_id: profile._id},(err, found_category)=>{
+                        if(err) {
+                            console.log('error:', err);
+                            return res.redirect('back');
+                        }
+                        if(found_category) {
+                            var categories;
+                            var category_added = false;
+                            for(categories of found_category.category) {
+                                if(categories.category_name == req.body.category) {
+                                    categories.products.push(product._id);
+                                    category_added = true;
+                                }
+                            }
+                            if(category_added == false) {
+                                found_category.category.push({
+                                    category_name: req.body.category,
+                                    products: [product._id]
+                                });
+                            }
+                            found_category.save();
+                        }else {
+                            Category.create({
+                                profile_id: profile._id,
+                                category: [{
+                                    category_name: req.body.category,
+                                    products: [product._id]
+                                }]
+                            },(err, category) => {
+                                if(err){
+                                    console.log('error:', err);
+                                    return res.redirect('back');
+                                }
+                                console.log('Category Added Successfuly');
+                                console.log(category);
+                            })
+                        }
+                    })
                     console.log('product added successfully');
                     console.log(product);
                     return res.redirect ('/vendor/profile');
