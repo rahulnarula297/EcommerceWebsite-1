@@ -5,25 +5,25 @@
 
         <div class="d-image">
             <div class="img">
-                <img src="../images/bakery.jpg" alt="">
+                <img src="<%=product.productimage%>" alt="">
             </div>
             <div class="image-name">
-                <h2>blueberry cheesecake</h2>
-                <p>Rs 550/-</p>
+                <h2><%=product.name%></h2>
+                <p>Rs <%=product.price%></p>
             </div>
         </div>
 
         <div class="info-div ">
             <div class="product-infor  product-d">
-                <p><span>description :</span> information as per product</p>
+                <p><span>description :</span> <%=product.description%></p>
 
             </div>
             <div class="flavour product-d">
-                <p><span>flavour :</span> information as per product</p>
+                <p><span>flavour :</span> <%=product.flavour%></p>
 
             </div>
             <div class="product-weight product-d">
-                <p><span>product weight :</span> information as per product</p>
+                <p><span>product weight :</span> <%=product.weight%></p>
 
             </div>
             <div class="serving-size product-d">
@@ -31,7 +31,7 @@
 
             </div>
             <div class="price product-d">
-                <p><span>price per kg  :</span> information as per product</p>
+                <p><span>price per kg  :</span> <%=product.price%></p>
 
             </div>
             <div class="product-variants product-d">

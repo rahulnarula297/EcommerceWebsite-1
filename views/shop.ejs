@@ -7,148 +7,40 @@
             <img src="../images/bakery.png" alt="">
         </div>
         <div class="bakers">
-            <div class="column">
-                <div class="bakers-name">
-                    <h3>rahul's bakery </h3> 
-                    <img src="../images/chef.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="image-div">
-                        <div class="img">
-                            <img src="../images/img1.jpg" alt="">
+            <% profile.forEach((profile)=>{ %>
+                <div class="column">
+                    <div class="bakers-name">
+                        <h3><%= profile.bakeryname %></h3> 
+                        <img src="../images/chef.png" alt="">
+                    </div>
+                    <div class="content">
+                        <div class="image-div">
+                            <div class="img">
+                                <img src="<%= profile.profileimage %>" alt="">
+                            </div>
+                            <p><%= profile.firstname %></p>
                         </div>
-    
-                        <p>rahul narula</p>
-                    </div>
-                    <div class="info-box">
-                        <div class="info-box2">
-                        <div class="info area">
-                            <h3><span>area</span> : delivering across shalimar bagh , pitampura ,rohini, paschim vihar, ashok vihar and moti nagar </h3>
-                        </div>
-                        <div class=" info experience">
-                            <h3><span>experience</span> : 5 years</h3>
-                        </div>
-                        <div class="info specialisation">
-                            <h3><span>specialisation</span> : designer and tea  cakes</h3>
-                        </div>
-                        <div class="shop-btn">
-                        <div class="button">
-                            <button  href="/"><a href="/shop/categories">SHOP <i class="fas fa-arrow-right"></i></a></button>
-                            
-                        </div>
-                    </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column">
-            <div class="bakers-name">
-                <h3>rahul's bakery </h3> 
-                <img src="../images/chef.png" alt="">
-            </div>
-            <div class="content">
-                <div class="image-div">
-                    <div class="img">
-                        <img src="../images/img1.jpg" alt="">
-                    </div>
-                    
-                    <p>rahul narula</p>
-                </div>
-                <div class="info-box">
-                    <div class="info-box2">
-                    <div class="info area">
-                        <h3><span>area</span> : delivering across shalimar bagh , pitampura ,rohini, paschim vihar, ashok vihar and moti nagar </h3>
-                    </div>
-                    <div class=" info experience">
-                        <h3><span>experience</span> : 5 years</h3>
-                    </div>
-                    <div class="info specialisation">
-                        <h3><span>specialisation</span> : designer and tea  cakes</h3>
-                    </div>
-                    <div class="shop-btn">
-                        <div class="button">
-                        <button  href="/"><a href="/shop/categories">SHOP <i class="fas fa-arrow-right"></i></a></button>
-                            
+                        <div class="info-box">
+                            <div class="info-box2">
+                                <div class="info area">
+                                    <h3><span>area</span> :<%= profile.areacovered %></h3>
+                                </div>
+                                <div class=" info experience">
+                                    <h3><span>experience</span> : 5 years</h3>
+                                </div>
+                                <div class="info specialisation">
+                                    <h3><span>specialisation</span> :<%= profile.speciality %></h3>
+                                </div>
+                                <div class="shop-btn">
+                                    <div class="button">
+                                        <button><a href="/shop/categories/<%= profile._id %>">SHOP <i class="fas fa-arrow-right"></i></a></button>   
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="column">
-            <div class="bakers-name">
-                <h3>rahul's bakery </h3> 
-                <img src="../images/chef.png" alt="">
-            </div>
-            <div class="content">
-                <div class="image-div">
-                    <div class="img">
-                        <img src="../images/img1.jpg" alt="">
-                    </div>
-                    
-                    <p>rahul narula</p>
-                </div>
-                <div class="info-box">
-                    <div class="info-box2">
-                    <div class="info area">
-                        <h3><span>area</span> : delivering across shalimar bagh , pitampura ,rohini, paschim vihar, ashok vihar and moti nagar </h3>
-                    </div>
-                    <div class=" info experience">
-                        <h3><span>experience</span> : 5 years</h3>
-                    </div>
-                    <div class="info specialisation">
-                        <h3><span>specialisation</span> : designer and tea  cakes</h3>
-                    </div>
-                    <div class="shop-btn">
-                        <div class="button">
-                        <button  href="/"><a href="/shop/categories">SHOP <i class="fas fa-arrow-right"></i></a></button>
-                            
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="column">
-            <div class="bakers-name">
-                <h3>rahul's bakery </h3> 
-                <img src="../images/chef.png" alt="">
-            </div>
-            <div class="content">
-                <div class="image-div">
-                    <div class="img">
-                        <img src="../images/img1.jpg" alt="">
-                    </div>
-                    
-                    <p>rahul narula</p>
-                </div>
-                <div class="info-box">
-                    <div class="info-box2">
-                    <div class="info area">
-                        <h3><span>area</span> : delivering across shalimar bagh , pitampura ,rohini, paschim vihar, ashok vihar and moti nagar </h3>
-                    </div>
-                    <div class=" info experience">
-                        <h3><span>experience</span> : 5 years</h3>
-                    </div>
-                    <div class="info specialisation">
-                        <h3><span>specialisation</span> : designer and tea  cakes</h3>
-                    </div>
-                    <div class="shop-btn">
-                        <div class="button">
-                        <button  href="/"><a href="/shop/categories">SHOP <i class="fas fa-arrow-right"></i></a></button>
-                            
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+            <%})%>
         </div>
     </div>
 </section>

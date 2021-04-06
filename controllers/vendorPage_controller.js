@@ -6,21 +6,46 @@ const Product = require('../models/product');
 const { response } = require('express');
 
 module.exports.vendorPage = async function(req, res) {
-    Profile.findOne({user_id: req.user.id}, function(err, profile) {
-        if(profile) {
-            console.log(profile);
-            res.render('vendor', {
-                profile: profile,
-                profileExist: true,
-                display: 'initial'
-            });
-            return;      
+    try {
+        await Profile.findOne({user_id: req.user.id},  async function(err, profile) {
+            if(err) {
+                console.log('error', err);
+                return res.redirect('back');
+            }
+            if(profile) {
+                await Product.find({profile:profile._id},(err,allProducts)=>{
+                    if(err) {
+                        console.log('error', err);
+                        return res.redirect('back');
+                    }
+                    var productExist;
+                    if(allProducts) {
+                        productExist = true
+                    }else {
+                        productExist = false
+                    }
+                    return res.render('vendor', {
+                        profile: profile,
+                        products: allProducts,
+                        productsExist: productExist,
+                        profileExist: true,
+                        display: 'initial'
+                    });     
+                });     
+            }else {
+                res.render('vendor', {
+                    profileExist: false,
+                    productsExist: false,
+                    display: 'none'
+                });
+            }
+        })
+    } catch (error) {
+        if(error) {
+            console.log('error', error);
+            return res.redirect('back');
         }
-        res.render('vendor', {
-            profileExist: false,
-            display: 'none'
-        });
-    })
+    }
 }
 
 module.exports.create = async function(req, res) {

@@ -12,65 +12,19 @@
 
             <div class="category-table">
 
-                <div class="category-type">
-                    <div class="head">
-                        <h2>cakes</h2>
+                <% category.forEach((category)=>{ %>
+                    <div class="category-type">
+                        <div class="head">
+                            <h2><%= category.category_name %></h2>
+                        </div>
+                        <div class="image">
+                            <img src="/images/cake2.jpg" alt="<%= category.category_name %>">
+                        </div>
+                        <div class="arrow">
+                            <h4><a href="/products/<%= category._id %>">shop <i class="fas fa-arrow-circle-right"></i></a></h4>
+                        </div>
                     </div>
-                    <div class="image">
-                        <img src="../images/berries.jpg" alt="">
-                    </div>
-                    <div class="arrow">
-                        <h4><a href="/">shop <i class="fas fa-arrow-circle-right"></i></a></h4>
-                    </div>
-                </div>
-
-                <div class="category-type">
-                    <div class="head">
-                        <h2>cakes</h2>
-                    </div>
-                    <div class="image">
-                        <img src="../images/berries.jpg" alt="">
-                    </div>
-                    <div class="arrow">
-                        <h4>shop <i class="fas fa-arrow-circle-right"></i></h4>
-                    </div>
-                </div>
-
-                <div class="category-type">
-                    <div class="head">
-                        <h2>cakes</h2>
-                    </div>
-                    <div class="image">
-                        <img src="../images/berries.jpg" alt="">
-                    </div>
-                    <div class="arrow">
-                        <h4>shop <i class="fas fa-arrow-circle-right"></i></h4>
-                    </div>
-                </div>
-
-                <div class="category-type">
-                    <div class="head">
-                        <h2>cakes</h2>
-                    </div>
-                    <div class="image">
-                        <img src="../images/berries.jpg" alt="">
-                    </div>
-                    <div class="arrow">
-                        <h4>shop <i class="fas fa-arrow-circle-right"></i></h4>
-                    </div>
-                </div>
-
-                <div class="category-type">
-                    <div class="head">
-                        <h2>cakes</h2>
-                    </div>
-                    <div class="image">
-                        <img src="../images/berries.jpg" alt="">
-                    </div>
-                    <div class="arrow">
-                        <h4>shop <i class="fas fa-arrow-circle-right"></i></h4>
-                    </div>
-                </div>
+                <%})%>
                 
             </div>
             
