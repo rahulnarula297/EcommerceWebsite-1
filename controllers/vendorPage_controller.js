@@ -18,16 +18,10 @@ module.exports.vendorPage = async function(req, res) {
                         console.log('error', err);
                         return res.redirect('back');
                     }
-                    var productExist;
-                    if(allProducts) {
-                        productExist = true
-                    }else {
-                        productExist = false
-                    }
                     return res.render('vendor', {
                         profile: profile,
                         products: allProducts,
-                        productsExist: productExist,
+                        productsExist: true,
                         profileExist: true,
                         display: 'initial'
                     });     

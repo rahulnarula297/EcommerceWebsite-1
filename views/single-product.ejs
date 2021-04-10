@@ -5,12 +5,18 @@
 
         <div class="d-image">
             <div class="img">
-                <img src="<%=product.productimage%>" alt="">
+                <img src="<%=product.productimage%>" alt="<%= product.name %>" id="productimg">
             </div>
             <div class="image-name">
                 <h2><%=product.name%></h2>
                 <p>Rs <%=product.price%></p>
             </div>
+        </div>
+        
+        <div id="imgModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
         </div>
 
         <div class="info-div ">

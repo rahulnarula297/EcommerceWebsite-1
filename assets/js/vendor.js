@@ -91,7 +91,7 @@ $(window).on('scroll',function(){
                         <i class="fas fa-pencil-alt edit-contactname"></i>
                         <i class="fas fa-save save save-contactname"></i>
                         <br>
-                        <span contenteditable="false" class="info-data display-contactname">${info.contact}></span>
+                        <span contenteditable="false" class="info-data display-contactname">${info.contact}</span>
                     </div>
                     
                     <div class="profile-info">
