@@ -112,7 +112,7 @@ input, textarea {
     transition: 0.2s ease;
 }
 
-.item-price-container .item-info {
+.price .item-info {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -120,11 +120,11 @@ input, textarea {
     align-items: center;
 }
 
-.item-price-container .item-info input {
+.price .item-info input {
     flex: 96%;
 }
 
-.item-price-container .item-info span {
+.price .item-info span {
     flex: 3%;
     font-size: 1.2em;
 }

@@ -45,6 +45,10 @@ const profileSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    experience:{
+        type:String,
+        required:true
+    },
     user_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref:'User'

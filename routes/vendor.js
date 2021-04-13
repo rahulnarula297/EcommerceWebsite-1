@@ -25,4 +25,5 @@ router.post('/createProfile', passport.checkAuthenticated, vendorController.crea
 router.get('/addItem', passport.checkAuthenticated, vendorController.addtem);
 router.post('/addingItem',passport.checkAuthenticated,vendorController.addingItem);
 
+router.get('/profile/remove-product/:id&:profile&:category', passport.checkAuthenticated,vendorController.removeProduct);
 module.exports = router;

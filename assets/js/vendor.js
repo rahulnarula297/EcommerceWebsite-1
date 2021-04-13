@@ -137,8 +137,15 @@ $(window).on('scroll',function(){
                             <i class="fas fa-pencil-alt edit-speciality"></i>
                             <i class="fas fa-save save save-speciality"></i>
                             <p contenteditable="false" class="display-speciality">${info.speciality}</p>
-
                         </div>
+                    </div>
+
+                    <div class="profile-info">
+                        <span class="info-title"><b>EXPERIENCE</b></span>
+                        <i class="fas fa-pencil-alt edit-exp"></i>
+                        <i class="fas fa-save save save-exp"></i>
+                        <br>
+                        <span contenteditable="false" class="info-data display-exp">${info.experience}</span>
                     </div>
                 </div>
             </div> 
@@ -245,6 +252,17 @@ $(window).on('scroll',function(){
             $('.edit-speciality').css('display','initial');
             $('.save-speciality').css('display','none');
         });
+        $('.edit-exp').on('click', function() {
+            $('.display-exp').attr('contenteditable','true');
+            $('.display-exp').focus();
+            $('.edit-exp').css('display','none');
+            $('.save-exp').css('display','initial');
+        });
+        $('.save-exp').on('click', function() {
+            $('.display-exp').attr('contenteditable','false');
+            $('.edit-exp').css('display','initial');
+            $('.save-exp').css('display','none');
+        });
     }
 
     let myProducts = function() {
@@ -271,6 +289,19 @@ $(window).on('scroll',function(){
             $('.remove-product').hide();
         })
     }
+
+    $('.delete-product-button').on('click', function(e) {
+        e.preventDefault();
+        let self = $(this);
+        $.ajax({
+            type: 'get',
+            url: self.attr('href'),
+            success: function(data) {
+                console.log(data);
+                $(`#product-${data.data.productId}`).remove();
+            }
+        })        
+    })
 
     createProfile();
     editProfile();

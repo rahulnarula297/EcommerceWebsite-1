@@ -131,6 +131,7 @@ module.exports.createProfile = async function(req, res) {
                     areacovered: req.body.areacovered,
                     description: req.body.description,
                     speciality: req.body.speciality,
+                    experience: req.body.experience,
                     user_id: req.user._id,
                     email: req.user.email
                 }, function(err, profile) {
@@ -161,7 +162,10 @@ module.exports.addtem = async function(req, res) {
 module.exports.addingItem = async function(req,res){
     try{
         Profile.findOne({user_id : req.user._id},(err,profile)=>{
-
+            if(err) {
+                console.log('error: ',err);
+                return res.redirect('back');
+            }
             Product.uploadedProductImage(req, res, function(err) {
                 if(err) {
                     console.log('MULTER ERROR ---------------', err);
@@ -175,6 +179,14 @@ module.exports.addingItem = async function(req,res){
                     weight: req.body.weight,
                     description: req.body.description,
                     category: req.body.category,
+                    variants:req. body.variants,
+                    price_per_kg: req.body.price_per_kg,
+                    customizable: req.body.customizable,
+                    units: req.body.units,
+                    expiry: req.body.expiry,
+                    delivery_time: req.body.delivery,
+                    eggless: req.body.eggless,
+                    serving_size: req.body.serving_size,
                     profile: profile._id,
                     bakeryname: profile.bakeryname
                 },(err,product)=>{
@@ -229,5 +241,50 @@ module.exports.addingItem = async function(req,res){
     }catch(error){
         console.log('error', error);
         return res.redirect('back');
+    }
+}
+
+module.exports.removeProduct = async function(req, res) {
+    const product_id = req.params.id;
+    const profile = req.params.profile;
+    const category_name = req.params.category;
+
+    await Category.findOne({profile_id:profile},(err,category)=>{
+        if(err){
+            console.log(err);
+            return res.redirect('back');
+        }
+
+        for(let x = 0; x < category.category.length; x++) {
+            var product_category = category.category[x];
+            if(product_category.category_name==category_name){
+                for(let i=0; i< product_category.products.length; i++) {
+                    if(product_category.products[i]==product_id){
+                        product_category.products.splice(i,1);
+                    }
+                }
+                if(product_category.products.length == 0) {
+                    category.category.splice(x,1);
+                }
+            }
+        }
+        category.save();
+    });
+
+    await Product.deleteOne({_id:product_id},(err)=>{
+        if(err){
+            console.log(err);
+            return res.redirect('back');
+        }
+        console.log("Product Successfully Deleted",product_id);
+    }); 
+
+    if(req.xhr) {
+        return res.status(200).json({
+            data: {
+                productId: product_id
+            },
+            message: "Product Deleted"
+        })
     }
 }

@@ -38,6 +38,7 @@
     padding-bottom: 15px;
     font-size: 50px;
     color: rgb(8, 3, 53);
+    text-transform: uppercase;
 } 
 
 .d-image .image-name p{

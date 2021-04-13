@@ -9,10 +9,10 @@
             </div>
             <div class="image-name">
                 <h2><%=product.name%></h2>
-                <p>Rs <%=product.price%></p>
+                <p>Rs <%=product.price%>/-</p>
             </div>
         </div>
-        
+
         <div id="imgModal" class="modal">
             <span class="close">&times;</span>
             <img class="modal-content" id="img01">
@@ -22,37 +22,48 @@
         <div class="info-div ">
             <div class="product-infor  product-d">
                 <p><span>description :</span> <%=product.description%></p>
-
             </div>
+
             <div class="flavour product-d">
                 <p><span>flavour :</span> <%=product.flavour%></p>
-
             </div>
+
             <div class="product-weight product-d">
                 <p><span>product weight :</span> <%=product.weight%></p>
-
             </div>
+
             <div class="serving-size product-d">
-                <p><span>serving size :</span> information as per product</p>
-
+                <p><span>serving size :</span> <%=product.serving_size%></p>
             </div>
-            <div class="price product-d">
-                <p><span>price per kg  :</span> <%=product.price%></p>
-
-            </div>
+            
             <div class="product-variants product-d">
-                <p><span>different variants  :</span> information as per product</p>
-
+                <p><span>different variants :</span> <%=product.variants%></p>
             </div>
-            <div class="product-flavours product-d">
-                <p><span>different flavours :</span> information as per product</p>
 
+            <div class="price-per-kg product-d">
+                <p><span>price per kg :</span> <%=product.price_per_kg%></p>
             </div>
+
             <div class="customizable product-d">
-                <p><span>customization :</span> information as per product</p>
-
+                <p><span>customization :</span> <%=product.customizable%></p>
             </div>
 
+            <div class="product-units product-d">
+                <p><span>Number of units :</span> <%=product.units%></p>
+            </div>
+
+            <div class="product-expiry product-d">
+                <p><span>Used by :</span> <%=product.expiry%></p>
+            </div>
+
+            <div class="product-delivery-time product-d">
+                <p><span>Delivery time :</span> <%=product.delivery_time%></p>
+            </div>
+
+            <div class="product-eggless product-d">
+                <p><span>Eggless :</span> <%=product.eggless%></p>
+            </div>
+        
         </div>
 
     </div>
