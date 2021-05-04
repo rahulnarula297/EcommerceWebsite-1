@@ -21,6 +21,7 @@ router.get('/admin-login', vendorController.signIn);
 router.get('/sign-out', vendorController.signOut);  
 
 router.post('/createProfile', passport.checkAuthenticated, vendorController.createProfile);
+router.post('/updateProfile/:id', passport.checkAuthenticated, vendorController.updateProfile);
 
 router.get('/addItem', passport.checkAuthenticated, vendorController.addtem);
 router.post('/addingItem',passport.checkAuthenticated,vendorController.addingItem);

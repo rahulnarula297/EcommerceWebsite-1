@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link rel="stylesheet" href="/css/lightslider.css">
 <link rel="stylesheet" href="/css/members.css">
 <link rel="stylesheet" href="/css/services_&_placeOrder.css">
@@ -40,11 +42,11 @@
 </section>
 
 <section id="bestselling">
-    <div class="bestselling-heading"> 
+    <div class="bestselling-heading" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000"> 
         <h1>bestselling items</h1>
     </div>
 
-    <div class="best-seller-container">
+    <div class="best-seller-container" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
         <ul id="autoWidth" class="cs-hidden">
             <li class="item-a">
                 <div class="single-product">
@@ -230,10 +232,10 @@
 </section>
 
 <section id="members-list">
-    <div class="member-head">
+    <div class="member-head" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
         <h1> Our Bakery Chef's</h1>
     </div>
-    <div class="member-table">
+    <div class="member-table" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
         <% profiles.forEach(function(profile){%>
             <div class="member">
                 <div class="member-pic">
@@ -256,9 +258,9 @@
 </section>
 
 <section id="place-order">
-    <h1 class="place-order-h1">STEPS TO PLACE ORDER</h1>
+    <h1 class="place-order-h1" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">STEPS TO PLACE ORDER</h1>
     
-    <div class="table">
+    <div class="table" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
         <div class="service-box">
             <div class="table-h1">
                 <h1>Step 1</h1>
@@ -332,8 +334,8 @@
 
 
 <section id="services">
-    <h1 class="services-h1">SERVICES</h1>
-    <div class="table">
+    <h1 class="services-h1" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">SERVICES</h1>
+    <div class="table" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
 
         <div class="service-box">
             <div class="icon">
@@ -387,5 +389,9 @@
         </div>
     </div>
 </section>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 <script src="/js/lightslider.js"></script>
 <script src="/js/script.js"></script>

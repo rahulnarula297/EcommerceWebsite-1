@@ -73,7 +73,7 @@ $(window).on('scroll',function(){
                     <div class="profile-info">
                         <span class="info-title"><b>First Name</b></span>
                         <i class="fas fa-pencil-alt edit-firstname"></i>
-                        <i class="fas fa-save save save-firstname"></i>
+                        <i class="fas fa-save save firstname"></i>
                         <br>
                         <span contenteditable="false" class="info-data display-firstname">${info.firstname}</span>
                     </div>
@@ -81,7 +81,7 @@ $(window).on('scroll',function(){
                     <div class="profile-info">
                         <span class="info-title"><b>Last Name</b></span>
                         <i class="fas fa-pencil-alt edit-lastname"></i>
-                        <i class="fas fa-save save save-lastname"></i>
+                        <i class="fas fa-save save lastname"></i>
                         <br>
                         <span contenteditable="false" class="info-data display-lastname">${info.lastname}</span>
                     </div>
@@ -89,7 +89,7 @@ $(window).on('scroll',function(){
                     <div class="profile-info">
                         <span class="info-title"><b>Contact Number</b></span>
                         <i class="fas fa-pencil-alt edit-contactname"></i>
-                        <i class="fas fa-save save save-contactname"></i>
+                        <i class="fas fa-save save contactname"></i>
                         <br>
                         <span contenteditable="false" class="info-data display-contactname">${info.contact}</span>
                     </div>
@@ -97,7 +97,7 @@ $(window).on('scroll',function(){
                     <div class="profile-info">
                         <span class="info-title"><b>Bakery Name</b></span>
                         <i class="fas fa-pencil-alt edit-bakeryname"></i>
-                        <i class="fas fa-save save save-bakeryname"></i>
+                        <i class="fas fa-save save bakeryname"></i>
                         <br>
                         <span contenteditable="false" class="info-data display-bakeryname">${info.bakeryname}</span>
                     </div>
@@ -105,7 +105,7 @@ $(window).on('scroll',function(){
                     <div class="profile-info">
                         <span class="info-title"><b>INSTAGRAM ID</b></span>
                         <i class="fas fa-pencil-alt edit-instaid"></i>
-                        <i class="fas fa-save save save-instaid"></i>
+                        <i class="fas fa-save save instaid"></i>
                         <br>
                         <span contenteditable="false" class="info-data display-instaid"><a href="${info.instaid}" target="_blank">${info.instaid}</a></span>
                     </div>
@@ -113,7 +113,7 @@ $(window).on('scroll',function(){
                     <div class="profile-info">
                         <span class="info-title"><b>FACEBOOK ID</b></span>
                         <i class="fas fa-pencil-alt edit-fbid"></i>
-                        <i class="fas fa-save save save-fbid"></i>
+                        <i class="fas fa-save save fbid"></i>
                         <br>
                         <span contenteditable="false" class="info-data display-fbid"><a href="${info.fbid}" target="_blank">${info.fbid}</a></span>
                     </div>
@@ -122,20 +122,20 @@ $(window).on('scroll',function(){
                         <div class="textarea-paragraph">
                             <span class="info-title"><b>AREA COVERED</b></span>
                             <i class="fas fa-pencil-alt edit-area"></i>
-                            <i class="fas fa-save save save-area"></i>
+                            <i class="fas fa-save save area"></i>
                             <p contenteditable="false" class="display-area">${info.areacovered}</p>
                         </div>
                         <div class="textarea-paragraph">
                             <span class="info-title"><b>Description</b></span>
                             <i class="fas fa-pencil-alt edit-description"></i>
-                            <i class="fas fa-save save save-description"></i>
+                            <i class="fas fa-save save description"></i>
                             <p contenteditable="false" class="display-description">${info.description}</p>
                         </div>
                         
                         <div class="textarea-paragraph">
                             <span class="info-title"><b>Speciality</b></span>
                             <i class="fas fa-pencil-alt edit-speciality"></i>
-                            <i class="fas fa-save save save-speciality"></i>
+                            <i class="fas fa-save save speciality"></i>
                             <p contenteditable="false" class="display-speciality">${info.speciality}</p>
                         </div>
                     </div>
@@ -143,7 +143,7 @@ $(window).on('scroll',function(){
                     <div class="profile-info">
                         <span class="info-title"><b>EXPERIENCE</b></span>
                         <i class="fas fa-pencil-alt edit-exp"></i>
-                        <i class="fas fa-save save save-exp"></i>
+                        <i class="fas fa-save save exp"></i>
                         <br>
                         <span contenteditable="false" class="info-data display-exp">${info.experience}</span>
                     </div>
@@ -157,111 +157,111 @@ $(window).on('scroll',function(){
             $('.display-firstname').attr('contenteditable','true');
             $('.display-firstname').focus();
             $('.edit-firstname').css('display','none');
-            $('.save-firstname').css('display','initial');
+            $('.firstname').css('display','initial');
         });
-        $('.save-firstname').on('click', function() {
+        $('.firstname').on('click', function() {
             $('.display-firstname').attr('contenteditable','false');
             $('.edit-firstname').css('display','initial');
-            $('.save-firstname').css('display','none');
+            $('.firstname').css('display','none');
         });
         $('.edit-lastname').on('click', function() {
             $('.display-lastname').attr('contenteditable','true');
             $('.display-lastname').focus();
             $('.edit-lastname').css('display','none');
-            $('.save-lastname').css('display','initial');
+            $('.lastname').css('display','initial');
         });
-        $('.save-lastname').on('click', function() {
+        $('.lastname').on('click', function() {
             $('.display-lastname').attr('contenteditable','false');
             $('.edit-lastname').css('display','initial');
-            $('.save-lastname').css('display','none');
+            $('.lastname').css('display','none');
         });
-        $('.edit-contactname').on('click', function() {
-            $('.display-contactname').attr('contenteditable','true');
-            $('.display-contactname').focus();
-            $('.edit-contactname').css('display','none');
-            $('.save-contactname').css('display','initial');
+        $('.edit-contact').on('click', function() {
+            $('.display-contact').attr('contenteditable','true');
+            $('.display-contact').focus();
+            $('.edit-contact').css('display','none');
+            $('.contact').css('display','initial');
         });
-        $('.save-contactname').on('click', function() {
-            $('.display-contactname').attr('contenteditable','false');
-            $('.edit-contactname').css('display','initial');
-            $('.save-contactname').css('display','none');
+        $('.contact').on('click', function() {
+            $('.display-contact').attr('contenteditable','false');
+            $('.edit-contact').css('display','initial');
+            $('.contact').css('display','none');
         });
         $('.edit-bakeryname').on('click', function() {
             $('.display-bakeryname').attr('contenteditable','true');
             $('.display-bakeryname').focus();
             $('.edit-bakeryname').css('display','none');
-            $('.save-bakeryname').css('display','initial');
+            $('.bakeryname').css('display','initial');
         });
-        $('.save-bakeryname').on('click', function() {
+        $('.bakeryname').on('click', function() {
             $('.display-bakeryname').attr('contenteditable','false');
             $('.edit-bakeryname').css('display','initial');
-            $('.save-bakeryname').css('display','none');
+            $('.bakeryname').css('display','none');
         });
         $('.edit-instaid').on('click', function() {
             $('.display-instaid').attr('contenteditable','true');
             $('.display-instaid').focus();
             $('.edit-instaid').css('display','none');
-            $('.save-instaid').css('display','initial');
+            $('.instaid').css('display','initial');
         });
-        $('.save-instaid').on('click', function() {
+        $('.instaid').on('click', function() {
             $('.display-instaid').attr('contenteditable','false');
             $('.edit-instaid').css('display','initial');
-            $('.save-instaid').css('display','none');
+            $('.instaid').css('display','none');
         });
         $('.edit-fbid').on('click', function() {
             $('.display-fbid').attr('contenteditable','true');
             $('.display-fbid').focus();
             $('.edit-fbid').css('display','none');
-            $('.save-fbid').css('display','initial');
+            $('.fbid').css('display','initial');
         });
-        $('.save-fbid').on('click', function() {
+        $('.fbid').on('click', function() {
             $('.display-fbid').attr('contenteditable','false');
             $('.edit-fbid').css('display','initial');
-            $('.save-fbid').css('display','none');
+            $('.fbid').css('display','none');
         });
         $('.edit-area').on('click', function() {
             $('.display-area').attr('contenteditable','true');
             $('.display-area').focus();
             $('.edit-area').css('display','none');
-            $('.save-area').css('display','initial');
+            $('.areacovered').css('display','initial');
         });
-        $('.save-area').on('click', function() {
+        $('.areacovered').on('click', function() {
             $('.display-area').attr('contenteditable','false');
             $('.edit-area').css('display','initial');
-            $('.save-area').css('display','none');
+            $('.areacovered').css('display','none');
         });
         $('.edit-description').on('click', function() {
             $('.display-description').attr('contenteditable','true');
             $('.display-description').focus();
             $('.edit-description').css('display','none');
-            $('.save-description').css('display','initial');
+            $('.description').css('display','initial');
         });
-        $('.save-description').on('click', function() {
+        $('.description').on('click', function() {
             $('.display-description').attr('contenteditable','false');
             $('.edit-description').css('display','initial');
-            $('.save-description').css('display','none');
+            $('.description').css('display','none');
         });
         $('.edit-speciality').on('click', function() {
             $('.display-speciality').attr('contenteditable','true');
             $('.display-speciality').focus();
             $('.edit-speciality').css('display','none');
-            $('.save-speciality').css('display','initial');
+            $('.speciality').css('display','initial');
         });
-        $('.save-speciality').on('click', function() {
+        $('.speciality').on('click', function() {
             $('.display-speciality').attr('contenteditable','false');
             $('.edit-speciality').css('display','initial');
-            $('.save-speciality').css('display','none');
+            $('.speciality').css('display','none');
         });
         $('.edit-exp').on('click', function() {
             $('.display-exp').attr('contenteditable','true');
             $('.display-exp').focus();
             $('.edit-exp').css('display','none');
-            $('.save-exp').css('display','initial');
+            $('.experience').css('display','initial');
         });
-        $('.save-exp').on('click', function() {
+        $('.experience').on('click', function() {
             $('.display-exp').attr('contenteditable','false');
             $('.edit-exp').css('display','initial');
-            $('.save-exp').css('display','none');
+            $('.experience').css('display','none');
         });
     }
 
@@ -307,4 +307,17 @@ $(window).on('scroll',function(){
     editProfile();
     myProducts();
     deleteProducts();
+
+    $('.save').on('click', function(e) {
+        e.preventDefault();
+        var self = $(this);
+        var prop=self[0].classList[1];
+        var value = $(this).siblings('.display').text();
+        var data = {"value": value,"prop": prop};
+        $.ajax({
+            type: 'POST',
+            url: self.attr('href'),
+            data: {info: JSON.stringify(data)},
+        })
+    })
 }

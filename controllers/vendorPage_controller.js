@@ -3,7 +3,9 @@ const bcrypt = require('bcrypt');
 const Profile = require('../models/profile');
 const Category = require('../models/category');
 const Product = require('../models/product');
+const url = require('url');
 const { response } = require('express');
+const { profile } = require('console');
 
 module.exports.vendorPage = async function(req, res) {
     try {
@@ -152,6 +154,26 @@ module.exports.createProfile = async function(req, res) {
     } catch (error) {
         console.log('error : ',error);
         return res.redirect('back');
+    }
+}
+
+module.exports.updateProfile = async function(req, res) {
+    if(req.xhr) {
+        const profileId = req.params.id;
+        var info = JSON.parse(req.body.info);
+        var value = info.value;
+        var prop = info.prop;
+        var obj = {};
+        obj[prop] = value;
+        await Profile.findByIdAndUpdate(profileId, {$set:obj}, async function(err, profile) {
+            if (err) {
+                console.log('error', err);
+                return res.redirect('back');
+            }
+            else {
+                console.log("Updated Profile : ", profile);
+            }
+        });
     }
 }
 
