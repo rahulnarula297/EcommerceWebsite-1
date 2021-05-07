@@ -178,7 +178,9 @@ module.exports.updateProfile = async function(req, res) {
 }
 
 module.exports.addtem = async function(req, res) {
-    res.render('vendor_addItem');
+    res.render('vendor_addItem',{
+        update: false
+    });
 }
 
 module.exports.addingItem = async function(req,res){
@@ -188,6 +190,7 @@ module.exports.addingItem = async function(req,res){
                 console.log('error: ',err);
                 return res.redirect('back');
             }
+
             Product.uploadedProductImage(req, res, function(err) {
                 if(err) {
                     console.log('MULTER ERROR ---------------', err);
@@ -310,3 +313,30 @@ module.exports.removeProduct = async function(req, res) {
         })
     }
 }
+
+module.exports.updateItem = async function(req, res) {
+    const productId = req.params.id;
+    console.log(productId);
+    await Product.findById(productId,(err,product) => {
+        if(err){
+            console.log('error', err);
+            return res.redirect('back');
+        }
+        return res.render('vendor_addItem',{
+            product: product,
+            update: true
+        });
+    });
+}
+
+module.exports.updatingItem = async function(req, res) {
+    let product_id=req.params.id;
+    await Product.findByIdAndUpdate(product_id,req.body,(err,updatedProduct)=>{
+        if(err) {
+            console.log('error', err);
+            return res.redirect('back');
+        }
+        return res.redirect('/vendor/profile');
+    });
+}
+
