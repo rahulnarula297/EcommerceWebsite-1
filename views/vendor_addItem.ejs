@@ -19,21 +19,6 @@
                 <input type="text" name="name" id="item-name-input" placeholder="Enter Product Name Here" class="item-info" value="<%=product.name%>">
             </div>
     
-            <div class="item-category-container common-attr">
-                <h3>ITEM CATEGORY</h3>
-                <div class="custom-select-menu">
-    
-                    <select name="category" id="select-category">
-                        <option value="<%=product.category%>"><%=product.category%></option>
-                        <option value="CAKE">CAKE</option>  
-                        <option value="COOKIE">COOKIE</option>  
-                        <option value="MUFFIN">MUFFIN</option> 
-                        <option value="BREAD">BREAD</option>                   
-                    </select>
-    
-                </div>
-            </div>
-    
             <div class="item-description-container common-attr">
                 <h3>ITEM DESCRIPTION</h3>
                 <textarea type="text" name="description" id="item-description-textarea" placeholder="Enter Description of Product Here" class="item-info"><%=product.description%></textarea>

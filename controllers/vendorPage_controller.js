@@ -316,7 +316,6 @@ module.exports.removeProduct = async function(req, res) {
 
 module.exports.updateItem = async function(req, res) {
     const productId = req.params.id;
-    console.log(productId);
     await Product.findById(productId,(err,product) => {
         if(err){
             console.log('error', err);
@@ -331,11 +330,12 @@ module.exports.updateItem = async function(req, res) {
 
 module.exports.updatingItem = async function(req, res) {
     let product_id=req.params.id;
-    await Product.findByIdAndUpdate(product_id,req.body,(err,updatedProduct)=>{
+    await Product.findByIdAndUpdate(product_id, req.body, {new: true}, (err,updatedProduct)=>{
         if(err) {
             console.log('error', err);
             return res.redirect('back');
         }
+        console.log("Product Updated Successfully", updatedProduct);
         return res.redirect('/vendor/profile');
     });
 }
