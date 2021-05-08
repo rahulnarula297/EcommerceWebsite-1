@@ -29,7 +29,7 @@
                 <li>
                     <div class="list-items">
                         <i class="fas fa-user"></i>
-                        <a class="my-profile" href=""> My Profile </a>
+                        <a class="my-profile" href="/vendor/profile"> My Profile </a>
                     </div>
                 </li>
                 <li>
@@ -47,75 +47,73 @@
             </ul>
 
         </div>
+        <% if(called == 'profile') {%>
+            <% if(profileExist == false) { %>
+                <div class="info-container">
 
-        <% if(profileExist == false) { %>
-            <div class="info-container">
+                    <h1 class="info-heading">Create Profile</h1>
 
-                <h1 class="info-heading">Create Profile</h1>
+                    <div class="info-form-container">
 
-                <div class="info-form-container">
-
-                    <form action="/vendor/createProfile" method="post" enctype="multipart/form-data">
-                        <div class="inputbox">
-                            <label>FIRST NAME</label>
-                            <input type="text" name="firstname" id="first-name">
-                        </div>
-                        <div class="inputbox">
-                            <label>LAST NAME</label>
-                            <input type="text" name="lastname" id="last-name">
-                        </div>
-                        <div class="inputbox">
-                            <label>Profile Image</label>
-                            <input type="file" name="profileimage" id="profile-image">
-                        </div>
-                        <div class="inputbox">
-                            <label>Contact Number</label>
-                            <input type="text" name="contact" id="contactNo-id">
-                        </div>
-                        <div class="inputbox">
-                            <label>BAKERY NAME</label>
-                            <input type="text" name="bakeryname" id="bakery-name">
-                        </div>
-                        <div class="inputbox">
-                            <label>Instagram Link</label>
-                            <input type="url" name="instaid" id="insta-id">
-                        </div>
-                        <div class="inputbox">
-                            <label>Facebook Link</label>
-                            <input type="url" name="fbid" id="fb-id">
-                        </div>
-                        <div class="inputbox">
-                            <label>EXPERIENCE</label>
-                            <input type="text" name="experience" id="experience">
-                        </div>
-                        <div class="textarea-container">
-                            <div class="textarea">
-                                <label>AREA COVERED</label>
-                                <textarea rows="4" name="areacovered" placeholder="Max-limit 30 Words" id="area-covered"></textarea>
+                        <form action="/vendor/createProfile" method="post" enctype="multipart/form-data">
+                            <div class="inputbox">
+                                <label>FIRST NAME</label>
+                                <input type="text" name="firstname" id="first-name">
                             </div>
-                            <div class="textarea">
-                                <label>DESCRIPTION</label>
-                                <textarea rows="4" name="description" placeholder="Max-limit 30 Words" id="description"></textarea>
+                            <div class="inputbox">
+                                <label>LAST NAME</label>
+                                <input type="text" name="lastname" id="last-name">
                             </div>
-                            <div class="textarea">
-                                <label>SPECIALITY</label>
-                                <textarea rows="4" name="speciality" placeholder="Max-limit 30 Words" id="speciality"></textarea>
+                            <div class="inputbox">
+                                <label>Profile Image</label>
+                                <input type="file" name="profileimage" id="profile-image">
                             </div>
-                        </div>
+                            <div class="inputbox">
+                                <label>Contact Number</label>
+                                <input type="text" name="contact" id="contactNo-id">
+                            </div>
+                            <div class="inputbox">
+                                <label>BAKERY NAME</label>
+                                <input type="text" name="bakeryname" id="bakery-name">
+                            </div>
+                            <div class="inputbox">
+                                <label>Instagram Link</label>
+                                <input type="url" name="instaid" id="insta-id">
+                            </div>
+                            <div class="inputbox">
+                                <label>Facebook Link</label>
+                                <input type="url" name="fbid" id="fb-id">
+                            </div>
+                            <div class="inputbox">
+                                <label>EXPERIENCE</label>
+                                <input type="text" name="experience" id="experience">
+                            </div>
+                            <div class="textarea-container">
+                                <div class="textarea">
+                                    <label>AREA COVERED</label>
+                                    <textarea rows="4" name="areacovered" placeholder="Max-limit 30 Words" id="area-covered"></textarea>
+                                </div>
+                                <div class="textarea">
+                                    <label>DESCRIPTION</label>
+                                    <textarea rows="4" name="description" placeholder="Max-limit 30 Words" id="description"></textarea>
+                                </div>
+                                <div class="textarea">
+                                    <label>SPECIALITY</label>
+                                    <textarea rows="4" name="speciality" placeholder="Max-limit 30 Words" id="speciality"></textarea>
+                                </div>
+                            </div>
 
-                        <div class="save-btn">
-                            <button type="submit">SAVE DETAILS</button>
-                        </div>
-                    </form>
+                            <div class="save-btn">
+                                <button type="submit">SAVE DETAILS</button>
+                            </div>
+                        </form>
+
+                    </div>
 
                 </div>
 
-            </div>
-
-           
-        
+            
             <% } else { %>
-
                 <div class="profile-details" style="display: <%= display %>;">
                     
                     <div class="profile-heading">
@@ -203,10 +201,13 @@
                         </div>
                     </div>
                 </div> 
+
+                
             <% } %>
+        <% } %>
         
         
-        <div class="products-container">    
+        <div class="products-container" style="display: <%= product_display %>;">    
             <div class="products-container-nav">
                 <h1><i class="fab fa-product-hunt"></i> My Products </h1>
                 <div class="product-options">

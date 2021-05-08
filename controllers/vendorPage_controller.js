@@ -25,7 +25,9 @@ module.exports.vendorPage = async function(req, res) {
                         products: allProducts,
                         productsExist: true,
                         profileExist: true,
-                        display: 'initial'
+                        display: 'initial',
+                        called: 'profile',
+                        product_display: 'none'
                     });     
                 });     
             }else {
@@ -177,6 +179,29 @@ module.exports.updateProfile = async function(req, res) {
     }
 }
 
+module.exports.vendorProducts = async function(req, res) {
+    await Profile.findOne({user_id: req.user.id},  async function(err, profile) {
+        if(err) {
+            console.log('error', err);
+            return res.redirect('back');
+        }
+        await Product.find({profile:profile._id},(err,allProducts)=>{
+            if(err) {
+                console.log('error', err);
+                return res.redirect('back');
+            }
+            res.render('vendor', {
+                profile: profile,
+                profileExist: true,
+                called: 'product',
+                product_display: 'initial',
+                products: allProducts,
+                productsExist: true,
+            })
+        });
+    });
+}
+
 module.exports.addtem = async function(req, res) {
     res.render('vendor_addItem',{
         update: false
@@ -259,7 +284,7 @@ module.exports.addingItem = async function(req,res){
                     })
                     console.log('product added successfully');
                     console.log(product);
-                    return res.redirect ('/vendor/profile');
+                    return res.redirect ('/vendor/product');
                 });
             })
         });
@@ -336,7 +361,7 @@ module.exports.updatingItem = async function(req, res) {
             return res.redirect('back');
         }
         console.log("Product Updated Successfully", updatedProduct);
-        return res.redirect('/vendor/profile');
+        return res.redirect('/vendor/product');
     });
 }
 

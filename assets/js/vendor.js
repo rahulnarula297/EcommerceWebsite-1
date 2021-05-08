@@ -270,6 +270,7 @@ $(window).on('scroll',function(){
             e.preventDefault();
             $('.products-container').css('display','initial');
             $('.profile-details').css('display','none');    
+            history.replaceState(null, ' ', 'product')
         })
     }
 
@@ -289,6 +290,8 @@ $(window).on('scroll',function(){
             $('.remove-product').hide();
         })
     }
+
+    
 
     $('.delete-product-button').on('click', function(e) {
         e.preventDefault();
