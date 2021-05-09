@@ -363,7 +363,7 @@ a{
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 8px 32px;
+    padding: 8px 25px;
     border-radius: 50px;
     box-shadow: inset -2px -2px 8px white,
     inset -2px -2px 12px rgba(255, 255, 255, 0.1),
@@ -372,7 +372,7 @@ a{
     transition: 0.4s;
 }
 
-.btn-round{
+/* .btn-round{
     display: inline-block;
     font-weight: 700;
     font-size: 14px;
@@ -388,6 +388,10 @@ a{
     inset 2px 2px 4px rgba(255, 255, 255, 0),
     inset 2px 2px 8px rgba(0, 0, 0, 0.15);
 
+} */
+
+.btn-small i{
+    padding-right: 2.5px;
 }
 
 .btn-small:hover{
@@ -398,13 +402,13 @@ a{
     color: #7289ab;
     text-decoration: none;
 }
-.btn-round:hover{
+/* .btn-round:hover{
     box-shadow: inset -2px -2px 8px white,
     inset -2px -2px 12px rgba(255, 255, 255, 0.1),
     inset 2px 2px 4px rgba(255, 255, 255, 0),
     inset 2px 2px 8px rgba(0, 0, 0, 0.15);
     color: #7289ab;
-}
+} */
 .button-center{
     justify-content: center;
     text-align:center;

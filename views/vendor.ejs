@@ -237,9 +237,7 @@
                                 </div>
                                 <div class="product-btns">
                                     <a href="#" class="btn-small mr-2"><%=product.price%></a>
-                                    <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart"></i></i></a>
-                                    <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-        
+                                    <span class="btn-small"><i class="fa fa-info-circlefa fa-heart" style="color: red;transform: scale(1.25);padding-right: 2.5px;"></i><%=product.likes%></span>
                                 </div> 
                                 <div class="edit-product">
                                     <a href="/vendor/updateItem/<%=product._id%>" class="edit-prod">Edit <i class="fas fa-pencil-alt"></i></a>

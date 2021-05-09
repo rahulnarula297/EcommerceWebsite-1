@@ -64,6 +64,9 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    likes:{
+        type: Number
+    },
     profile:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Profile'

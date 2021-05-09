@@ -237,6 +237,7 @@ module.exports.addingItem = async function(req,res){
                     delivery_time: req.body.delivery,
                     eggless: req.body.eggless,
                     serving_size: req.body.serving_size,
+                    likes: 0,
                     profile: profile._id,
                     bakeryname: profile.bakeryname
                 },(err,product)=>{

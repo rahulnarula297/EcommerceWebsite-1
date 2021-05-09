@@ -1,3 +1,4 @@
+const { json } = require('express');
 const Category=require('../models/category');
 const Product=require('../models/product')
 
@@ -37,3 +38,18 @@ module.exports.productPage = async function(req, res) {
         }
     }    
 }
+
+module.exports.likeController = async function(req, res) {
+    let productId = req.params.productId;
+    console.log(productId);
+    if(req.xhr) {
+        var count = req.body.info;
+        Product.findByIdAndUpdate(productId,{likes: count},{new: true}, (err, updatedProduct) => {
+            if(err) {
+                console.log('error', err);
+                return;
+            }
+            console.log(updatedProduct);
+        })
+    }
+} 

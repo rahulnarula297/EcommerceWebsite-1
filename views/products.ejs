@@ -23,10 +23,8 @@
                             <p><%= product.description %></p>
                         </div>
                         <div class="product-btns">
-                            <a href="#" class="btn-small mr-2"><%= product.price %>/-</a>
-                            <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                            <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-
+                            <a href="#" class="btn-small mr-2 price"><%= product.price %>/-</a>
+                            <a href="/products/like/<%= product._id %>" id="id-<%= product._id %>" class="btn-small"><i id="<%= product._id %>" class="fa fa-info-circlefa fa-heart"></i><span class="like-count"><%= product.likes %></span></a>
                         </div>
                     </div>
                 </div>
@@ -40,3 +38,4 @@
 
     </div>
 </section> 
+<script src="/js/product.js"></script>
