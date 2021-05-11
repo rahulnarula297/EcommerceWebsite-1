@@ -9,29 +9,31 @@ $(window).on('scroll', function() {
 $(window).on('load', function() {
     for(var i=0; i<window.localStorage.length; i++) {
         var prodId = window.localStorage.key(i);
-        $(`#${prodId}`).addClass('like');
+        $(`#${prodId} i`).addClass('like');
     }
 })
 
-$(".btn-small i").click(function(e){
+$(".btn-small a").click(function(e){
     e.preventDefault(); 
-    var count = $('.like-count').text();
+    // var count = $('.like-count').text();
     let productId = $(this).attr('id');
+    var count = $(`#${productId} .like-count`).text();
+    // console.log(productId);
     let value = localStorage.getItem(productId);
     if(value==null){
         localStorage.setItem(productId, 'true');
-        $('.btn-small i').addClass('like');
+        $(`#${productId} i`).addClass('like');
         count++;
-        $('.like-count').text(count);
+        $(`#${productId} .like-count`).text(count);
     }else{
         localStorage.removeItem(productId);
-        $('.btn-small i').removeClass('like');
+        $(`#${productId} i`).removeClass('like');
         count--;
-        $('.like-count').text(count);
+        $(`#${productId} .like-count`).text(count);
     }
     $.ajax({
         type: 'POST',
-        url: $(`#id-${productId}`).attr('href'),
+        url: $(`#${productId}`).attr('href'),
         data: {info: count}
     })
 });

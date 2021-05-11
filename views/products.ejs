@@ -23,8 +23,8 @@
                             <p><%= product.description %></p>
                         </div>
                         <div class="product-btns">
-                            <a href="#" class="btn-small mr-2 price"><%= product.price %>/-</a>
-                            <a href="/products/like/<%= product._id %>" id="id-<%= product._id %>" class="btn-small"><i id="<%= product._id %>" class="fa fa-info-circlefa fa-heart"></i><span class="like-count"><%= product.likes %></span></a>
+                            <span class="btn-small mr-2 price"><%= product.price %>/-</span>
+                            <span class='btn-small'><a href="/products/like/<%= product._id %>" id="<%= product._id %>"><i class="fa fa-info-circlefa fa-heart"></i><span class="like-count"><%= product.likes %></span></a></span>
                         </div>
                     </div>
                 </div>

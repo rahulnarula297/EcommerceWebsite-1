@@ -46,6 +46,49 @@
     font-weight: 600;
     color: red;
 }
+.desc-links {
+    width: auto;
+}
+
+.desc-links .insta {
+    color: orangered;
+}
+
+.desc-links .whatsapp {
+    color: teal;
+}
+
+.desc-links .facebook {
+    color: blue;
+}
+
+.desc-links .mail {
+    color: black;
+}
+
+.desc-links ul{
+    list-style: none;
+}
+
+.desc-links ul li {
+    display: inline-block;
+    margin: 0px 8px 8px 0px;
+    font-size: 1.2rem;
+}
+
+.desc-links ul li a {
+    color: darkgrey;
+    padding: 0 10px;
+}
+
+.desc-links ul li a i {
+    opacity: 0.5;
+}
+
+.desc-links ul li a i:hover {
+    transition: 0.2s ease;
+    opacity: 1;
+}
 
 .d-main .info-div{
     width: 95%;
