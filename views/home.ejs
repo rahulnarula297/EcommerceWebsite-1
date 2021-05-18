@@ -1,10 +1,11 @@
-
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<link rel="stylesheet" href="/css/lightslider.css">
 <link rel="stylesheet" href="/css/members.css">
 <link rel="stylesheet" href="/css/services_&_placeOrder.css">
 <link rel="stylesheet" href="/css/carousel.css">
 <link rel="stylesheet" href="/css/bestseller.css">
+<link rel="stylesheet" href="/css/product-cards.css">
+<link rel="stylesheet" href="/css/reviews.css">
+
 
 <section id="carousel">
     <div id="carouselExampleIndicators" class="carousel slide slideshow" data-ride="carousel" data-interval="3500">
@@ -46,188 +47,26 @@
         <h1>bestselling items</h1>
     </div>
 
-    <div class="best-seller-container" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
-        <ul id="autoWidth" class="cs-hidden">
-            <li class="item-a">
-                <div class="single-product">
-                    <div class="product-thumb">
-                        <img src="../images/cake.jpg" alt="">
-                    </div>
-                    <div class="product-title">
-                        <h3> 
-                            <a href="#">CHOCOLATE TRUFFLE</a>
-                        </h3>
-                    </div>
-                    <div class="description">
-                        <p>chocolate cake covered with chocolate that melts in your mouth.</p>
-                        <p>available in 1kg-3kg vairiants as per your requiremnet </p>
-                    </div>
-                    <div class="product-btns">
-                        <a href="#" class="btn-small mr-2">1000/-</a>
-                        <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                        <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-                    </div>
+    <div class="best-seller-container responsive" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <!-- FOR EACH LOOP ..ARRAY FROM HOME CONTROLLER  -->
+            <% for(product of bestProducts) { %>
+                <div>
+                    <%- include('_product-card.ejs'); %>
                 </div>
-            </li>
+            <% } %>
+    </div>
+</section>
 
-            <li class="item-a">
-                <div class="single-product">
-                    <div class="product-thumb">
-                        <img src="../images/cake.jpg" alt="">
-
-                    </div>
-                    <div class="product-title">
-                        <h3> <a href="#">CHOCOLATE TRUFFLE</a>
-                        </h3>
-                    </div>
-                    <div class="description">
-                        <p>chocolate cake covered with chocolate that melts in your mouth.</p>
-                        <p>available in 1kg-3kg vairiants as per your requiremnet </p>
-                    </div>
-                    <div class="product-btns">
-                        <a href="#" class="btn-small mr-2">1000/-</a>
-                        <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                        <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-
-                    </div>
-                </div> 
-            </li>
-
-            <li class="item-a">
-                <div class="single-product">
-                    <div class="product-thumb">
-                        <img src="../images/cake.jpg" alt="">
-
-                    </div>
-                    <div class="product-title">
-                        <h3> <a href="#">CHOCOLATE TRUFFLE</a>
-                        </h3>
-                    </div>
-                    <div class="description">
-                        <p>chocolate cake covered with chocolate that melts in your mouth.</p>
-                        <p>available in 1kg-3kg vairiants as per your requiremnet </p>
-                    </div>
-                    <div class="product-btns">
-                        <a href="#" class="btn-small mr-2">1000/-</a>
-                        <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                        <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-
-                    </div>
-                </div> 
-            </li>
-
-            <li class="item-a">
-                <div class="single-product">
-                    <div class="product-thumb">
-                        <img src="../images/cake.jpg" alt="">
-                    </div>
-                    <div class="product-title">
-                        <h3> <a href="#">CHOCOLATE TRUFFLE</a>
-                        </h3>
-                    </div>
-                    <div class="description">
-                        <p>chocolate cake covered with chocolate that melts in your mouth.</p>
-                        <p>available in 1kg-3kg vairiants as per your requiremnet </p>
-                    </div>
-                    <div class="product-btns">
-                        <a href="#" class="btn-small mr-2">1000/-</a>
-                        <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                        <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-                    </div>
-                </div> 
-            </li>
-
-            <li class="item-a">
-                <div class="single-product">
-                    <div class="product-thumb">
-                        <img src="../images/cake.jpg" alt="">
-
-                    </div>
-                    <div class="product-title">
-                        <h3> <a href="#">CHOCOLATE TRUFFLE</a>
-                        </h3>
-                    </div>
-                    <div class="description">
-                        <p>chocolate cake covered with chocolate that melts in your mouth.</p>
-                        <p>available in 1kg-3kg vairiants as per your requiremnet </p>
-                    </div>
-                    <div class="product-btns">
-                        <a href="#" class="btn-small mr-2">1000/-</a>
-                        <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                        <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-                    </div>
-                </div> 
-            </li>
-
-            <li class="item-a">
-                <div class="single-product">
-                    <div class="product-thumb">
-                        <img src="../images/cake.jpg" alt="">
-
-                    </div>
-                    <div class="product-title">
-                        <h3> <a href="#">CHOCOLATE TRUFFLE</a>
-                        </h3>
-                    </div>
-                    <div class="description">
-                        <p>chocolate cake covered with chocolate that melts in your mouth.</p>
-                        <p>available in 1kg-3kg vairiants as per your requiremnet </p>
-                    </div>
-                    <div class="product-btns">
-                        <a href="#" class="btn-small mr-2">1000/-</a>
-                        <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                        <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-
-                    </div>
-                </div> 
-            </li>
-
-            <li class="item-a">
-                <div class="single-product">
-                    <div class="product-thumb">
-                        <img src="../images/cake.jpg" alt="">
-
-                    </div>
-                    <div class="product-title">
-                        <h3> <a href="#">CHOCOLATE TRUFFLE</a>
-                        </h3>
-                    </div>
-                    <div class="description">
-                        <p>chocolate cake covered with chocolate that melts in your mouth.</p>
-                        <p>available in 1kg-3kg vairiants as per your requiremnet </p>
-                    </div>
-                    <div class="product-btns">
-                        <a href="#" class="btn-small mr-2">1000/-</a>
-                        <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                        <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-
-                    </div>
-                </div> 
-            </li>
-            
-            <li class="item-a">
-                <div class="single-product">
-                    <div class="product-thumb">
-                        <img src="../images/cake.jpg" alt="">
-
-                    </div>
-                    <div class="product-title">
-                        <h3> <a href="#">CHOCOLATE TRUFFLE</a>
-                        </h3>
-                    </div>
-                    <div class="description">
-                        <p>chocolate cake covered with chocolate that melts in your mouth.</p>
-                        <p>available in 1kg-3kg vairiants as per your requiremnet </p>
-                    </div>
-                    <div class="product-btns">
-                        <a href="#" class="btn-small mr-2">1000/-</a>
-                        <a href="#" class="btn-round mr-2"><i class="fa fa-info-circlefa fa-shopping-cart" ></i></i></a>
-                        <a href="#" class="btn-round "><i class="fa fa-info-circlefa fa-heart" ></i></i></a>
-
-                    </div>
-                </div> 
-            </li>
-        </ul>
+<section id="top-reviews">
+    <div class="top-reviews">
+        <div class="head bestselling-heading" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <h1>Top Reviews</h1>
+        </div>
+        <div class="best-seller-container review-main responsive" id="review-box" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <% for(review of reviews) { %>
+                <%- include('_review.ejs'); %>
+            <% } %>
+        </div>      
     </div>
 </section>
 
@@ -388,10 +227,9 @@
             </div>
         </div>
     </div>
-</section>
+</section>  
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
     AOS.init();
 </script>
-<script src="/js/lightslider.js"></script>
-<script src="/js/script.js"></script>
+<script src="/js/like.js"></script>

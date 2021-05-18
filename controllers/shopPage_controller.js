@@ -1,5 +1,7 @@
 const Profile=require('../models/profile');
 const Category=require('../models/category');
+const Review=require('../models/review');
+const moment=require('moment');
 
 module.exports.shopPage = async function(req, res) {
     try {
@@ -43,4 +45,20 @@ module.exports.categoryPage = async function(req, res) {
             return res.redirect('back');
         }
     }
+}
+
+module.exports.reviewPage = async function(req,res) {
+    const profileId = req.params.profileId;
+    const reviewId = req.params.reviewId;
+    Review.find({profile:profileId},(err,foundreviews)=>{
+        if(err){
+            console.log('error',err);
+            return res.redirect('back');
+        }
+        return res.render('reviews',{
+            reviews: foundreviews,
+            reviewId: reviewId,
+            moment: moment
+        });
+    })
 }

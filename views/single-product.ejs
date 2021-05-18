@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="/css/single-product.css">
+<link rel="stylesheet" href="/css/product-cards.css">
+<link rel="stylesheet" href="/css/reviews.css">
 
 <section id="description">
     <div class="d-main">
-
+        <% if(productExist == true) { %>
         <div class="d-image">
             <div class="img">
                 <img src="<%=product.productimage%>" alt="<%= product.name %>" id="productimg">
@@ -77,6 +79,112 @@
         
         </div>
 
+        <section id="reviews">
+            <div class="review-head">
+                <h1>reviews</h1>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary rev-btn" data-toggle="modal" data-target="#exampleModalCenter">
+                    write a review <i class="fas fa-arrow-right"></i>
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Rate This Product</h5>
+                                <button type="button" class="close btn btn-secondary" style="color: black;" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="/single-product/userReview/<%=product.id%>" method="post" class="review-form">
+                                <div class="modal-body review-info">
+                                    <div class="prod-name">
+                                        <h4><%= product.name %></h4>
+                                    </div>
+                                    <div class="prod-image">
+                                        <img src="<%= product.productimage %>" alt="">
+                                    </div>
+                                    <div class="name">
+                                        <label for="name">NAME</label>
+                                        <input type="text" name="name">
+                                    </div>
+                                    <div class="review-text">
+                                        <label for="review-content">REVIEW</label>
+                                        <textarea name="review_content" id="" cols="40" rows="4"></textarea>
+                                    </div> 
+                                    <div class="rating"> 
+                                        <input type="radio" name="rating" value="5" id="5">
+                                        <label for="5">☆</label>
+                                        <input type="radio" name="rating" value="4" id="4">
+                                        <label for="4">☆</label> 
+                                        <input type="radio" name="rating" value="3" id="3">
+                                        <label for="3">☆</label> 
+                                        <input type="radio" name="rating" value="2" id="2">
+                                        <label for="2">☆</label> 
+                                        <input type="radio" name="rating" value="1" id="1">
+                                        <label for="1">☆</label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer review-btns">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit"  class="btn btn-primary">Post Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="review-main responsive">
+                <% if(reviews == false) { %>
+                    <div>
+                        <h3> No Reviews Yet</h3>
+                    </div>
+                <% } %>
+                <% for(review of reviews) { %>
+                    <%- include('_review.ejs'); %>
+                <% } %>
+            </div>
+        </section>
+        <section id="similar-prod">
+            <div class="similar-products">
+                <div class="similar-heading">
+                    <h2>similar products</h2>
+                </div>
+                <div class="similar-content responsive">
+                    
+                    <% for(product of similar_products) { %>
+                        <div>
+                            <%- include('_product-card.ejs'); %>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+        <% }else{ %>
+            <section id="no-product">
+                <div>
+                    <h1>Product Not Available. Check our Other Products</h1>
+                </div>
+            </section>
+            <section id="similar-prod">
+                <div class="similar-products">
+                    <div class="similar-heading">
+                        <h2>similar products</h2>
+                    </div>
+                    <div class="similar-content responsive">
+                        
+                        <% for(product of similar_products) { %>
+                            <div>
+                                <%- include('_product-card.ejs'); %>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </section>
+        <% } %>
     </div>
 </section>
 <script src="/js/single-product.js"></script>
+<script src="/js/like.js"></script>

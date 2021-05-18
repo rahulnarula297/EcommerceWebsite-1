@@ -169,9 +169,123 @@
 }
   
 .close:hover, .close:focus {
-    color: #bbb;
-    text-decoration: none;
     cursor: pointer;
+    color: #f1f1f1;
+}
+
+
+
+/**************************************************************** review*/
+#reviews{
+    padding: 40px 0;
+}
+.review-main{
+    width: 95%;
+    margin: auto;
+}
+.review-head{
+    width: 90%;
+    margin: auto;
+    padding-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.review-head h1{
+    text-transform: uppercase;
+    color: black;
+}
+.review-head .rev-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 175px;
+    height: 55px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    background: rosybrown;
+}
+
+#reviews .review-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.review-form .review-info .prod-name {
+    text-align: center;
+}
+
+.review-form .review-info .name, .review-form .review-info .review-text {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px 0px;
+}
+
+.review-info .name label, .review-info .review-text label {
+    flex: 25%;
+    align-self: flex-end;
+}
+
+.review-form input, .review-form textarea {
+    border: none;
+    border-bottom: 2px solid lightgrey;
+    flex: 70%;
+}
+
+.review-form input:focus, textarea:focus {
+    outline: none;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating>input {
+    display: none;
+    align-self: flex-end;
+}
+
+.rating>label {
+    width: 1.2em;
+    font-size: 30px;
+    color: #FFD600;
+    cursor: pointer;
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+.modal-backdrop.show {
+    opacity: 0;
+}
+
+.modal-backdrop {
+    z-index: 0;
 }
   
 @media only screen and (max-width: 700px){
@@ -181,7 +295,7 @@
 }
 
 @media (max-width:950px){
-    .d-image  .image-name{
+    .d-image .image-name{
         text-align: center;
         margin-top: 5px;
     }

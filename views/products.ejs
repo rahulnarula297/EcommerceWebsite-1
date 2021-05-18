@@ -9,26 +9,12 @@
                 </div>
             </div>
         </div>
-        <div class="row  flex">
-            <% products.forEach((product)=>{ %>
+        <div class="row flex review-main">
+            <% for(product of products) { %>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                    <div class="single-product">
-                        <div class="product-thumb">
-                            <img src="<%= product.productimage %>" alt="<%= product.name %>">
-                        </div>
-                        <div class="product-title">
-                            <h3> <a href="/single-product/<%= product._id %>"><%= product.name %></a> </h3>
-                        </div>
-                        <div class="description">
-                            <p><%= product.description %></p>
-                        </div>
-                        <div class="product-btns">
-                            <span class="btn-small mr-2 price"><%= product.price %>/-</span>
-                            <span class='btn-small'><a href="/products/like/<%= product._id %>" id="<%= product._id %>"><i class="fa fa-info-circlefa fa-heart"></i><span class="like-count"><%= product.likes %></span></a></span>
-                        </div>
-                    </div>
+                    <%- include('_product-card.ejs'); %>
                 </div>
-            <% }) %>
+            <% } %>
         </div>
         <div class="row button-center">
             <div class="col-xl-6 centered">
@@ -39,3 +25,4 @@
     </div>
 </section> 
 <script src="/js/product.js"></script>
+<script src="/js/like.js"></script>
