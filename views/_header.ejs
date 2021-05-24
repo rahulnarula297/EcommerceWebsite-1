@@ -5,7 +5,19 @@
         <input type="checkbox" id="check">
             <ul class="top">
             <label  class="button cancel" for="check"> <i class="fa fa-times"></i></label>
-
+            <li>
+                <div id="myOverlay" class="overlay">
+                    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                    <div class="overlay-content">
+                        <form id="search-form" action="/search" method="POST">
+                            <input type="text" id="searchText" placeholder="Search.." name="search">
+                            <button type="submit" onkeypress="search()"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                  
+                <button class="openBtn" onclick="openSearch()"><i class="fa fa-search"></i></button>
+            </li>
             <li><a href="#">Facebook</a></li>
             <li><a href="#">Insta</a></li>
             <li><a href="#">Google</a></li>
@@ -23,3 +35,12 @@
     </div>
 </nav>
 <script src="/js/header.js"></script>
+<script>
+    function openSearch() {
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function closeSearch() {
+        document.getElementById("myOverlay").style.display = "none";
+    }
+</script>

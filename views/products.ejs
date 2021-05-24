@@ -18,7 +18,7 @@
         </div>
         <div class="row button-center">
             <div class="col-xl-6 centered">
-                <a href="#" class="bttn-def"><span>load more</span></a>
+                <a href="#" id="loadMore" class="bttn-def"><span>load more</span></a>
             </div>
         </div>
 
@@ -26,3 +26,20 @@
 </section> 
 <script src="/js/product.js"></script>
 <script src="/js/like.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.load-product').hide();
+        $(".load-product").slice(0, 12).show();
+        if ($(".load-product:hidden").length != 0) {
+            $("#loadMore").show();
+        }   
+        console.log($('.load-product:hidden').length);
+        $("#loadMore").on('click', function (e) {
+            e.preventDefault();
+            $(".load-product:hidden").slice(0, 16).slideDown();
+            if ($(".load-product:hidden").length == 0) {
+                $("#loadMore").fadeOut('slow');
+            }
+        });
+    });
+</script>

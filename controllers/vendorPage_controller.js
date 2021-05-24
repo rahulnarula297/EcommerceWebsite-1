@@ -34,7 +34,9 @@ module.exports.vendorPage = async function(req, res) {
                 res.render('vendor', {
                     profileExist: false,
                     productsExist: false,
-                    display: 'none'
+                    display: 'none',
+                    called: 'profile',
+                    product_display: 'none'
                 });
             }
         })

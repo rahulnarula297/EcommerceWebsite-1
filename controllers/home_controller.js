@@ -50,3 +50,42 @@ module.exports.home = async function(req, res) {
         }
     }
 }
+
+module.exports.autocomplete = async function(req, res) {
+    var regex = new RegExp(req.query["term"],'i');
+    var products = Product.find({$or:[{name: regex},{description: regex}]},{'name':1,'description':2}).sort({"updatedAt": -1}).sort({"createdAt": -1});
+    await products.exec(function(err, foundproducts) {
+        if(err) {
+            console.log('error', err);
+            return res.redirect('back');
+        }
+        var result = []
+        if(foundproducts && foundproducts.length && foundproducts.length > 0) {
+            foundproducts.forEach(product => {
+                let obj = {
+                    _id: product._id,
+                    label: product.name
+                };
+                result.push(obj);
+            });
+        }
+        res.json(result);
+    })
+}
+
+module.exports.search = async function(req,res) {
+    var regex = new RegExp(req.body.search,'i');
+    var products = Product.find({$or:[{name: regex},{description: regex}]}).sort({"updatedAt": -1}).sort({"createdAt": -1});
+    console.log(products);
+    await products.exec(function(err, foundproducts) {
+        if(err) {
+            console.log('error', err);
+            return res.redirect('back');
+        }
+        console.log(foundproducts);
+        return res.render('products',{
+            products: foundproducts
+        })
+    })
+
+}

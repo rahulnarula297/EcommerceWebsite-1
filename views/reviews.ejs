@@ -52,7 +52,7 @@
             </div>
             <div class="row button-center">
                 <div class="col-xl-6 centered">
-                    <a href="#" class="bttn-def"><span>load more</span></a>
+                    <a href="#" id="loadMore" class="bttn-def"><span>load more</span></a>
                 </div>
             </div>
 
@@ -69,5 +69,18 @@
         $(window).on('load', function() {
             history.replaceState(null, ' ', 'all')
         })
+        $('.review-card').hide();
+        $(".review-card").slice(0, 6).show();
+        if ($(".review-card:hidden").length != 0) {
+            $("#loadMore").show();
+        }   
+        console.log($('.review-card:hidden').length);
+        $("#loadMore").on('click', function (e) {
+            e.preventDefault();
+            $(".review-card:hidden").slice(0, 9).slideDown();
+            if ($(".review-card:hidden").length == 0) {
+                $("#loadMore").fadeOut('slow');
+            }
+        });
     })
 </script>

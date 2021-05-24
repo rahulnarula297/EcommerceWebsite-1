@@ -223,20 +223,20 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" id="product-<%= product._id %>">
                             <div class="single-product">
                                 <div class="remove-product">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter-<%= product._id %>">
                                         <i class="fas fa-times"></i>
                                     </button>
-                                    <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal" id="exampleModalCenter-<%= product._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h2 class="modal-title" id="exampleModalLongTitle" style="text-transform: uppercase;">confirm deletion</h2>
+                                                    <h2 class="modal-title" id="exampleModalLongTitle" style="text-transform: uppercase;">Confirm Deletion</h2>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body" style="text-align: center;">
-                                                    <h5>are you sure you want to delete this product</h5>
+                                                    <h5>Are you sure you want to Delete this Product</h5>
                                                     <p><%=product.name%></p>
                                                     <img src="<%=product.productimage%>" alt="">
                                                 </div>

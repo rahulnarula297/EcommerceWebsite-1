@@ -220,6 +220,11 @@
     text-align: center;
 }
 
+.review-form .review-info .prod-image {
+    display: flex;
+    justify-content: center;
+}
+
 .review-form .review-info .name, .review-form .review-info .review-text {
     display: flex;
     flex-direction: row;

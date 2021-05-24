@@ -16,6 +16,8 @@
 .single-product .product-thumb{
     margin-bottom: 10px;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 img{
     display: inline-block;
