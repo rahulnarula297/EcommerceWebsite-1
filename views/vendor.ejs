@@ -207,7 +207,6 @@
             <% } %>
         <% } %>
         
-        
         <div class="products-container" style="display: <%= product_display %>;">    
             <div class="products-container-nav">
                 <h1><i class="fab fa-product-hunt"></i> My Products </h1>
@@ -217,11 +216,11 @@
                     <a href="" class="remove-cancel">Cancel</a>
                 </div>
             </div>
-            <div class="row flex">
-                <% if(productsExist == true) { %>
+            <% if(productsExist == true) { %>
+                <div class="row flex"> 
                     <% products.forEach(function(product){ %> 
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" id="product-<%= product._id %>">
-                            <div class="single-product">
+                            <div class="single-product load-product">
                                 <div class="remove-product">
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter-<%= product._id %>">
                                         <i class="fas fa-times"></i>
@@ -268,9 +267,31 @@
                             </div>
                         </div> 
                     <% }) %>
-                <% } %>
-            </div>
+                </div>
+                <div class="row button-center">
+                    <div class="col-xl-6 centered">
+                        <a href="#" id="loadMore" class="bttn-def"><span>load more</span></a>
+                    </div>
+                </div> 
+            <% } %>
         </div>
     </div>
 </section>
 <script src="/js/vendor.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.load-product').hide();
+        $(".load-product").slice(0, 6).show();
+        if ($(".load-product:hidden").length != 0) {
+            $("#loadMore").show();
+        }   
+        console.log($('.load-product:hidden').length);
+        $("#loadMore").on('click', function (e) {
+            e.preventDefault();
+            $(".load-product:hidden").slice(0, 12).slideDown();
+            if ($(".load-product:hidden").length == 0) {
+                $("#loadMore").fadeOut('slow');
+            }
+        });
+    });
+</script>

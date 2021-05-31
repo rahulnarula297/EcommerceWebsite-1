@@ -270,7 +270,7 @@ $(window).on('scroll',function(){
             e.preventDefault();
             $('.products-container').css('display','initial');
             $('.profile-details').css('display','none');    
-            history.replaceState(null, ' ', 'product')
+            history.replaceState(null, ' ', 'product');
         })
     }
 
@@ -306,11 +306,6 @@ $(window).on('scroll',function(){
         })        
     })
 
-    createProfile();
-    editProfile();
-    myProducts();
-    deleteProducts();
-
     $('.save').on('click', function(e) {
         e.preventDefault();
         var self = $(this);
@@ -323,4 +318,9 @@ $(window).on('scroll',function(){
             data: {info: JSON.stringify(data)},
         })
     })
+
+    createProfile();
+    editProfile();
+    myProducts();
+    deleteProducts();
 }
