@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="/css/user_view_vendor.css">
+<section id="user_view_vendor">
+
+    <div class="upper-background"></div>
+
+    <div class="profile-container">
+
+        <div class="image-container">
+            <img src="<%= profile.profileimage %>" alt="Profile Photo">
+        </div>
+
+        <div class="description-container">
+
+            <h3 class="name"><%=profile.firstname %> <%=profile.lastname%></h3>
+            <h6 class="prof"><%=profile.bakeryname%></h6>
+
+            <div class="desc-links">
+                <ul>
+                    <li><a href="<%= profile.instaid %> " target="_blank" class="insta"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://wa.me/<%= profile.contact %>"target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="<%= profile.fbid %>" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="mailto:<%= profile.email %>" target="_blank" class="mail"><i class="fas fa-envelope"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="about-para desc-p">
+                <p><%= profile.description %></p>
+            </div>
+
+            <div class="area-para desc-p">
+                <p><span>AREA</span> <%= profile.areacovered %></p>
+            </div>
+
+            <div class="experience-para desc-p">
+                <p><span>YEARS OF EXPERIENCE</span> <%= profile.experience %> </p>
+            </div>
+
+            <div class="bakery-name-rating desc-p">
+                <p><span>BAKERY NAME</span> <%= profile.bakeryname %> </p>
+            </div>
+
+            <div class="bakery-speciality-para desc-p">
+                <p><span>BAKERY SPECIALITY</span> <%= profile.speciality %> </p>
+            </div>
+
+            <div class="shop-now-btn">
+                <button type="submit"><a href="/shop/categories/<%=profile._id%>">SHOP NOW<i class="fas fa-arrow-right"></i></a></button>
+                <button type="submit"><a href="/shop/reviews/<%=profile._id%>/all">REVIEWS<i class="fas fa-arrow-right"></i></a></button>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+<script src="/js/user_view_vendor.js"></script>

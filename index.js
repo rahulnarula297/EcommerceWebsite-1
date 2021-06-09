@@ -4,6 +4,8 @@ const app = express();
 const db = require('./config/mongoose');
 const port = 8000;
 
+require('dotenv').config();
+
 const expressLayouts = require('express-ejs-layouts');
 
 const session = require('express-session');

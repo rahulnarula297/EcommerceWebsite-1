@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const Profile = require('../models/profile');
 const Category = require('../models/category');
 const Product = require('../models/product');
+const profileMailer = require('../mailers/vendor.js');
+const signupMailer = require('../mailers/signup.js');
 const url = require('url');
 const { response } = require('express');
 const { profile } = require('console');
@@ -63,12 +65,16 @@ module.exports.create = async function(req, res) {
 
         if(!user) {
             try {
+                
+                signupMailer.signup(req.body);
+
                 bcrypt.genSalt(10,function(err,salt){  
                     bcrypt.hash(req.body.password,salt,function(err,hash) {
                         if(err) {
                             console.log('error in hashing', err);
                             return;
                         }
+
                         User.create({
                             email: req.body.email,
                             name: req.body.name,
@@ -140,12 +146,15 @@ module.exports.createProfile = async function(req, res) {
                     experience: req.body.experience,
                     user_id: req.user._id,
                     email: req.user.email
-                }, function(err, profile) {
+                },function(err, profile) {
                     if(err) {
                         console.log('error', err);
                         return;
                     }
                     console.log('Profile setup successful');
+
+                    profileMailer.newProfile(profile);
+                    
                     return res.status(200).json({
                         data: {
                             info: profile

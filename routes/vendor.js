@@ -9,7 +9,7 @@ const vendorController = require('../controllers/vendorPage_controller');
 router.get('/profile', passport.checkAuthenticated, vendorController.vendorPage);
 router.get('/product', passport.checkAuthenticated, vendorController.vendorProducts);
 
-router.post('/create', vendorController.create);
+router.post('/sign-up', vendorController.create);
 router.post('/create-session', passport.authenticate(
     'local',
     {
