@@ -23,6 +23,13 @@ $(window).on('scroll',function(){
                     $('.profile-board').append(image_description);
                     $('.main-container').append(Profile);
                     editProfile();
+                    new Noty({
+                        theme: 'relax',
+                        text: data.message,
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 2500
+                    }).show();
                     // $('.display-firstname').text(`${data.data.info.firstname}`);
                     // $('.display-lastname').text(`${data.data.info.lastname}`);
                     // $('.display-contactname').text(`${data.data.info.contact}`);
@@ -291,8 +298,6 @@ $(window).on('scroll',function(){
         })
     }
 
-    
-
     $('.delete-product-button').on('click', function(e) {
         e.preventDefault();
         let self = $(this);
@@ -302,6 +307,13 @@ $(window).on('scroll',function(){
             success: function(data) {
                 console.log(data);
                 $(`#product-${data.data.productId}`).remove();
+                new Noty({
+                    theme: 'bootstrap-v4',
+                    text: `Product Deleted Successfully`,
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 2500
+                }).show();
             }
         })        
     })
@@ -309,13 +321,22 @@ $(window).on('scroll',function(){
     $('.save').on('click', function(e) {
         e.preventDefault();
         var self = $(this);
-        var prop=self[0].classList[1];
+        var prop = self[0].classList[1];
         var value = $(this).siblings('.display').text();
         var data = {"value": value,"prop": prop};
         $.ajax({
             type: 'POST',
             url: self.attr('href'),
             data: {info: JSON.stringify(data)},
+            success: function(data) {
+                new Noty({
+                    theme: 'bootstrap-v4',
+                    text: `${prop} Updated`,
+                    type: 'success',
+                    layout: 'topRight',
+                    timeout: 2500
+                }).show();
+            }
         })
     })
 

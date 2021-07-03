@@ -17,12 +17,11 @@
             <div class="desc-links">
                 <ul>
                     <li><a href="<%= profile.instaid %> " target="_blank" class="insta"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://wa.me/<%= profile.contact %>"target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=+91<%= profile.contact %>&text=%20https://bakeitfresh.com/member-profile/6071adde1122c92790a9c53a"target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
                     <li><a href="<%= profile.fbid %>" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
                     <li><a href="mailto:<%= profile.email %>" target="_blank" class="mail"><i class="fas fa-envelope"></i></a></li>
                 </ul>
             </div>
-
             <div class="about-para desc-p">
                 <p><%= profile.description %></p>
             </div>

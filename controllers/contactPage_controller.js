@@ -5,7 +5,15 @@ module.exports.contactPage = async function(req, res) {
 }
 
 module.exports.contactUs = async function(req, res) {
-    let contactDetails = req.body;
-    contactMailer.contactUs(contactDetails);
-    return res.redirect('back');
+    try {
+        let contactDetails = req.body;
+        contactMailer.contactUs(contactDetails);
+        req.flash('success','Thanks for contacting us, we will soon get back to you!!!');
+        return res.redirect('back');
+    } catch (error) {
+        if(error) {
+            console.log('error:', error);
+            return res.redirect('back');
+        }
+    }
 }

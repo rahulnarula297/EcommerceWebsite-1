@@ -1,3 +1,4 @@
+const Profile=require('../models/profile');
 const Product=require('../models/product');
 const Review=require('../models/review');
 const moment = require('moment');
@@ -25,29 +26,36 @@ module.exports.single_productPage = async function(req, res) {
                 })
             }
             var profileId = foundproduct.profile;
-            await Product.find({profile:profileId})
-            .sort({likes: 'desc'})
-            .limit(15)
-            .where('_id').ne(productId)
-            .exec(async (err,products)=>{
-                if(err){
-                    console.log('error',err);
+            await Profile.findById({_id : profileId},async (err,foundprofile)=>{
+                if(err) {
+                    console.log('error', err);
                     return res.redirect('back');
                 }
-                await Review.find({product:productId},(err,foundreviews)=>{
-                    if(err) {
+                await Product.find({profile:profileId})
+                .sort({likes: 'desc'})
+                .limit(15)
+                .where('_id').ne(productId)
+                .exec(async (err,products)=>{
+                    if(err){
                         console.log('error',err);
-                        res.redirect('back');
+                        return res.redirect('back');
                     }
-                    if(foundproduct && products && foundreviews){
-                        return res.render('single-product',{
-                            product: foundproduct,
-                            similar_products: products,
-                            reviews : foundreviews,
-                            productExist: true,
-                            moment: moment
-                        });
-                    }
+                    await Review.find({product:productId},(err,foundreviews)=>{
+                        if(err) {
+                            console.log('error',err);
+                            res.redirect('back');
+                        }
+                        if(foundproduct && products && foundreviews){
+                            return res.render('single-product',{
+                                product: foundproduct,
+                                similar_products: products,
+                                reviews : foundreviews,
+                                productExist: true,
+                                profile : foundprofile,
+                                moment: moment
+                            });
+                        }
+                    });
                 });
             });
         });
@@ -88,9 +96,11 @@ module.exports.addReview= async function(req,res){
         },(err,review) => {
             if(err) {
                 console.log('error',err);
+                req.flash('error','Review Not Added !! Please Try Again')
                 return res.redirect('back');
             }
-            console.log(review);    
+            console.log(review);  
+            req.flash('success',`Review Added By ${review.name}`)  
             return res.redirect('back');
         });  
     })

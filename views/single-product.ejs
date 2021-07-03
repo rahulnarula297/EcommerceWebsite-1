@@ -17,10 +17,14 @@
             <div>
                 <div class="desc-links">
                     <ul>
-                        <li><a target="_blank" class="insta"><i class="fab fa-instagram"></i></a></li>
-                        <li><a target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
-                        <li><a target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a target="_blank" class="mail"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="<%= profile.instaid %> " target="_blank" class="insta"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=+91<%= profile.contact %>&text=%20 Hi, I want to know about this product of yours%0D%0A<%= product.name%>%0D%0A<%= product.price
+                            %>%0D%0A<%=product.weight%>%0D%0A<%= product.productimage%> https://bakeitfresh.com/single-product/<%= product._id %>"target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                        <li><a href="<%= profile.fbid %>" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="mailto:<%= profile.email %>?bcc=rahulnarula6047@gmail.com
+                            &subject=Product Enquiry
+                            &body=Hi, I want to know about this product of yours%0D%0A <%= product.name%>%0D%0A<%= product.price
+                            %>%0D%0A<%=product.weight%>%0D%0A<%= product.productimage%> https://bakeitfresh.com/single-product/<%= product._id %>" target="_blank" class="mail"><i class="fas fa-envelope"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -107,11 +111,11 @@
                                     </div>
                                     <div class="name">
                                         <label for="name">NAME</label>
-                                        <input type="text" name="name">
+                                        <input type="text" name="name" required>
                                     </div>
                                     <div class="review-text">
                                         <label for="review-content">REVIEW</label>
-                                        <textarea name="review_content" id="" cols="40" rows="4"></textarea>
+                                        <textarea name="review_content" id="" cols="40" rows="4" required></textarea>
                                     </div> 
                                     <div class="rating"> 
                                         <input type="radio" name="rating" value="5" id="5">
@@ -122,7 +126,7 @@
                                         <label for="3">☆</label> 
                                         <input type="radio" name="rating" value="2" id="2">
                                         <label for="2">☆</label> 
-                                        <input type="radio" name="rating" value="1" id="1">
+                                        <input type="radio" name="rating" value="1" id="1" required>
                                         <label for="1">☆</label>
                                     </div>
                                 </div>

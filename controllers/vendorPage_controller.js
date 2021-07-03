@@ -54,6 +54,7 @@ module.exports.create = async function(req, res) {
     if (req.body.password != req.body.confirm_password) {
         console.log('passwords do not match --- create User');
         console.log(req.body);
+        req.flash('error','Passwords do not match');
         return res.redirect('back');
     }
 
@@ -84,6 +85,7 @@ module.exports.create = async function(req, res) {
                                 console.log('error', err);
                                 return;
                             }
+                            req.flash('success', 'You have signed up, login to continue!');
                             console.log('Sign Up successful, login to continue');
                             return res.redirect('/vendor/admin-login');
                         })
@@ -95,12 +97,15 @@ module.exports.create = async function(req, res) {
             }
         }else {
             console.log('This email already exists!!!');
+            req.flash('error', 'This email already exists!!!');
+            
             return res.redirect('back');
         }
     })
 }
 
 module.exports.createSession = async function(req, res) {
+    req.flash('success','Successfully Logged In !!!');
     return res.redirect('/vendor/profile');
 }
 
@@ -122,6 +127,7 @@ module.exports.signIn = function(req, res) {
 module.exports.signOut = function(req, res) {
     console.log('Successfully logged out');
     req.logout();
+    req.flash('success','Successfully Logged Out')
     return res.redirect('/vendor/admin-login');
 }
 
@@ -148,9 +154,11 @@ module.exports.createProfile = async function(req, res) {
                     email: req.user.email
                 },function(err, profile) {
                     if(err) {
-                        console.log('error', err);
-                        return;
+                        console.log('error --------> ', err);
+                        req.flash('error', 'Profile setup unsuccessful');
+                        return res.redirect('back');
                     }
+                    
                     console.log('Profile setup successful');
 
                     profileMailer.newProfile(profile);
@@ -178,13 +186,16 @@ module.exports.updateProfile = async function(req, res) {
         var prop = info.prop;
         var obj = {};
         obj[prop] = value;
-        await Profile.findByIdAndUpdate(profileId, {$set:obj}, async function(err, profile) {
+        await Profile.findByIdAndUpdate(profileId, {$set:obj},{new: true}, async function(err, profile) {
             if (err) {
                 console.log('error', err);
                 return res.redirect('back');
             }
             else {
                 console.log("Updated Profile : ", profile);
+                return res.status(200).json({
+                    message: "Product Updated"
+                })
             }
         });
     }
@@ -254,6 +265,7 @@ module.exports.addingItem = async function(req,res){
                 },(err,product)=>{
                     if(err){
                         console.log('error:', err);
+                        req.flash('error','Please Enter All The Values')
                         return res.redirect('back');
                     }
                     Category.findOne({profile_id: profile._id},(err, found_category)=>{
@@ -296,6 +308,7 @@ module.exports.addingItem = async function(req,res){
                     })
                     console.log('product added successfully');
                     console.log(product);
+                    req.flash('success','Product Added Successfully');
                     return res.redirect ('/vendor/product');
                 });
             })
@@ -336,6 +349,7 @@ module.exports.removeProduct = async function(req, res) {
     await Product.deleteOne({_id:product_id},(err)=>{
         if(err){
             console.log(err);
+            req.flash('error','Product Deletion Unsuccessful');
             return res.redirect('back');
         }
         console.log("Product Successfully Deleted",product_id);
@@ -370,9 +384,11 @@ module.exports.updatingItem = async function(req, res) {
     await Product.findByIdAndUpdate(product_id, req.body, {new: true}, (err,updatedProduct)=>{
         if(err) {
             console.log('error', err);
+            req.flash('error','Product Updation Unsuccessful');
             return res.redirect('back');
         }
         console.log("Product Updated Successfully", updatedProduct);
+        req.flash('success','Product Updated Successfully');
         return res.redirect('/vendor/product');
     });
 }

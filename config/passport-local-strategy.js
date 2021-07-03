@@ -17,6 +17,7 @@ passport.use(new localStrategy({
                 bcrypt.compare(password,user.password,function(err,result) {
                     if(result != true) {
                         console.log('Invalid Username / Password');
+                        req.flash('error','Invalid Username / Password');
                         return done(null, false);
                     }
                     console.log('Successfully logged in');
@@ -24,6 +25,7 @@ passport.use(new localStrategy({
                 })
             }else {
                 console.log('User does not exist');
+                req.flash('error','no account with these credentials');
                 return done(null, false);
             }
         })
