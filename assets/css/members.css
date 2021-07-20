@@ -1,6 +1,6 @@
-#members-list{
+/* #members-list{
     margin-top: 10%;
-}
+} */
 
 .member-head h1{
     margin: auto;
@@ -17,7 +17,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     border-radius: 10px;
     background: #ece9e9;
     box-shadow: inset -2px -2px 8px white,

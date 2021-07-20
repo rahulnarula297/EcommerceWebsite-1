@@ -1,5 +1,11 @@
+body{
+    background: #0f1111;
+}
+h1,h2,h3,h4,h5{
+    color: wheat;
+}
 .slideshow{
-    width: 95%;
+    width: 100%;
     height: auto;
     margin: auto;
     padding:25px 0;
@@ -127,4 +133,54 @@
     }
 }
 
+.banner{
+    width: 20%;
+    height: 550px;
+    margin-top: 25px;
+    position: absolute;
+    left: 10%;
+    /* bottom: 25px; */
+    background: rgb(17, 17, 17);
+    background: linear-gradient(to left, #072e25, #062d33 55%, #1d1c1d);
+    z-index: 1;
+}
+.h2{
+    width: 100%;
+    color: wheat;
+    font-size: 50px;
+    font-weight: 700;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    z-index: 1;
+}
+.p{
+    width: 100%;
+    color: seagreen;
+    font-size: 20px;
+    /* padding-top: 50px; */
+    padding-left: 10px;
+    /* overflow: auto; Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    /* white-space: nowrap;Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    /* animation: 
+      typing 3.5s,
+      blink-caret .75s step-end infinite; */
 
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+.top-reviews{
+    background: repeating-linear-gradient(
+        45deg,
+        #222,
+        #222 10px,
+        #333 10px,
+        #333 20px
+      );
+}

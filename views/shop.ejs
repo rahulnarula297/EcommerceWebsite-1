@@ -2,8 +2,8 @@
 <section id="shop">
     
     <div class="shop-main">
-        <div class="shop-heading">
-            <h2>choose your respective bakery</h2> 
+        <div class="shop-heading" id="text">
+            <!-- <h2>choose your respective bakery</h2>  -->
             <img src="../images/bakery.png" alt="">
         </div>
         <div class="bakers">
@@ -18,7 +18,7 @@
                             <div class="img">
                                 <img src="<%= profile.profileimage %>" alt="">
                             </div>
-                            <p><%= profile.firstname %></p>
+                            <p><%= profile.firstname %> <%=profile.lastname%></p>
                         </div>
                         <div class="info-box">
                             <div class="info-box2">
@@ -33,8 +33,12 @@
                                 </div>
                                 <div class="shop-btn">
                                     <div class="button">
-                                        <button><a href="/shop/categories/<%= profile._id %>">SHOP<i class="fas fa-arrow-right"></i></a></button>   
-                                        <button><a href="/shop/reviews/<%= profile._id %>/all">REVIEWS<i class="fas fa-arrow-right"></i></a></button>   
+                                        <div class="sub-btn"> 
+                                        <button><a href="/shop/categories/<%= profile._id %>">SHOP<i class="fas fa-arrow-right"></i></a></button>
+                                        </div>
+                                        <div class="sub-btn">   
+                                        <button><a href="/shop/reviews/<%= profile._id %>/all">REVIEWS<i class="fas fa-arrow-right"></i></a></button>
+                                        </div>   
                                     </div>
                                 </div>
                             </div>
@@ -45,5 +49,24 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+var i=0,text;
+text='choose your respective bakery';
+
+function typing(){
+    if(i<text.length){
+        document.getElementById("text").innerHTML +=text.charAt(i);
+        i++;
+        // documnet.getElementById("text").classList.add(".heading ");
+
+        setTimeout(typing,100);
+    }
+        documnet.getElementById("text").classList.add("shop-heading ");
+
+}
+typing();
+
+</script>
 
 <script src="/js/shop.js"></script>

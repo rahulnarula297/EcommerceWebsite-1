@@ -1,6 +1,7 @@
 /* This css is for services section */
 #services {
-    background-color: #ecf0f3;
+    background-color: #0c0c0c;
+    
 }
 
 #services .services-h1 {
@@ -63,8 +64,17 @@
 }
 
 /* This css is for place_order section */
+#place-order{
+    background: repeating-linear-gradient(
+        45deg,
+        rgb(36, 37, 37),
+        rgb(27, 27, 27) 10px,
+        rgb(20, 20, 20) 10px,
+        #333 20px
+      );
+}
 #place-order .table{
-    padding: 50px 0 100px 0;
+    padding: 50px 0 50px 0;
 }
 
 #place-order .service-box .icon {
@@ -74,6 +84,7 @@
 #place-order .place-order-h1{
     text-align: center;
     margin-top: 100px;
+    padding-top: 30px;
     font-family: cursive;
     font-style: italic;
     font-weight: 900;

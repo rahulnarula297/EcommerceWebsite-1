@@ -8,6 +8,18 @@
 
 
 <section id="carousel">
+    <div class="banner" > <!--update-->
+        <div class="h2" id="head">
+        <h2></h2>
+        </div>
+        <div class="p" id="text">
+        <p></p>
+        </div>
+        <div class="shop-button">
+            <a href="/shop">SHOP NOW</a>
+            <i class="fas fa-arrow-circle-right"></i>
+        </div>
+    </div>
     <div id="carouselExampleIndicators" class="carousel slide slideshow" data-ride="carousel" data-interval="3500">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -27,7 +39,7 @@
         </div>
     </div>
 
-    <div class="carousel-text">
+    <!-- <div class="carousel-text">
         <div class="heading">
             <h2>explore wide range of yummilicious cakes and cookies</h2>
         </div>
@@ -38,8 +50,7 @@
             <a href="/shop">SHOP NOW</a>
             <i class="fas fa-arrow-circle-right"></i>
         </div>
-        </div>
-    </div>
+    </div> -->
 </section>
 
 <section id="bestselling">
@@ -231,5 +242,25 @@
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
     AOS.init();
+    var i=0;
+    var textChar='Freshly baked from our kitchen to yours';
+    var text='designer luxurious cakes at your doorstep just a click away';
+    var speed =  50
+    let typeWriter = function (text,id) {
+        function typing(){
+            if(i < text.length){
+                document.getElementById(id).innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typing, speed);
+            }
+        }
+        typing()
+    }
+    $(window).on('load', function() {
+        typeWriter(textChar,"head");
+        typeWriter(text,"text");
+    })
+    // typing(text1);
 </script>
+
 <script src="/js/like.js"></script>

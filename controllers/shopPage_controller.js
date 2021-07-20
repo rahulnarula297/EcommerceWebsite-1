@@ -26,18 +26,25 @@ module.exports.shopPage = async function(req, res) {
 module.exports.categoryPage = async function(req, res) {
     const profile_id=req.params.profileId;
     try {
-        await Category.findOne({profile_id:profile_id},(err,foundcategory)=>{
+        await Profile.findById({_id : profile_id},async (err,foundprofile)=>{
             if(err){
                 console.log(err);
                 return res.redirect('back');
             }
-            if(foundcategory) {
-                return res.render('categories',{
-                    category: foundcategory.category
-                });
-            }else {
-                return res.redirect('back');
-            }
+            await Category.findOne({profile_id:profile_id},(err,foundcategory)=>{
+                if(err){
+                    console.log(err);
+                    return res.redirect('back');
+                }
+                if(foundcategory) {
+                    return res.render('categories',{
+                        category: foundcategory.category,
+                        profile : foundprofile
+                    });
+                }else {
+                    return res.redirect('back');
+                }
+            });
         });
     } catch (error) {
         if(error) {

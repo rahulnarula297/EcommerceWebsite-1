@@ -1,7 +1,7 @@
 footer{
     bottom: 0;
     width: 100%;
-    background: #111;
+    background: rgb(228, 225, 225);
     overflow: hidden;
     margin-top: 75px;
     }
@@ -18,12 +18,12 @@ footer{
         font-size: 1.125rem;
        font-weight: 600;
        text-transform: uppercase;
-       color: bisque;
+       color: rgb(24, 24, 23);
     }
     
     .box .content{
         margin: 20px 0 0 0;
-        color: aqua;
+        color: rgb(16, 17, 17);
     }
     .box .content p{
         text-align: justify;

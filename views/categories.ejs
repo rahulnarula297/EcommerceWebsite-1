@@ -1,6 +1,36 @@
 <link rel="stylesheet" href="/css/categories.css">
 
 <section id="category">
+    <!-- //new section  -->
+    <div class="category-main">
+        <div id="starshine">
+            <div class="template shine"></div>
+        </div>
+        <div class="bakery-head" >
+         <div class="heading ">
+            <ul>
+            <li><a href="<%= profile.instaid %> " target="_blank" class="insta"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://wa.me/<%= profile.contact %>"target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+            </ul>
+            <h1 ><%=profile.bakeryname%> </h1>
+            <ul>
+            <li><a href="<%= profile.fbid %>" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="mailto:<%= profile.email %>" target="_blank" class="mail"><i class="fas fa-envelope"></i></a></li>
+            </ul>
+        </div>
+        <div class="info">
+            <div class="area">
+                <p><%=profile.areacovered %>.</p>
+            </div>
+            <div class="timings">
+                <p>mon-fri</p>
+                <p>9-10pm</p>
+            </div>
+            <div class="contact">
+                <p><%= profile.contact%></p>
+            </div>
+        </div>
+    </div>
 
     <div class="category">
 
@@ -14,15 +44,14 @@
 
                 <% category.forEach((category)=>{ %>
                     <div class="category-type">
-                        <div class="head">
+                        <!-- <div class="head">
                             <h2><%= category.category_name %></h2>
                         </div>
                         <div class="image">
                             <img src="/images/cake2.jpg" alt="<%= category.category_name %>">
-                        </div>
-                        <div class="arrow">
-                            <h4><a href="/products/<%= category._id %>">shop <i class="fas fa-arrow-circle-right"></i></a></h4>
-                        </div>
+                        </div> -->
+                        <a href="/products/<%= category._id %>"><button class="btn"> <%= category.category_name %><i class="fas fa-arrow-right" style="padding-top:10px ;"></i></button></a>
+                    
                     </div> 
                     <!-- <form action="" method="GET"></form>
                     <button type="button" class="btn" onclick="window.locat'"><span style="float: left;"><%=category.category_name %></span><i class="fas fa-arrow-right"></i></button> -->
@@ -33,6 +62,34 @@
             
         </div>
     </div>
-
+ </div>
 </section>
+<script>
+    $(function() {
+        var body = $('#starshine'),
+        template = $('.template.shine'),
+        stars =  500,
+        sparkle = 20;
+        var size = 'small';
+        var createStar = function() {
+            template.clone().removeAttr('id').css({
+                top: (Math.random() * 100) + '%',
+                left: (Math.random() * 100) + '%',
+                webkitAnimationDelay: (Math.random() * sparkle) + 's',
+                mozAnimationDelay: (Math.random() * sparkle) + 's'
+            }).addClass(size).appendTo(body);
+        };
+ 
+        for(var i = 0; i < stars; i++) {
+            if(i % 2 === 0) {
+                size = 'small';
+            } else if(i % 3 === 0) {
+                size = 'medium';
+            } else {
+                size = 'large';
+            }  
+            createStar();
+        }
+    });
+</script>
 <script src="/js/categories.js"></script>

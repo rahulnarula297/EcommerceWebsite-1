@@ -1,5 +1,12 @@
 .review-container{
-    width: 90%;
+    width: 100%;
+    margin: auto;
+    background: linear-gradient(to left, #093a2f, #07383f 55%, #666465);
+    
+}
+/* update */
+.review-container .flex{
+    width: 95%;
     margin: auto;
 }
 .card{
