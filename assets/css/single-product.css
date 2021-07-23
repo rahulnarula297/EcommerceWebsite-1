@@ -4,8 +4,6 @@
     /* margin-top: 20px; */
     padding-top: 20px;
     background: linear-gradient(to left, #093a2f, #07383f 55%, #666465);
-
-    
 }
 
 .d-image{
@@ -219,7 +217,9 @@
 .review-head .rev-btn{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    text-transform: capitalize;
+    font-size: 16px;
     align-items: center;
     width: 175px;
     height: 55px;
@@ -229,41 +229,44 @@
     background: rosybrown;
 }
 
-#reviews .review-form {
+.review-form, .placeorder-form {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
 }
 
-.review-form .review-info .prod-name {
+.review-form .review-info .prod-name, .placeorder-form .placeorder-info .prod-name {
     text-align: center;
+    justify-content: center;
 }
 
-.review-form .review-info .prod-image {
+.review-form .review-info .prod-image, .placeorder-form .placeorder-info .prod-image {
     display: flex;
     justify-content: center;
 }
 
-.review-form .review-info .name, .review-form .review-info .review-text {
+.review-form .review-info .name, .review-form .review-info .review-text, 
+.placeorder-form .placeorder-info div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 20px 0px;
 }
 
-.review-info .name label, .review-info .review-text label {
+.review-info .name label, .review-info .review-text label, 
+.placeorder-info label {
     flex: 25%;
     align-self: flex-end;
 }
 
-.review-form input, .review-form textarea {
+.review-form input, .review-form textarea, .placeorder-form input, .placeorder-form textarea {
     border: none;
     border-bottom: 2px solid lightgrey;
     flex: 70%;
 }
 
-.review-form input:focus, textarea:focus {
+.review-form input:focus, .placeorder-form input:focus, textarea:focus {
     outline: none;
 }
 
@@ -312,19 +315,100 @@
 .modal-backdrop {
     z-index: 0;
 }
-  
-@media only screen and (max-width: 700px){
-    .modal-content {
-      width: 100%;
-    }
+
+#placeOrder-tags {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-@media (max-width:950px){
-    .d-image .image-name{
-        text-align: center;
-        margin-top: 5px;
-    }
+#placeOrder-tags div {
+    padding: 20px;
 }
+
+.otp-container {
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.otp-container .userInput { 
+	display: flex;
+	justify-content: center;
+}
+
+.otp-container input {
+	margin: 10px;
+	height: 30px;
+	width: 30px;
+	border: none;
+	border-radius: 5px;
+	text-align: center;
+	font-family: arimo;
+	font-size: 1.2rem;
+	background: #eef2f3;
+}
+
+.otp-container h1 {
+	font-family: arimo;
+	color: honeydew;
+}
+
+.otp-container .otp-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.otp-container .otp-btns div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+	height: 40px;
+    background: #616161;
+    border: 1px solid black;
+	border-radius: 5px;
+    padding: 0;
+}
+
+.otp-container .otp-btns .otp-style {
+    margin: 0px 10px;
+}
+
+.otp-container .otp-btns .otp-style a {
+    text-decoration: none;
+    color: white;
+	font-family: arimo;
+	font-size: 1rem;
+	letter-spacing: 2px;
+	cursor: pointer;
+    padding: 25px;
+}
+
+#placeOrder-tags .placeOrder {
+    height: 40px;
+    width: 200px;
+    background-color: #616161;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid black;
+	border-radius: 5px;
+    padding: 0;
+}
+
+#placeOrder-tags .placeOrder a, #placeOrder-tags .placeOrder i {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
 .sub-btn{
     margin-top: 25px;
 }
@@ -337,7 +421,7 @@
     flex-wrap: wrap;
 
 }
- .sub-btn{
+.sub-btn{
     width: 45%;
     margin-left: 15px;
 }
@@ -350,11 +434,9 @@
     margin-right: 10px;
     border-radius: 5px;
     border-radius: 50px;
-background: #dfd9d9;
-box-shadow:  2px 2px 6px #0e0d0d,
-             -2px -2px 6px #1d1c1c;
-
-    
+    background: #dfd9d9;
+    box-shadow:  2px 2px 6px #0e0d0d,
+                -2px -2px 6px #1d1c1c; 
 }
 
 .shop-btn button a{
@@ -373,6 +455,7 @@ box-shadow:  2px 2px 6px #0e0d0d,
     flex-flow: wrap;
     justify-content: space-between;
 }
+
 .order-button .sub-button{
     width: 50%;
     display: flex;
@@ -380,4 +463,17 @@ box-shadow:  2px 2px 6px #0e0d0d,
     flex-wrap: wrap;
     align-items: flex-end;
     margin-right: 80px;
+}
+
+@media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+}
+
+@media (max-width:950px){
+    .d-image .image-name{
+        text-align: center;
+        margin-top: 5px;
+    }
 }

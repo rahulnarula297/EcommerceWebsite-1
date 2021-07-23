@@ -1,12 +1,12 @@
-<link rel="stylesheet" href="/css/single-product.css">
 <link rel="stylesheet" href="/css/categories.css">
+<link rel="stylesheet" href="/css/single-product.css">
 <link rel="stylesheet" href="/css/product-cards.css">
 <link rel="stylesheet" href="/css/reviews.css">
 
 <section id="description">
     <div class="bakery-head" >
         <div class="heading ">
-           <h1 >rahul narula</h1>
+           <h1><%= profile.bakeryname %></h1>
        </div>
        <div class="info">
            <div class="area">
@@ -99,11 +99,12 @@
                 </ul>
             </div>
             <div class="sub-button">
-            <div class="sub-btn"> 
-                <button type="button"  data-toggle="modal" data-target="#exampleModalCenter1">
-                    place order <i class="fas fa-arrow-right"></i>
-                </button>
-                <div class="modal" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="sub-btn"> 
+                    <button type="button" data-toggle="modal" data-target="#placeOrderModal">
+                        place order <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="modal" id="placeOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -112,8 +113,8 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="/single-product/userReview/<%=product.id%>" method="post" class="review-form">
-                                <div class="modal-body review-info">
+                            <form action="/single-product/verifyOrder/<%= product._id %>" method="post" class="placeorder-form">
+                                <div class="modal-body placeorder-info">
                                     <div class="prod-name">
                                         <h4><%= product.name %></h4>
                                     </div>
@@ -124,45 +125,64 @@
                                         <label for="name">NAME</label>
                                         <input type="text" name="name">
                                     </div>
-                                    <div class="name">
-                                        <label for="name">PHONE</label>
-                                        <input type="text" name="name">
+                                    <div class="phone">
+                                        <label for="phone">PHONE</label>
+                                        <input type="text" name="phone">
                                     </div>
-                                    <div class="name">
-                                        <label for="name">ADDRESS</label>
-                                        <input type="text" name="name">
+                                    <div class="email">
+                                        <label for="email">EMAIL-ID</label>
+                                        <input type="text" name="email">
                                     </div>
-                                    <div class="name">
-                                        <label for="name">EMAIL-ID</label>
-                                        <input type="text" name="name">
+                                    <div class="address">
+                                        <label for="address">ADDRESS</label>
+                                        <input type="text" name="address">
                                     </div>
-                                    <div class="review-text">
-                                        <label for="review-content">INSTRUCTIONS TO SELLER</label>
-                                        <textarea name="review_content" id="" cols="40" rows="4"></textarea>
+                                    <div class="delivery-date">
+                                        <label for="delivery-date">DELIVERY DATE</label>
+                                        <input type="date" name="date">
+                                    </div>
+
+                                    <div class="instructions">
+                                        <label for="instructions">INSTRUCTIONS TO SELLER</label>
+                                        <textarea name="additional_instructions" cols="40" rows="4"></textarea>
                                     </div> 
                                 </div>
-                                <div class="modal-footer review-btns">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit"  class="btn btn-primary">Post Review</button>
+                                <div class="modal-footer placeorder-btns">
+                                    <button type="submit" class="btn btn-primary">Verify Email</button>
                                 </div>
                             </form>
+                            <div id="placeOrder-tags">
+                                <div class="otp-container">
+                                    <h3>ENTER OTP</h3>
+                                    <div class="userInput">
+                                        <input type="text" id='first' maxlength="1" onkeyup="clickEvent(this,'sec')">
+                                        <input type="text" id="sec" maxlength="1" onkeyup="clickEvent(this,'third')">
+                                        <input type="text" id="third" maxlength="1" onkeyup="clickEvent(this,'fourth')">
+                                        <input type="text" id="fourth" maxlength="1" onkeyup="clickEvent(this,'fifth')">
+                                        <input type="text" id="fifth" maxlength="1">
+                                    </div>
+                                    <div class="otp-btns">
+                                        <div class="confirm-btn otp-style">
+                                            <a href="">CONFIRM</a>
+                                        </div>
+                                        <div class="resend-btn otp-style">
+                                            <a href="/single-product/resendOTP">RESEND</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="placeOrder">
+                                    <a href="/single-product/placeOrder">Place Order</a>
+                                    <i class="fas fa-money-check"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="sub-btn"> 
+                    <button><a href="">customize<i class="fas fa-arrow-right"></i></a></button>
+                </div>
             </div>
-            <div class="sub-btn"> 
-                <button><a href="">customize<i class="fas fa-arrow-right"></i></a></button>
-            </div>
-          </div>
         </div>
-
-        <!-- <div id="imgModal" class="modal">
-            <span class="close">&times;</span>
-            <img class="modal-content" id="img01">
-            <div id="caption"></div>
-        </div> -->
-
-        
 
         <section id="reviews">
             <div class="review-head">

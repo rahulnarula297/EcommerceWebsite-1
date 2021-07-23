@@ -1,6 +1,6 @@
 const { json } = require('express');
-const Category=require('../models/category');
-const Product=require('../models/product')
+const Category = require('../models/category');
+const Product = require('../models/product');
 
 
 module.exports.productPage = async function(req, res) {
