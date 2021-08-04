@@ -5,7 +5,7 @@ $(window).on('scroll',function(){
         $('#vendor-profile').css("padding-top","0px");
     }
 })
-{
+{    
     let createProfile = function() {
 
         let infoForm = $('.info-form-container form');
@@ -276,8 +276,9 @@ $(window).on('scroll',function(){
         $('.my-products').on('click', function(e) {
             e.preventDefault();
             $('.products-container').css('display','initial');
-            $('.profile-details').css('display','none');    
-            history.replaceState(null, ' ', 'product');
+            $('.profile-details').css('display','none'); 
+            $('.orders-container').css('display','none');   
+            history.replaceState(null, ' ', '/vendor/product');
         })
     }
 
@@ -298,50 +299,98 @@ $(window).on('scroll',function(){
         })
     }
 
-    $('.delete-product-button').on('click', function(e) {
-        e.preventDefault();
-        let self = $(this);
-        $.ajax({
-            type: 'get',
-            url: self.attr('href'),
-            success: function(data) {
-                console.log(data);
-                $(`#product-${data.data.productId}`).remove();
-                new Noty({
-                    theme: 'bootstrap-v4',
-                    text: `Product Deleted Successfully`,
-                    type: 'success',
-                    layout: 'topRight',
-                    timeout: 2500
-                }).show();
-            }
-        })        
-    })
-
-    $('.save').on('click', function(e) {
-        e.preventDefault();
-        var self = $(this);
-        var prop = self[0].classList[1];
-        var value = $(this).siblings('.display').text();
-        var data = {"value": value,"prop": prop};
-        $.ajax({
-            type: 'POST',
-            url: self.attr('href'),
-            data: {info: JSON.stringify(data)},
-            success: function(data) {
-                new Noty({
-                    theme: 'bootstrap-v4',
-                    text: `${prop} Updated`,
-                    type: 'success',
-                    layout: 'topRight',
-                    timeout: 2500
-                }).show();
-            }
+    let deleteProductLink = function() {
+        $('.delete-product-button').on('click', function(e) {
+            e.preventDefault();
+            let self = $(this);
+            $.ajax({
+                type: 'get',
+                url: self.attr('href'),
+                success: function(data) {
+                    console.log(data);
+                    $(`#product-${data.data.productId}`).remove();
+                    new Noty({
+                        theme: 'bootstrap-v4',
+                        text: `Product Deleted Successfully`,
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 2500
+                    }).show();
+                }
+            })        
         })
-    })
+    }
+
+    let saveDetails = function() {
+        $('.save').on('click', function(e) {
+            e.preventDefault();
+            var self = $(this);
+            var prop = self[0].classList[1];
+            var value = $(this).siblings('.display').text();
+            var data = {"value": value,"prop": prop};
+            $.ajax({
+                type: 'POST',
+                url: self.attr('href'),
+                data: {info: JSON.stringify(data)},
+                success: function(data) {
+                    new Noty({
+                        theme: 'bootstrap-v4',
+                        text: `${prop} Updated`,
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 2500
+                    }).show();
+                }
+            })
+        })
+    }
+
+    let orderAction = function() {
+        $(".action-confirm").on('click',function(e) {
+            e.preventDefault();
+            let self = $(this);
+            $.ajax({
+                type: 'POST',
+                url: self.attr('href'),
+                success: function(data) {
+                    $(`#order-action-${data.orderedProductId} small`).css('color','green');
+                    $(`#order-action-${data.orderedProductId} small b`).text('CONFIRMED');
+                    new Noty({
+                        theme: 'bootstrap-v4',
+                        text: `Status Updated`,
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 2500
+                    }).show();
+                }
+            })
+        })
+        $(".action-cancel").on('click',function(e) {
+            e.preventDefault();
+            let self = $(this);
+            $.ajax({
+                type: 'POST',
+                url: self.attr('href'),
+                success: function(data) {
+                    $(`#order-action-${data.orderedProductId} small`).css('color','red');
+                    $(`#order-action-${data.orderedProductId} small b`).text('CANCELLED');
+                    new Noty({
+                        theme: 'bootstrap-v4',
+                        text: `Status Updated`,
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 2500
+                    }).show();
+                }
+            })
+        })
+    }
 
     createProfile();
     editProfile();
     myProducts();
     deleteProducts();
+    deleteProductLink();
+    saveDetails();
+    orderAction();
 }

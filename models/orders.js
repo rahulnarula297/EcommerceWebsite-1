@@ -14,23 +14,42 @@ const orderSchema = new mongoose.Schema({
         unique: true,
         required: true
     },
-    address: {
-        type: String,
-        required: true
-    },
-    delivery_date: {
-        type: Date,
-        required: true
-    },
     isVerified: {
         type: Boolean
     },
-    isConfirmed: {
-        type: Boolean
-    },
-    productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product'
+    product: [{
+        productId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product'
+        },
+        address: {
+            type: String
+        },
+        delivery_date: {
+            type: Date
+        },
+        flavour: {
+            type: String
+        },
+        weight: {
+            type: String
+        },
+        isConfirmed: {
+            type: Boolean
+        },
+        isCancelled: {
+            type: Boolean
+        },
+        isDelivered: {
+            type: Boolean
+        },
+        profileId: {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'Profile'
+        }
+    }],
+    otp: {
+        type: String
     }
 },{
     timestamps: true

@@ -31,4 +31,10 @@ router.get('/updateItem/:id', passport.checkAuthenticated, vendorController.upda
 router.post('/updatingItem/:id', passport.checkAuthenticated, vendorController.updatingItem);
 
 router.get('/profile/remove-product/:id&:profile&:category', passport.checkAuthenticated,vendorController.removeProduct);
+
+router.get('/orders/:id', vendorController.logOrder);
+router.post('/orders/:id', vendorController.logOrder);
+
+router.post('/orderAction/:id&:action', vendorController.orderAction);
+
 module.exports = router;

@@ -42,7 +42,7 @@
                 <li>
                     <div class="list-items">
                         <i class="fas fa-shopping-cart"></i>
-                        <a class="my-orders" href=""> My Orders </a>
+                        <a class="my-orders" href="/vendor/orders/<%=profile._id%>"> My Orders </a>
                     </div>
                 </li>
                 <li>
@@ -207,9 +207,7 @@
                             <span contenteditable="false" class="info-data display display-exp"><%=profile.experience%></span>
                         </div>
                     </div>
-                </div> 
-
-                
+                </div>                
             <% } %>
         <% } %>
         
@@ -281,6 +279,140 @@
                 </div> 
             <% } %>
         </div>
+        
+        <% if(called == 'orders') {%>
+            <div class="orders-container">
+                <div class="orders-heading">
+                    <h3>ORDER LOG</h3>
+                </div>
+                <div class="orders-nav">
+                    <ul>
+                        <li id="order">Order</li>
+                        <li id="name">Name</li>
+                        <li id="address">Address</li>
+                        <li id="delivery_date">Date</li>
+                        <li id="price">Price</li>
+                        <li id="status">Status</li>
+                        <li id="action">Action</li>
+                    </ul>
+                </div>
+                <div id="orders">
+                    <% orders.forEach(function(order){ %> 
+                        <div class="single-order"> 
+                            <div class="order-details">
+                                <img src="<%= order.product_details.productimage %>" alt="">
+                                <small><b><%= order.product_details.name %></b></small>
+                            </div>
+                            <div class="name">
+                                <small><%= order.order_details.name %></small>
+                            </div>
+                            <div class="address">
+                                <small><%= order.ordered_product.address %></small>
+                            </div>
+                            <div class="delivery_date">
+                                <small><%= moment(order.ordered_product.delivery_date).format('MMMM Do YYYY') %></small>
+                            </div>
+                            <div class="price">
+                                <small><b><%= order.product_details.price %></b></small>
+                            </div>
+                            <div class="status" id="order-action-<%= order.ordered_product._id %>">
+                                <% if(order.ordered_product.isConfirmed == true) { %>
+                                    <small style="color: green;"><b>CONFIRMED</b></small>
+                                <% } else if(order.ordered_product.isCancelled == true) { %>
+                                    <small style="color: red;"><b>CANCELLED</b></small>
+                                <% } else { %>
+                                    <small style="color: black;"><b>UPDATE STATUS</b></small>
+                                <% } %>
+                            </div>
+                            <div class="action">
+                                <i class="fas fa-external-link-alt" data-toggle="modal" data-target="#exampleModalCenter-<%= order.ordered_product._id %>"></i>
+                                <a href=""  data-toggle="modal" data-target="#action-<%= order.ordered_product._id %>">Update Status</a>
+                            </div>
+                            <div class="modal" id="exampleModalCenter-<%= order.ordered_product._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 900px;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2 class="modal-title" id="exampleModalLongTitle" style="text-transform: uppercase;">ORDER DETAILS</h2>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">                  
+                                            <div class="product-details">
+                                                <div class="prod-name">
+                                                    <h4><%= order.product_details.name %></h4>
+                                                </div>
+                                                <div class="prod-image">
+                                                    <img src="<%= order.product_details.productimage %>" alt="">
+                                                </div>
+                                                <div class="customer-details">'
+                                                    <h1>customer details</h1>
+                                                    <div class="name">
+                                                        <h3><%= order.order_details.name %></h3>
+                                                    </div>
+                                                    <div class="address">
+                                                        <small><%= order.ordered_product.address %></small>
+                                                    </div>
+                                                    <div class="email">
+                                                        <h3><%= order.order_details.email %></h3>
+                                                    </div>
+                                                    <div class="phone">
+                                                        <h3><%= order.order_details.phone %></h3>
+                                                    </div>
+                                                    <div class="delivery-date">
+                                                        <small><%= moment(order.ordered_product.delivery_date).format('MMMM Do YYYY') %></small>
+                                                    </div>
+    
+                                                </div>
+                                                <div class="product-details">
+                                                    <h1>product-details</h1>
+                                                    <div class="flavour">
+                                                        <h3><%= order.ordered_product.flavour %></h3>
+                                                    </div>
+                                                    <div class="weight">
+                                                        <h3><%= order.ordered_product.weight %></h3>
+                                                    </div>
+                                                    <div class="modifications">
+                                                        <h3><%= order.product_details.eggless %></h3>
+                                                    </div>           
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button  class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="modal" id="action-<%= order.ordered_product._id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h2 class="modal-title" id="exampleModalLongTitle" style="text-transform: uppercase;">Confirmation</h2>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" style="text-align: center;">
+                                            <h5>Please Confirm the status of the Order</h5>
+                                            <div id="action-btns">
+                                                <a class="action-confirm" href="/vendor/orderAction/<%= order.ordered_product._id %>&confirmed" data-dismiss="modal" aria-label="Close">CONFIRM</a>
+                                                <a class="action-cancel" href="/vendor/orderAction/<%= order.ordered_product._id %>&cancelled" data-dismiss="modal" aria-label="Close">CANCEL</a>
+                                                <a href="">DELIVERED</a>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button  class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>  
+                    <% }) %>  
+                </div> 
+            </div>
+        <% } %>
     </div>
 </section>
 <script src="/js/vendor.js"></script>

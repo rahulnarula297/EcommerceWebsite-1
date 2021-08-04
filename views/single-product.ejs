@@ -30,7 +30,7 @@
                 <img src="<%=product.productimage%>" alt="<%= product.name %>" id="productimg">
             </div>
             <div class="info-div ">
-                <div class="product-infor  product-d">
+                <div class="product-infor product-d">
                     <p><span>description :</span> <%=product.description%></p>
                 </div>
     
@@ -109,7 +109,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalCenterTitle">Place Order</h5>
-                                <button type="button" class="close btn btn-secondary" style="color: black;" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close btn btn-secondary" id="placeOrderClose" style="color: black;" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -141,18 +141,25 @@
                                         <label for="delivery-date">DELIVERY DATE</label>
                                         <input type="date" name="date">
                                     </div>
-
+                                    <div class="variants-available">
+                                        <label for="variants-available">FLAVOUR</label>
+                                        <input type="text" name="flavourAvailable" placeholder="<%= product.variants %>">
+                                    </div>
+                                    <div class="choose-weight">
+                                        <label for="choose-weight">WEIGHT<br><sub>(in gms)</sub></label>
+                                        <input type="number" name="weightgms">
+                                    </div>
                                     <div class="instructions">
                                         <label for="instructions">INSTRUCTIONS TO SELLER</label>
                                         <textarea name="additional_instructions" cols="40" rows="4"></textarea>
                                     </div> 
                                 </div>
                                 <div class="modal-footer placeorder-btns">
-                                    <button type="submit" class="btn btn-primary">Verify Email</button>
+                                    <button type="submit" id="verify-btn">Verify Email</button>
                                 </div>
                             </form>
                             <div id="placeOrder-tags">
-                                <div class="otp-container">
+                                <div class="otp-container" style="display: none;">
                                     <h3>ENTER OTP</h3>
                                     <div class="userInput">
                                         <input type="text" id='first' maxlength="1" onkeyup="clickEvent(this,'sec')">
@@ -161,18 +168,27 @@
                                         <input type="text" id="fourth" maxlength="1" onkeyup="clickEvent(this,'fifth')">
                                         <input type="text" id="fifth" maxlength="1">
                                     </div>
+                                    <div class="wrong-otp" style="text-align: center;">
+                                        <span style="color: red; display: none;">Wrong OTP, Enter again</span>
+                                    </div>
                                     <div class="otp-btns">
                                         <div class="confirm-btn otp-style">
-                                            <a href="">CONFIRM</a>
+                                            <a href="/single-product/confirmOTP/<%= product._id %>" id="confirmOTP">CONFIRM</a>
                                         </div>
                                         <div class="resend-btn otp-style">
                                             <a href="/single-product/resendOTP">RESEND</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="placeOrder">
-                                    <a href="/single-product/placeOrder">Place Order</a>
-                                    <i class="fas fa-money-check"></i>
+                                <div class="placeOrder" style="display: none;">
+                                    <a href="/single-product/placeOrder/<%= product._id %>/<%= product.profile%>" id="placingOrder">
+                                        <span>PLACE ORDER</span> 
+                                        <i class="fas fa-money-check"></i>
+                                        <span style="display: none;" id="profile-id"><%= product.profile %></span>
+                                        <span style="display: none;" id="product-id"><%= product._id %></span>
+                                        <a id="sending-order-details" href="" target="_blank"></a>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -291,5 +307,6 @@
         <% } %>
     </div>
 </section>
+<script src="/js/vendor.js"></script>
 <script src="/js/single-product.js"></script>
 <script src="/js/like.js"></script>

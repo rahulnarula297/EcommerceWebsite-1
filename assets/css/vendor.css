@@ -197,7 +197,7 @@ form .inputbox input {
 .profile-details {
     width: 74%;
     height: 100%;
-    /* display: none; */
+    /* display: none!important; */
 }
 
 .profile-heading {
@@ -334,6 +334,142 @@ form .inputbox input {
     padding-bottom: 10px;
 }
 
+.orders-container {
+    width: 74%;
+    height: 100%;
+}
+
+.orders-container .orders-heading {
+    text-align: center;
+}
+
+.orders-container .orders-nav {
+    background-color: #FAACA8;
+    background-image: linear-gradient(200deg, #FAACA8 0%, #DDD6F3 100%);
+    margin-left: 20px;
+}
+
+.orders-container .orders-nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.orders-container .orders-nav ul #order {
+    flex: 15%;
+}
+
+.orders-container .orders-nav ul #name {
+    flex: 10%;
+}
+
+.orders-container .orders-nav ul #address {
+    flex: 30%;
+}
+
+.orders-container .orders-nav ul #delivery_date {
+    flex: 10%;
+}
+
+.orders-container .orders-nav ul #price {
+    flex: 10%;
+}
+
+.orders-container .orders-nav ul #status {
+    flex: 10%;
+}
+
+.orders-container .orders-nav ul #action {
+    flex: 15%;
+}
+
+.orders-container .single-order {
+    font-size: 14px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FAACA8;
+    background-image: linear-gradient(200deg, #FAACA8 0%, #DDD6F3 100%);
+    height: 110px;
+    border-radius: 20px;
+    margin-top: 20px;
+    transition: 0.3s ease;
+}
+
+.orders-container .single-order:hover {
+    box-shadow: 0 10px 10px 0 lightgray;
+}
+
+.orders-container .single-order .order-details {
+    flex: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+}
+
+.orders-container .single-order .order-details img {
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+}
+
+.orders-container .single-order .name {
+    flex: 10%;
+}
+
+.orders-container .single-order .address {
+    word-break: break-all;
+    flex: 30%;
+}   
+
+.orders-container .single-order .delivery_date {
+    flex: 10%;
+}
+
+.orders-container .single-order .price {
+    flex: 10%;
+}
+
+.orders-container .single-order .status {
+    flex: 10%;
+}
+
+.orders-container .single-order .action {
+    flex: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orders-container .single-order .action i {
+    cursor: pointer;
+    transform: translate(20px,-30px);
+}
+
+.orders-container .single-order .action i:hover {
+    color: white;
+}
+
+.orders-container .single-order .action a {
+    text-decoration: none;
+    transform: translate(0px,-7px);
+}
+
+.orders-container .single-order .action a:hover {
+    color: white;
+}
+
+#orders #action-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 @media(max-width: 1000px) {
     .profile-description {
         width: 250px;
@@ -391,12 +527,18 @@ form .inputbox input {
     }
 }
 
+@media (max-width:925px) {
+    .nav-menu {
+        height: 100px;
+    }
+}
+
 @media (max-width:662px) {
     .nav-options {
         display: block;
     }
     .nav-menu {
-        height: 160px;
+        height: 240px;
         width: 80%;
     }
 }

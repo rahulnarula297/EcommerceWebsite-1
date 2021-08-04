@@ -3,8 +3,11 @@ const bcrypt = require('bcrypt');
 const Profile = require('../models/profile');
 const Category = require('../models/category');
 const Product = require('../models/product');
+const Order = require('../models/orders');
 const profileMailer = require('../mailers/vendor.js');
 const signupMailer = require('../mailers/signup.js');
+const actionMailer = require('../mailers/action.js');
+const moment = require('moment');
 const url = require('url');
 const { response } = require('express');
 const { profile } = require('console');
@@ -391,5 +394,109 @@ module.exports.updatingItem = async function(req, res) {
         req.flash('success','Product Updated Successfully');
         return res.redirect('/vendor/product');
     });
+}
+
+module.exports.logOrder = async function(req, res) {
+    let profileId = req.params.id;
+    let foundOrders = [];
+    if(req.xhr) {
+        let info = JSON.parse(JSON.stringify(req.body));
+        let productId = info.productId;
+        await Product.findById({_id:productId},async function(err,foundProduct) {
+            if(err) {
+                console.log('error',err);
+                return res.redirect('back');
+            }
+            console.log('product ------->',foundProduct);
+            return res.status(200).json({
+                data: {
+                    product: foundProduct
+                },
+                message: "Order Added"
+            })
+        })
+    } else {
+        await Order.find({},async function(err,allOrders) {
+            if(err) {
+                console.log(('error',err));
+                return res.redirect('back');
+            }
+            for(let i = 0; i<allOrders.length; i++) {
+                for(let j = 0; j<allOrders[i].product.length; j++) {
+                    if(allOrders[i].product[j].profileId == profileId){
+                        await Product.findById({_id:allOrders[i].product[j].productId},async (err,foundProduct)=>{
+                            if(err){
+                                console.log('error',err);
+                                return res.redirect('back');
+                            }
+                            foundOrders.push({
+                                product_details : foundProduct,
+                                order_details : allOrders[i],
+                                ordered_product : allOrders[i].product[j]
+                            })  
+                        });
+                    }
+                }
+            }
+            await Profile.findById({_id:profileId},async (err,foundprofile)=>{
+                if(err){
+                    console.log('error',err);
+                    res.redirect('back');
+                }
+                await Product.find({profile:foundprofile._id},async (err,allProducts)=>{
+                    if(err){
+                        console.log('error',err);
+                        res.redirect('back');
+                    }
+                    return res.render('vendor',{
+                        orders : foundOrders,
+                        profile: foundprofile,
+                        productsExist: true,
+                        profileExist: true,
+                        products: allProducts,
+                        display: 'none',
+                        product_display: 'none',
+                        called: 'orders',
+                        moment: moment
+                    });
+                })
+            })   
+        })
+    }
+}
+
+module.exports.orderAction = async function(req,res) {
+    let orderedProductId = req.params.id;
+    let orderedAction = req.params.action;
+    if(req.xhr) {
+        await Order.findOne({"product._id":orderedProductId}, async function(err,foundOrder) {
+            if(err) {
+                console.log('error',err);
+                return res.redirect('back');
+            }
+            for(let i = 0; i < foundOrder.product.length; i++) {
+                if(foundOrder.product[i]._id == orderedProductId) {
+                    if(orderedAction == "confirmed") {
+                        foundOrder.product[i].isConfirmed = true;
+                        foundOrder.product[i].isCancelled = false;
+                        actionMailer.confirmOrder(foundOrder,foundOrder.product[i]);
+                        foundOrder.save();
+                        break;
+                    }
+                    else if(orderedAction == "cancelled") {
+                        foundOrder.product[i].isCancelled = true;
+                        foundOrder.product[i].isConfirmed = false;
+                        actionMailer.cancelOrder(foundOrder,foundOrder.product[i]);
+                        foundOrder.save();
+                        break;
+                    }
+                }
+            }
+        })
+        return res.status(200).json({
+            orderedProductId: orderedProductId,
+            message: "Status Updated"
+        })
+    }
 }
 
