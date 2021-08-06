@@ -46,6 +46,9 @@ const orderSchema = new mongoose.Schema({
         profileId: {
             type:mongoose.Schema.Types.ObjectId,
             ref: 'Profile'
+        },
+        ordered_date: {
+            type: Date
         }
     }],
     otp: {

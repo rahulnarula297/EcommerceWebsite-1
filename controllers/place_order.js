@@ -117,6 +117,7 @@ module.exports.placeOrder = async function(req,res) {
                 delivery_date: info.delivery_date,
                 flavour: info.flavour,
                 weight: info.weight,
+                ordered_date: info.ordered_date,
                 isConfirmed: false,
                 isCancelled: false,
                 isDelivered: false
@@ -132,7 +133,8 @@ module.exports.placeOrder = async function(req,res) {
                         console.log('error',err);
                         return res.redirect('back');
                     }
-                    orderEmail.order(foundOrder,foundProfile,foundProduct);
+
+                    orderEmail.order(info,foundOrder,foundProfile,foundProduct);
                     return res.status(200).json({
                         data: {
                             order_details: foundOrder,

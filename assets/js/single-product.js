@@ -48,12 +48,26 @@ function clickEvent(first,last){
                     if(data.data.verified == false) {
                         $('.placeorder-btns button').addClass('not-verified');
                         $('.otp-container').css('display','initial');
+                        new Noty({
+                            theme: 'bootstrap-v4',
+                            text: `Please Enter OTP sent to your EmailID`,
+                            type: 'error',
+                            layout: 'topRight',
+                            timeout: 3500
+                        }).show();
                     }
                     else if(data.data.verified == true) {
                         $('.placeorder-btns button').addClass('verified');
                         $('.placeorder-btns button').text('VERIFIED');
                         $('.placeorder-btns button').css('text-decoration','none');
                         $('.placeOrder').css('display','initial');
+                        new Noty({
+                            theme: 'bootstrap-v4',
+                            text: `Email ID already verified, Continue to Place Order`,
+                            type: 'success',
+                            layout: 'topRight',
+                            timeout: 3500
+                        }).show();
                     }
                 }
             })
@@ -80,6 +94,13 @@ function clickEvent(first,last){
                         $('.placeorder-btns button').css('text-decoration','none');
                         $('.otp-container').css('display','none');
                         $('.placeOrder').css('display','initial');
+                        new Noty({
+                            theme: 'bootstrap-v4',
+                            text: `OTP CONFIRMED`,
+                            type: 'success',
+                            layout: 'topRight',
+                            timeout: 2500
+                        }).show();
                     }else {
                         $('.otp-container .wrong-otp span').css('display','initial');
                         $('.userInput input').val('');
@@ -102,6 +123,7 @@ function clickEvent(first,last){
             info.date = $('.placeorder-form .delivery-date input').val();
             info.flavour = $('.placeorder-form .variants-available input').val();
             info.weight = $('.placeorder-form .choose-weight input').val();
+            info.ordered_date = Date.now();
             info.additional_instructions = $('.placeorder-form .instructions textarea').val();
             info.productId = productId;
             let self = $(this);
@@ -113,7 +135,6 @@ function clickEvent(first,last){
                     console.log(data.data);
                     $("#sending-order-details").attr('href',`https://api.whatsapp.com/send?phone=+91${data.data.profile_details.contact}&text=%20 Hi, I want to know about this product of yours%0D%0A`);
                     document.getElementById("sending-order-details").click();
-                    document.getElementById("placeOrderClose").click();
                 }
             })
         })

@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/css/product-cards.css">
+<div class="single-product load-product" style="background: linear-gradient(to left, #93ecdb, #31bdd6 55%, #a5a2a2);">
+    <div class="product-thumb">
+        <img src="<%= data.product.image %>" alt="<%= data.product.name %>">
+    </div>
+    <div class="product-title">
+        <h3> <a href="/single-product/<%= data.product._id %>"><%= data.product.name %></a> </h3>
+    </div>
+    <div class="description">
+        <p><%= data.product.description %></p>
+    </div>
+    <div class="product-btns">
+        <span class="btn-small mr-2 price"><%= data.product.price %>/-</span>
+    </div>
+    <div class="description">
+        <p><%= data.order.weight %></p>
+        <p><%= data.order.flavour %></p>
+        <p><%= data.order.delivery_date %></p>
+    </div>
+</div>

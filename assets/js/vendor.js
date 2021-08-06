@@ -357,7 +357,7 @@ $(window).on('scroll',function(){
                     $(`#order-action-${data.orderedProductId} small b`).text('CONFIRMED');
                     new Noty({
                         theme: 'bootstrap-v4',
-                        text: `Status Updated`,
+                        text: `Status Updated : Order Confirmed`,
                         type: 'success',
                         layout: 'topRight',
                         timeout: 2500
@@ -376,8 +376,8 @@ $(window).on('scroll',function(){
                     $(`#order-action-${data.orderedProductId} small b`).text('CANCELLED');
                     new Noty({
                         theme: 'bootstrap-v4',
-                        text: `Status Updated`,
-                        type: 'success',
+                        text: `Status Updated : Order Cancelled`,
+                        type: 'error',
                         layout: 'topRight',
                         timeout: 2500
                     }).show();

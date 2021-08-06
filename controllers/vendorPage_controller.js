@@ -438,6 +438,10 @@ module.exports.logOrder = async function(req, res) {
                     }
                 }
             }
+            foundOrders.sort((a,b) => {
+                if(a.ordered_product.ordered_date > b.ordered_product.ordered_date) return 1;
+                else return -1;
+            });
             await Profile.findById({_id:profileId},async (err,foundprofile)=>{
                 if(err){
                     console.log('error',err);
