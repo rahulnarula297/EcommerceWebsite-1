@@ -23,6 +23,8 @@ $(window).on('scroll',function(){
                     $('.profile-board').append(image_description);
                     $('.main-container').append(Profile);
                     editProfile();
+                    console.log(data);
+                    $('.my-orders').attr('href',`/vendor/orders/${data.data.info._id}`)
                     new Noty({
                         theme: 'relax',
                         text: data.message,

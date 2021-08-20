@@ -240,21 +240,34 @@ module.exports.addingItem = async function(req,res){
                 console.log('error: ',err);
                 return res.redirect('back');
             }
-
+            var weight = '';
             Product.uploadedProductImage(req, res, function(err) {
                 if(err) {
                     console.log('MULTER ERROR ---------------', err);
+                    return res.redirect('back');
                 }
-                console.log(req.file)
+                var unit = req.body.wt;
+                const amount = req.body.weight;
+                if(unit == 'kg') {
+                    weight = amount[0]+unit;
+                }
+                else if(unit == 'gm') {
+                    weight = amount[1]+unit;
+                }
+                else {
+                    unit = '';
+                    weight = amount[2]+unit;
+                }
+                console.log(unit,weight,amount);
                 Product.create({
                     productimage: Product.productpath + '/' + req.file.filename,
                     name: req.body.name,
                     flavour: req.body.flavour,
                     price: req.body.price,
-                    weight: req.body.weight,
+                    weight: weight,
                     description: req.body.description,
                     category: req.body.category,
-                    variants:req. body.variants,
+                    variants: req.body.variants,
                     price_per_kg: req.body.price_per_kg,
                     customizable: req.body.customizable,
                     units: req.body.units,
@@ -398,76 +411,68 @@ module.exports.updatingItem = async function(req, res) {
 
 module.exports.logOrder = async function(req, res) {
     let profileId = req.params.id;
-    let foundOrders = [];
-    if(req.xhr) {
-        let info = JSON.parse(JSON.stringify(req.body));
-        let productId = info.productId;
-        await Product.findById({_id:productId},async function(err,foundProduct) {
-            if(err) {
-                console.log('error',err);
-                return res.redirect('back');
-            }
-            console.log('product ------->',foundProduct);
-            return res.status(200).json({
-                data: {
-                    product: foundProduct
-                },
-                message: "Order Added"
-            })
-        })
-    } else {
-        await Order.find({},async function(err,allOrders) {
-            if(err) {
-                console.log(('error',err));
-                return res.redirect('back');
-            }
-            for(let i = 0; i<allOrders.length; i++) {
-                for(let j = 0; j<allOrders[i].product.length; j++) {
-                    if(allOrders[i].product[j].profileId == profileId){
-                        await Product.findById({_id:allOrders[i].product[j].productId},async (err,foundProduct)=>{
-                            if(err){
-                                console.log('error',err);
-                                return res.redirect('back');
-                            }
+    let foundOrders = [];  
+    await Order.find({},async function(err,allOrders) {
+        if(err) {
+            console.log(('error',err));
+            return res.redirect('back');
+        }
+        for(let i = 0; i<allOrders.length; i++) {
+            for(let j = 0; j<allOrders[i].product.length; j++) {
+                if(allOrders[i].product[j].profileId == profileId){
+                    await Product.findById({_id:allOrders[i].product[j].productId},async (err,foundProduct)=>{
+                        if(err){
+                            console.log('error',err);
+                            return res.redirect('back');
+                        }
+                        if(foundProduct) {
                             foundOrders.push({
                                 product_details : foundProduct,
                                 order_details : allOrders[i],
-                                ordered_product : allOrders[i].product[j]
-                            })  
-                        });
-                    }
+                                ordered_product : allOrders[i].product[j],
+                                foundProduct: 'true'
+                            }); 
+                        }else {
+                            foundOrders.push({
+                                order_details : allOrders[i],
+                                ordered_product : allOrders[i].product[j],
+                                foundProduct: 'false'
+                            }); 
+                        }
+                    });
                 }
             }
-            foundOrders.sort((a,b) => {
-                if(a.ordered_product.ordered_date > b.ordered_product.ordered_date) return 1;
-                else return -1;
-            });
-            await Profile.findById({_id:profileId},async (err,foundprofile)=>{
+        }
+        foundOrders.sort((a,b) => {
+            if(a.ordered_product.ordered_date > b.ordered_product.ordered_date) return 1;
+            else return -1;
+        });
+        await Profile.findById({_id:profileId},async (err,foundprofile)=>{
+            if(err){
+                console.log('error',err);
+                res.redirect('back');
+            }
+            await Product.find({profile:foundprofile._id},async (err,allProducts)=>{
                 if(err){
                     console.log('error',err);
                     res.redirect('back');
                 }
-                await Product.find({profile:foundprofile._id},async (err,allProducts)=>{
-                    if(err){
-                        console.log('error',err);
-                        res.redirect('back');
-                    }
-                    return res.render('vendor',{
-                        orders : foundOrders,
-                        profile: foundprofile,
-                        productsExist: true,
-                        profileExist: true,
-                        products: allProducts,
-                        display: 'none',
-                        product_display: 'none',
-                        called: 'orders',
-                        moment: moment
-                    });
-                })
-            })   
-        })
-    }
+                return res.render('vendor',{
+                    orders : foundOrders,
+                    profile: foundprofile,
+                    productsExist: true,
+                    profileExist: true,
+                    products: allProducts,
+                    display: 'none',
+                    product_display: 'none',
+                    called: 'orders',
+                    moment: moment
+                });
+            })
+        })   
+    })
 }
+
 
 module.exports.orderAction = async function(req,res) {
     let orderedProductId = req.params.id;

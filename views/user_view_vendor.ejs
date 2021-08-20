@@ -2,21 +2,21 @@
 <section id="user_view_vendor">
 
     <div class="upper-background">
-        <div class="h2">
-            <h2>BAKE IT FRESH </h2>
+        <div class="heading">
+            <h2>BAKE IT FRESH</h2>
         </div>
     </div>
 
     <div class="profile-container">
 
         <div class="image-container">
-            <img src="<%= profile.profileimage %>" alt="Profile Photo">
+            <img src="<%= profile.profileimage %>" alt="<%= profile.firstname %> <%= profile.lastname %>">
         </div>
 
         <div class="description-container">
 
-            <h3 class="name"><%=profile.firstname %> <%=profile.lastname%></h3>
-            <h6 class="prof"><%=profile.bakeryname%></h6>
+            <h3 class="name"><%= profile.firstname %> <%= profile.lastname %></h3>
+            <h6 class="prof"><%= profile.bakeryname %></h6>
 
             <div class="desc-links">
                 <ul>
@@ -32,24 +32,28 @@
             </div>
 
             <div class="area-para desc-p">
-                <p><span>AREA</span> <%= profile.areacovered %></p>
+                <p><span>ORDERS DELIVERED:</span> <%= orderCount %></p>
+            </div>
+
+            <div class="area-para desc-p">
+                <p><span>AREA:</span> <%= profile.areacovered %></p>
             </div>
 
             <div class="experience-para desc-p">
-                <p><span>YEARS OF EXPERIENCE</span> <%= profile.experience %> </p>
+                <p><span>YEARS OF EXPERIENCE:</span> <%= profile.experience %> </p>
             </div>
 
             <div class="bakery-name-rating desc-p">
-                <p><span>BAKERY NAME</span> <%= profile.bakeryname %> </p>
+                <p><span>BAKERY NAME:</span> <%= profile.bakeryname %> </p>
             </div>
 
             <div class="bakery-speciality-para desc-p">
-                <p><span>BAKERY SPECIALITY</span> <%= profile.speciality %> </p>
+                <p><span>BAKERY SPECIALITY:</span> <%= profile.speciality %> </p>
             </div>
 
             <div class="shop-now-btn">
-                <button type="submit"><a href="/shop/categories/<%=profile._id%>">SHOP NOW<i class="fas fa-arrow-right"></i></a></button>
-                <button type="submit"><a href="/shop/reviews/<%=profile._id%>/all">REVIEWS<i class="fas fa-arrow-right"></i></a></button>
+                <button type="submit"><a href="/shop/categories/<%=profile._id%>"><span>SHOP NOW</span><i class="fas fa-arrow-right"></i></a></button>
+                <button type="submit"><a href="/shop/reviews/<%=profile._id%>/all"><span>REVIEWS</span><i class="fas fa-arrow-right"></i></a></button>
             </div>
 
         </div>

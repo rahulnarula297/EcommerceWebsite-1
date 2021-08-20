@@ -1,20 +1,30 @@
-const Profile=require('../models/profile');
-
+const Profile = require('../models/profile');
+const Order = require('../models/orders');
 module.exports.get_profile = async function(req, res) {
     try {
-        const profile_id=req.params.profileId;
-        Profile.findOne({_id:profile_id},(err,foundprofile) => {
+        const profile_id = req.params.profileId;
+        await Profile.findOne({_id:profile_id},async (err,foundprofile) => {
             if(err){
                 console.log('error', err);
                 return res.render('user_view_vendor');
             }
             if(foundprofile){
-                res.render('user_view_vendor',{
-                    profile: foundprofile
+                await Order.find({"product.profileId":profile_id}, async function(err,foundOrders) {
+                    if (err) {
+                        console.log('error',err);
+                        return res.redirect('back');
+                    }
+                    res.render('user_view_vendor',{
+                        profile: foundprofile,
+                        orderCount: foundOrders.length
+                    });
+                    return;
+                })
+            } else {
+                return res.render('user_view_vendor',{
+                    orderCount: 0
                 });
-                return;
-            }
-            return res.render('user_view_vendor');
+            } 
         });
     } catch (error) {
         if(error) {

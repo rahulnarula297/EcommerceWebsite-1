@@ -94,7 +94,7 @@ body {
     color: white;
 }
 
-.nav-options li .list-items{
+.nav-options li .list-items {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -216,9 +216,16 @@ form .inputbox input {
 }
 
 .profile-info {
-    width: 40%;
+    position: relative;
+    left: 40px;
+    width: 45%;
     height: 50px;
-    margin: 20px 20px;
+    margin: 20px 28px 20px 0;
+}
+
+.profile-container .exp {
+    width: 100%;
+    margin: 20px 35px 20px 0;
 }
 
 .info-title{
@@ -226,7 +233,7 @@ form .inputbox input {
 }
 
 .profile-info .info-data {
-    font-size: 18px;
+    font-size: 14px;
     padding: 10px 2px;
 }
 
@@ -294,6 +301,7 @@ form .inputbox input {
     text-align:center;
 
 }
+
 .bttn-def{
     display: inline-block;
     font-size: 14px;
@@ -309,7 +317,8 @@ form .inputbox input {
     inset 2px 2px 8px rgba(0, 0, 0, 0.15);
     transition: 0.4s;
     width: 200px;
-    }
+}
+
 .bttn-def:hover{
     box-shadow: inset -2px -2px 8px white,
     inset -2px -2px 12px rgba(255, 255, 255, 0.1),
@@ -317,6 +326,7 @@ form .inputbox input {
     inset 2px 2px 8px rgba(0, 0, 0, 0.15);
     color: #7289ab;
 }
+
 .bttn-def:hover span{
     display: inline-block;
     transform: scale(0.98);
@@ -334,6 +344,7 @@ form .inputbox input {
     padding-bottom: 10px;
 }
 
+/* My Orders Section */
 .orders-container {
     width: 74%;
     height: 100%;
@@ -409,7 +420,8 @@ form .inputbox input {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 900;
 }
 
 .orders-container .single-order .order-details img {
@@ -420,23 +432,29 @@ form .inputbox input {
 
 .orders-container .single-order .name {
     flex: 10%;
+    font-size: 14px;
 }
 
 .orders-container .single-order .address {
     word-break: break-all;
     flex: 30%;
+    font-size: 12px;
 }   
 
 .orders-container .single-order .delivery_date {
     flex: 10%;
+    font-size: 11px;
 }
 
 .orders-container .single-order .price {
     flex: 10%;
+    font-size: 11px;
 }
 
 .orders-container .single-order .status {
     flex: 10%;
+    font-size: 14px;
+    font-weight: bolder;
 }
 
 .orders-container .single-order .action {
@@ -444,6 +462,7 @@ form .inputbox input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 14px;
 }
 
 .orders-container .single-order .action i {
@@ -470,6 +489,67 @@ form .inputbox input {
     justify-content: space-evenly;
 }
 
+#orders .all-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#orders .all-details h1 {
+    text-align: center;
+}
+
+#orders .all-details small {
+    color: grey;
+}
+
+#orders .all-details .product-details {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#orders .all-details .product-details .ml {
+    margin-left: 55px;
+    margin-top: 10px;
+}
+
+#orders .all-details .product-details .prod-name {
+    align-self: center;
+}
+
+#orders .all-details .product-details .prod-image {
+    align-self: center;
+}
+
+#orders .all-details .customer-details {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#orders .all-details .customer-details .mt {
+    margin-top: 10px;
+}
+
+/* Media tags */
+
+@media(max-width: 1215px) {
+    .nav-options {
+        font-size: 16px;
+    }
+    .profile-info {
+        left: 30px;
+        margin: 20px 20px 20px 0;
+    }
+    .profile-container .exp {
+        margin: 20px 20px 20px 11px;
+    }
+    .orders-container .single-order .action {
+        font-size: 10px;
+    }
+}
+
 @media(max-width: 1000px) {
     .profile-description {
         width: 250px;
@@ -485,10 +565,22 @@ form .inputbox input {
     .profile-name-description {
         width: 0%;
     } 
+    .profile-info {
+        left: 0px;
+        width: 47%;
+        margin: 20px 5px 20px 0;
+    }
+    .profile-container {
+        justify-content: space-between;
+    }
+    .profile-container .exp {
+        margin: 20px 0px 20px 0px;
+    }
     .main-container {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 80%;
     }
     .nav-menu {
         height: 50px;
@@ -500,6 +592,12 @@ form .inputbox input {
         flex-direction: row;
         justify-content: center;
         padding: 0;
+    }
+    .orders-container .orders-nav {
+        margin-left: 0px;
+    }
+    .orders-container .single-order {
+        margin-left: 0px;
     }
     .info-container {
         width: 100%;
@@ -525,11 +623,62 @@ form .inputbox input {
     .flex {
         padding-left: 0;
     }
+    .orders-container {
+        width: 100%;
+    }
 }
 
-@media (max-width:925px) {
+@media (max-width:900px) {
+    .orders-container .orders-nav ul #address {
+        display: none;
+    }
+    .orders-container .single-order .address {
+        display: none;
+    }
+    .orders-container .single-order .order-details {
+        margin-right: 10px;
+    }
+    
+    .orders-container .single-order .name {
+        margin-right: 10px;
+    }
+    
+    .orders-container .single-order .address {
+        margin-right: 10px;
+    }   
+    
+    .orders-container .single-order .delivery_date {
+        margin-right: 10px;
+    }
+    
+    .orders-container .single-order .price {
+        margin-right: 10px;
+    }
+    
+    .orders-container .single-order .status {
+        margin-right: 10px;
+    }
+}
+
+@media (max-width:787px) {
     .nav-menu {
         height: 100px;
+    }
+    #orders .m-title {
+        font-size: 1.7rem;
+    }
+    #orders .all-details {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width:767px) {
+    .products-container {
+        width: 60%;
+    }
+    #orders .all-details .product-details .ml {
+        margin-left: 0;
     }
 }
 
@@ -561,10 +710,24 @@ form .inputbox input {
         width: 100%;
         margin: 20px 0px;
     }
+    .main-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
+    .products-container {
+        width: 90%;
+    }
     .product-options a {
         font-size: 1em;
     }
-
+    .orders-container .orders-nav ul #price {
+        display: none;
+    }
+    .orders-container .single-order .price {
+        display: none;
+    }
 }
 
 @media (max-width:457px) {
@@ -572,6 +735,21 @@ form .inputbox input {
         display: block;
         padding: 15px;
     }
+    .orders-container .orders-nav ul #delivery_date {
+        display: none;
+    }
+    .orders-container .single-order .delivery_date {
+        display: none;
+    }
+    #orders .all-details h1 {
+        font-size: 2rem;
+    }
+    #orders .all-details h4 {
+        font-size: 1.2rem;
+    }
+    #orders .all-details h3 {
+        font-size: 1.2rem;
+    }  
 }
 
 @media (max-width:436px) {
@@ -586,5 +764,8 @@ form .inputbox input {
     }
     .products-container-nav h1{
         font-size: 1.6em;
+    }
+    #orders .all-details h1 {
+        font-size: 1.6rem;
     }
 }

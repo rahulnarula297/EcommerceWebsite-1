@@ -44,7 +44,7 @@ const orderSchema = new mongoose.Schema({
             type: Boolean
         },
         profileId: {
-            type:mongoose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'Profile'
         },
         ordered_date: {

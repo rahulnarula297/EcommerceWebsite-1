@@ -37,40 +37,9 @@
             <div class="item-size-container common-attr">
                 <h3>ITEM WEIGHT</h3>
                 <div class="size-options">
-                    
-                    <ul>
-                        <li>
-                            <div class="size-container">
-                                <input type="text"> 
-                                <span>CUSTOM INPUT</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="size-container">
-                                <input checked type="checkbox" name="weight" value="250gm">
-                                <span>250GM</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="size-container">
-                                <input type="checkbox" name="weight" value="500gm">
-                                <span>500GM</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="size-container">
-                                <input type="checkbox" name="weight" value="750gm">
-                                <span>750GM</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="size-container">
-                                <input type="checkbox" name="weight" value="1000gm">
-                                <span>1KG</span>
-                            </div>
-                        </li>
-                    </ul>
-    
+                    <div class="input-size-optn">
+                        <input id="checked" type="text" name="weight" value="<%=product.weight%>">
+                    </div>
                 </div>
             </div>
     
@@ -121,7 +90,7 @@
     
             <div class="item-btns">
                 <button id="submit-btn" type="submit">CONTINUE<i class="fas fa-arrow-right"></i></button>
-                <button id="reset-btn" type="reset">RESET</button>
+                <a class="cancel-btn" href="/vendor/product"><button type="button">CANCEL</button></a>
             </div>
     
         </form>
@@ -178,40 +147,25 @@
             <div class="item-size-container common-attr">
                 <h3>ITEM WEIGHT</h3>
                 <div class="size-options">
-                    
-                    <ul>
-                        <li>
-                            <div class="size-container">
-                                <label for="">CUSTOM INPUT</label>
-                                <input type="text">
-                            </div>
-                        </li>
-                        <li>
-                            <div class="size-container">
-                                <input type="checkbox" name="weight" value="250gm">
-                                <span>250GM</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="size-container">
-                                <input type="checkbox" name="weight" value="500gm">
-                                <span>500GM</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="size-container">
-                                <input type="checkbox" name="weight" value="750gm">
-                                <span>750GM</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="size-container">
-                                <input type="checkbox" name="weight" value="1000gm">
-                                <span>1KG</span>
-                            </div>
-                        </li>
-                    </ul>
-    
+                    <div class="select-size-optn">
+                        <div>
+                            <label for="select-kg">Kg</label>
+                            <input id="select-kg" type="radio" name="wt" value="kg">
+                        </div>
+                        <div>
+                            <label for="select-gm">Gm</label>
+                            <input id="select-gm" type="radio" name="wt" value="gm">
+                        </div>
+                        <div>
+                            <label for="select-other">Custom Input</label>
+                            <input id="select-other" type="radio" name="wt" value="other">
+                        </div>
+                    </div>
+                    <div class="input-size-optn">
+                        <input id="enter-kg" type="number" name="weight" placeholder="Please Enter weight in kgs">
+                        <input id="enter-gm" type="number" name="weight" placeholder="Please Enter weight in gms">
+                        <input id="enter-other" type="text" name="weight" placeholder="Please Enter weight">
+                    </div>
                 </div>
             </div>
     
@@ -262,7 +216,7 @@
     
             <div class="item-btns">
                 <button id="submit-btn" type="submit">CONTINUE<i class="fas fa-arrow-right"></i></button>
-                <button id="reset-btn" type="reset">RESET</button>
+                <a class="cancel-btn" href="/vendor/product"><button type="button">CANCEL</button></a>
             </div>
     
         </form>

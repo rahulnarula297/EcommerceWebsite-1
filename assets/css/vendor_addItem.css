@@ -90,26 +90,32 @@ input, textarea {
 
 .item-size-container .size-options {
     flex: 70%;
-}
-
-.item-size-container .size-options ul {
-    list-style: none;
     display: flex;
-    justify-content: space-around;
     flex-direction: row;
-    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.item-size-container .size-options ul li {
-    width: 100px;
-    margin: 20px;
-    text-align: center;
-    font-size: 18px;
-    color: #31344b;
-    font-weight: 400;
-    padding: 10px;
-    box-shadow: 7px 7px 6px 3px lightgrey;
-    transition: 0.2s ease;
+.item-size-container .size-options .select-size-optn {
+    flex: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-size-container .size-options .input-size-optn {
+    flex: 80%;
+}
+
+.item-size-container .size-options .input-size-optn #enter-kg {
+    display: none;
+}
+
+.item-size-container .size-options .input-size-optn #enter-gm {
+    display: none;
+}
+
+.item-size-container .size-options .input-size-optn #enter-other {
+    display: none;
 }
 
 .price .item-info {
@@ -157,6 +163,11 @@ input, textarea {
 
 .item-btns button:hover {
     box-shadow: none;
+}
+
+.item-btns .cancel-btn {
+    text-decoration: none;
+    color: white;
 }
 
 .item-btns #submit-btn i {
