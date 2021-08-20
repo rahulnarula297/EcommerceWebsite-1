@@ -1,0 +1,223 @@
+.shop-main{
+    margin:auto;
+    width: 95%;
+    background: #041a1a;
+    padding-bottom: 25px;
+}
+
+.shop-heading{
+    align-items: center;
+    text-align: center;
+    margin: 15px 0;
+    padding: 25px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    font-size: 35px;
+    font-weight: 800;
+    font-family: cursive;
+    text-transform: uppercase;   
+    color: wheat;
+}
+/*updated*/
+.shop-heading h2{
+    font-size: 35px;
+    font-weight: 800;
+    font-family: cursive;
+    text-transform: uppercase;   
+    color: wheat;
+}
+ .shop-heading img{
+    margin-left: 15px;
+    width: 100px;
+    height: 90px;
+} 
+
+.shop-main .bakers{
+    width: 85%;
+    margin: auto;
+}
+
+.shop-main .bakers .column{
+    margin: auto;
+    margin-bottom: 45px ;
+    padding-bottom: 10px;
+    border-radius: 25px;
+    background: linear-gradient(to left, #093a2f, #07383f 55%, #666465);
+    box-sizing: border-box;
+    /* border-style: ridge; */
+    /* border-width: 2px; */
+}
+
+.shop-main .bakers .column .bakers-name{
+    padding: 15px 0;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    text-shadow: 2px 3px 0px rgba(43, 56, 50, 0.42);
+    text-transform: capitalize;
+    color: wheat;
+}
+
+.shop-main .bakers .column .bakers-name img{
+    height: 40px;
+    margin-left: 15px;
+    font-style: italic;
+    transform: rotate(12deg);
+}
+
+.shop-main .bakers .column .bakers-name h3{
+    font-size: 35px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.shop-main .bakers .content{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.shop-main .bakers .content .image-div{
+    margin: 0 20px;
+    width: 25%;
+    height: auto;
+    text-align: center;
+    justify-content: center;
+}
+
+.shop-main .bakers .content .img{
+    margin: 5px 0; 
+    width: auto;
+    height:auto;
+    margin-bottom: 15px;
+}
+
+.shop-main .bakers .content .img img{
+    width: 180px;
+    height: 160px;
+    border-radius: 10%;
+}
+
+.shop-main .bakers .content .image-div p{
+    font-size: 20px;
+    font-family: cursive;
+    text-transform: capitalize;
+    margin-top: 10px;
+    color: rgb(9, 243, 184);
+}
+
+.shop-main .bakers .content .info-box{
+    padding:0 10px;
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+}
+
+.shop-main .bakers .content .info-box .info-box2{
+    margin-top: 15px;
+}
+
+.shop-main .bakers .content .info-box .info{ 
+    padding: 7px 5px;
+    font-size: 17.5px;
+    text-align: justify;
+    font-weight: 400;
+    color: wheat;
+}
+
+.shop-main .bakers .content .info-box .info span{
+    text-transform: capitalize;
+    color: rgb(10, 148, 102);
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.shop-main .bakers .content .info-box .info h3{
+    text-align: justify;
+    font-weight: 200;
+}
+
+.shop-btn{
+    margin-top: 25px;
+}
+
+.shop-btn .button{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+.shop-btn .button .sub-btn{
+    width: 40%;
+    margin-left: 15px;
+}
+
+.shop-btn button{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 17.5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border-radius: 50px;
+background: #131212;
+box-shadow:  2px 2px 6px #0e0d0d,
+             -2px -2px 6px #1d1c1c;
+
+    
+}
+
+.shop-btn button a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 700;
+    color: wheat;
+    width: 100%;
+}
+
+@media (max-width:900px){
+
+    .shop-main .bakers .content .info-box{
+        width:auto;
+    }
+
+    .shop-main .bakers .content .image-div{
+        width: 95%;
+    }
+
+}
+
+@media (max-width:350px){
+
+    .shop-btn .button{
+        width: 75%;
+    }
+
+    .shop-btn button a{  
+        font-size: 20px;
+    }
+
+    .shop-main .bakers .column .bakers-name img{
+        height: 35px;
+        margin-left: 10px;
+    }
+
+    .shop-main .bakers .column .bakers-name h3{
+        font-size: 30px;   
+    }
+
+    .shop-heading h2{
+        font-size: 25px;  
+    }
+}

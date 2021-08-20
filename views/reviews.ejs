@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="/css/products.css">
+<link rel="stylesheet" href="/css/reviews.css">
+<% if(reviews == false) { %>
+    <section class="review">
+        <div style="text-align: center;">
+            <h1>No Reviews Yet</h1>
+        </div>
+    </section>
+<% }else{ %>
+    <section class="review">
+        <div class="review-container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section-title">
+                        <h2>Reviews</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <% for(review of reviews) { %>
+                    <%- include('_review.ejs'); %>
+                    <div class="modal" id="exampleModalCenter-<%=review._id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Review</h5>
+                                </div>
+                                <div class="review-form">
+                                    <div class="modal-body review-info" style="background: rgb(236, 234, 234);">
+                                        <div class="name">
+                                            <h3 for="name"><%= review.name %></h3>
+                                        </div>
+                                        <div class="review-text">
+                                            <p style="word-break: break-all;"><%= review.content %></p>
+                                        </div> 
+                                        <div class="rating"> 
+                                            <p>
+                                                <% for(let i=0;i < review.rating;i++) { %>
+                                                    <i class="fas fa-star"></i>
+                                                <% } %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer review-btns">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <div class="row button-center">
+                <div class="col-xl-6 centered">
+                    <a href="#" id="loadMore" class="bttn-def"><span>load more</span></a>
+                </div>
+            </div>
+
+        </div>
+    </section> 
+<% } %>
+<script src="/js/product.js"></script>
+<script>
+    $('.read-more-btn').on('click',function(e) {
+        e.preventDefault();
+    });
+    $(document).ready(function() {
+        $('#exampleModalCenter-<%= reviewId %>').modal('show');
+        $(window).on('load', function() {
+            history.replaceState(null, ' ', 'all')
+        })
+        $('.review-card').hide();
+        $(".review-card").slice(0, 6).show();
+        if ($(".review-card:hidden").length != 0) {
+            $("#loadMore").show();
+        }   
+        console.log($('.review-card:hidden').length);
+        $("#loadMore").on('click', function (e) {
+            e.preventDefault();
+            $(".review-card:hidden").slice(0, 9).slideDown();
+            if ($(".review-card:hidden").length == 0) {
+                $("#loadMore").fadeOut('slow');
+            }
+        });
+    })
+</script>

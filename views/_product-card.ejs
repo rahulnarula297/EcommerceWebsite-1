@@ -1,0 +1,15 @@
+<div class="single-product load-product">
+    <div class="product-thumb">
+        <img src="<%= product.productimage %>" alt="<%= product.name %>">
+    </div>
+    <div class="product-title">
+        <h3> <a href="/single-product/<%= product._id %>"><%= product.name %></a> </h3>
+    </div>
+    <div class="description">
+        <p><%= product.description %></p>
+    </div>
+    <div class="product-btns">
+        <span class="btn-small mr-2 price"><%= product.price %>/-</span>
+        <span class='btn-small'><a href="/products/like/<%= product._id %>" id="<%= product._id %>"><i class="fa fa-info-circlefa fa-heart"></i><span class="like-count"><%= product.likes %></span></a></span>
+    </div>
+</div>

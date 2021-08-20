@@ -1,0 +1,166 @@
+.upper-background {
+    height: 250px;
+    background: #000000;
+    background: linear-gradient(to left, #05221c, #032025 55%, #272727);
+    
+}
+.upper-background .h2{
+    width: 65%;
+    margin: auto;
+}
+.upper-background h2{
+    width: 100%;
+    margin: auto;
+    font-size: 7rem;
+    font-weight: 800;
+    color: wheat;
+}
+
+.profile-container {
+    margin: 0px 150px;
+    background-color: rgb(131, 130, 130);
+    transform: translate(0, -50px);
+    box-shadow: 0 16px 24px 2px rgb(0 0 0 / 14%), 0 6px 30px 5px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+    border-radius: 6px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    transform: translate(0,-50%);
+}
+
+.image-container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 15px 10px black;
+}
+
+.description-container {
+    margin-top: -80px;  
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.description-container .name {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    min-height: 32px;
+    color: #3C4858;
+    font-weight: 700;
+}
+
+.description-container .prof {
+    font-weight: 500;
+}
+
+.description-container .desc-links {
+    width: auto;
+}
+
+.description-container .desc-links .insta {
+    color: orangered;
+}
+
+.description-container .desc-links .whatsapp {
+    color: teal;
+}
+
+.description-container .desc-links .facebook {
+    color: blue;
+}
+
+.description-container .desc-links .mail {
+    color: black;
+}
+
+.description-container .desc-links ul{
+    list-style: none;
+}
+
+.description-container .desc-links ul li {
+    display: inline-block;
+    margin: 0px 8px 8px 0px;
+    font-size: 1.2rem;
+}
+
+.description-container .desc-links ul li a {
+    color: darkgrey;
+    padding: 0 10px;
+}
+
+.description-container .desc-links ul li a i {
+    opacity: 0.5;
+}
+
+.description-container .desc-links ul li a i:hover {
+    transition: 0.2s ease;
+    opacity: 1;
+}
+
+.description-container .desc-p {
+    width: 80%;   
+    text-align: justify;
+    color: #999;
+    font-weight: 300;
+    margin: 15px 0px;
+}
+
+.description-container .desc-p span {
+    font-weight: 700;
+    color: #3C4858;
+}
+
+.description-container .about-para {
+    margin: 25px 0px;
+}
+
+.shop-now-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+}
+
+.shop-now-btn button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70px;
+    width: 180px;
+    border-radius: 8px;
+    background: #000000;
+    background: linear-gradient(to bottom, #434343, #000000);
+    color: white; 
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0px 7px 7px 0px darkgray;
+}
+
+.shop-now-btn button:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width:1000px) {
+    .profile-container {
+        margin: 0px 100px;
+    }
+}
+
+@media (max-width:650px) {
+    .profile-container {
+        margin: 0px 20px;
+    }
+}
+
+@media (max-width:350px) {
+    .description-container {
+        font-size: 0.8rem;
+    }
+}

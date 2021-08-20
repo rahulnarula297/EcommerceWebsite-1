@@ -1,0 +1,272 @@
+<link rel="stylesheet" href="/css/vendor_addItem.css">
+<section id="addItem">
+    
+
+    <% if(update==true) { %>
+        <form action="/vendor/updatingItem/<%=product._id%>" method="POST">
+
+            <div class="addItem-heading">
+                <h1>UPDATE ITEM</h1>
+            </div>
+
+            <div class="item-img-container common-attr">
+                <h3>ITEM IMAGE</h3>
+                <img src="<%=product.productimage%>" alt="Item Image">
+            </div>
+    
+            <div class="item-name-container common-attr">
+                <h3>ITEM NAME</h3>
+                <input type="text" name="name" id="item-name-input" placeholder="Enter Product Name Here" class="item-info" value="<%=product.name%>" required>
+            </div>
+    
+            <div class="item-description-container common-attr">
+                <h3>ITEM DESCRIPTION</h3>
+                <textarea type="text" name="description" id="item-description-textarea" placeholder="Enter Description of Product Here" class="item-info" required><%=product.description%></textarea>
+            </div>
+            
+            <div class="item-flavour-container common-attr">
+                <h3>ITEM FLAVOUR</h3>
+                <input type="text" name="flavour" id="item-flavour-input" value="<%=product.flavour%>" placeholder="Enter Product Flavour Here" class="item-info" required>
+            </div>
+    
+            <div class="item-variants-container common-attr">
+                <h3>ITEM VARIANTS</h3>
+                <input type="text" name="variants" id="item-variants-input" value="<%=product.variants%>" placeholder="Enter Product Variants Here" class="item-info" required>
+            </div>
+    
+            <div class="item-size-container common-attr">
+                <h3>ITEM WEIGHT</h3>
+                <div class="size-options">
+                    
+                    <ul>
+                        <li>
+                            <div class="size-container">
+                                <input type="text"> 
+                                <span>CUSTOM INPUT</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="size-container">
+                                <input checked type="checkbox" name="weight" value="250gm">
+                                <span>250GM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="size-container">
+                                <input type="checkbox" name="weight" value="500gm">
+                                <span>500GM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="size-container">
+                                <input type="checkbox" name="weight" value="750gm">
+                                <span>750GM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="size-container">
+                                <input type="checkbox" name="weight" value="1000gm">
+                                <span>1KG</span>
+                            </div>
+                        </li>
+                    </ul>
+    
+                </div>
+            </div>
+    
+            <div class="item-serving_size-container common-attr">
+                <h3>SERVING SIZE</h3>
+                <input type="text" name="serving_size" id="item-serving_size-input" value="<%=product.serving_size%>" placeholder="Enter serving size " class="item-info" required>
+            </div>
+    
+            <div class="item-customizable-container common-attr">
+                <h3>CUSTOMIZABLE</h3>
+                <input type="text" name="customizable" id="item-customizable-input" value="<%=product.customizable%>" placeholder="Customization" class="item-info" required>
+            </div>
+    
+    
+            <div class="item-expiry-container common-attr">
+                <h3>ITEM USE BY </h3>
+                <input type="text" name="expiry" id="item-expiry-input" value="<%=product.expiry%>" placeholder="Enter product expiry " class="item-info" required>
+            </div>
+    
+            <div class="item-delivery-container common-attr">
+                <h3>DELIVERY TIME</h3>
+                <input type="text" name="delivery" id="item-delivery-input" value="<%=product.delivery_time%>" placeholder="Enter delivery time of Product " class="item-info" required>
+            </div>
+    
+            <div class="item-eggless-container common-attr">
+                <h3>EGGLESS</h3>
+                <input type="text" name="eggless" id="item-eggless-input" value="<%=product.eggless%>" placeholder="Enter here" class="item-info" required>
+            </div>
+    
+            <div class="item-units-container common-attr">
+                <h3>NUMBER OF UNITS</h3>
+                <input type="text" name="units" id="item-units-input" value="<%=product.units%>" placeholder="Enter number of units Here" class="item-info" required>
+            </div>
+    
+            <div class="item-price-container common-attr price">
+                <h3>ITEM PRICE</h3>
+                <div class="item-info">
+                    <span>₹</span><input type="number" name="price" id="item-price-input" value="<%=product.price%>" placeholder="Enter Product Price Here" required>
+                </div>
+            </div>
+    
+            <div class="item-price_per_kg-container common-attr price">
+                <h3> PRICE PER KG </h3>
+                <div class="item-info">
+                    <span>₹</span><input type="number" name="price_per_kg" id="item-price_per_kg-input" value="<%=product.price_per_kg%>" placeholder="Enter Per Kg Price Here" required>
+                </div>
+            </div>
+    
+            <div class="item-btns">
+                <button id="submit-btn" type="submit">CONTINUE<i class="fas fa-arrow-right"></i></button>
+                <button id="reset-btn" type="reset">RESET</button>
+            </div>
+    
+        </form>
+    <%} else {%>
+        <form action="/vendor/addingItem" method="POST" enctype="multipart/form-data">
+
+            <div class="addItem-heading">
+                <h1>ADD ITEM</h1>
+            </div>
+    
+            <div class="item-img-container common-attr">
+                <h3>ITEM IMAGE</h3>
+                <input type="file" name="productimage" id="imageInput" required>
+                <img src="" alt="Item Image">
+            </div>
+    
+            <div class="item-name-container common-attr">
+                <h3>ITEM NAME</h3>
+                <input type="text" name="name" id="item-name-input" placeholder="Enter Product Name Here" class="item-info" required>
+            </div>
+    
+            <div class="item-category-container common-attr">
+                <h3>ITEM CATEGORY</h3>
+                <div class="custom-select-menu">
+    
+                    <select name="category" id="select-category">
+                        <option value="0">SELECT CATEGORY</option>
+                        <option value="CAKE">CAKE</option>  
+                        <option value="COOKIE">COOKIE</option>  
+                        <option value="MUFFIN">MUFFIN</option> 
+                        <option value="BREAD">BREAD</option>
+                        <option value="COMBOS">COMBOS</option>
+                        <option value="GIFTHAMPERS">GIFT HAMPERS</option>                   
+                    </select>
+    
+                </div>
+            </div>
+    
+            <div class="item-description-container common-attr">
+                <h3>ITEM DESCRIPTION</h3>
+                <textarea type="text" name="description" id="item-description-textarea" placeholder="Enter Description of Product Here" class="item-info" required></textarea>
+            </div>
+            
+            <div class="item-flavour-container common-attr">
+                <h3>ITEM FLAVOUR</h3>
+                <input type="text" name="flavour" id="item-flavour-input" placeholder="Enter Product Flavour Here" class="item-info" required>
+            </div>
+    
+            <div class="item-variants-container common-attr">
+                <h3>ITEM VARIANTS</h3>
+                <input type="text" name="variants" id="item-variants-input" placeholder="Enter Product Variants Here" class="item-info" required>
+            </div>
+    
+            <div class="item-size-container common-attr">
+                <h3>ITEM WEIGHT</h3>
+                <div class="size-options">
+                    
+                    <ul>
+                        <li>
+                            <div class="size-container">
+                                <label for="">CUSTOM INPUT</label>
+                                <input type="text">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="size-container">
+                                <input type="checkbox" name="weight" value="250gm">
+                                <span>250GM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="size-container">
+                                <input type="checkbox" name="weight" value="500gm">
+                                <span>500GM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="size-container">
+                                <input type="checkbox" name="weight" value="750gm">
+                                <span>750GM</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="size-container">
+                                <input type="checkbox" name="weight" value="1000gm">
+                                <span>1KG</span>
+                            </div>
+                        </li>
+                    </ul>
+    
+                </div>
+            </div>
+    
+            <div class="item-serving_size-container common-attr">
+                <h3>SERVING SIZE</h3>
+                <input type="text" name="serving_size" id="item-serving_size-input" placeholder="Enter serving size " class="item-info" required>
+            </div>
+    
+            <div class="item-customizable-container common-attr">
+                <h3>CUSTOMIZABLE</h3>
+                <input type="text" name="customizable" id="item-customizable-input" placeholder="Customization" class="item-info" required>
+            </div>
+    
+    
+            <div class="item-expiry-container common-attr">
+                <h3>ITEM USE BY </h3>
+                <input type="text" name="expiry" id="item-expiry-input" placeholder="Enter product expiry " class="item-info" required>
+            </div>
+    
+            <div class="item-delivery-container common-attr">
+                <h3>DELIVERY TIME</h3>
+                <input type="text" name="delivery" id="item-delivery-input" placeholder="Enter delivery time of Product " class="item-info" required>
+            </div>
+    
+            <div class="item-eggless-container common-attr">
+                <h3>EGGLESS</h3>
+                <input type="text" name="eggless" id="item-eggless-input" placeholder="Enter here" class="item-info" required>
+            </div>
+    
+            <div class="item-units-container common-attr">
+                <h3>NUMBER OF UNITS</h3>
+                <input type="text" name="units" id="item-units-input" placeholder="Enter number of units Here" class="item-info" required>
+            </div>
+    
+            <div class="item-price-container common-attr price">
+                <h3>ITEM PRICE</h3>
+                <div class="item-info">
+                    <span>₹</span><input type="number" name="price" id="item-price-input" placeholder="Enter Product Price Here" required>
+                </div>
+            </div>
+    
+            <div class="item-price_per_kg-container common-attr price">
+                <h3> PRICE PER KG </h3>
+                <div class="item-info">
+                    <span>₹</span><input type="number" name="price_per_kg" id="item-price_per_kg-input" placeholder="Enter Per Kg Price Here" required>
+                </div>
+            </div>
+    
+            <div class="item-btns">
+                <button id="submit-btn" type="submit">CONTINUE<i class="fas fa-arrow-right"></i></button>
+                <button id="reset-btn" type="reset">RESET</button>
+            </div>
+    
+        </form>
+    
+    <% } %>
+</section>
+<script src="/js/vendor_addItem.js"></script>

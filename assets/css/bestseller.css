@@ -1,0 +1,67 @@
+.bestselling-heading{
+    width: 95%;
+    margin: auto;
+    text-align: center;
+    padding-top: 25px;
+}
+
+.bestselling-heading h1{
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.slick-prev:before , .slick-next:before{
+    color: black !important; 
+}
+.best-seller-container{
+    width: 90%;
+    /* height: 250px; */
+    margin: auto;
+    /* background: rgb(206, 58, 58); */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    padding: 20px; 
+}
+
+.best-seller-container ul{
+    list-style: none;
+}
+
+.best-seller-container a{
+    text-decoration: none;
+}
+
+.button-center{
+    justify-content: center;
+    text-align:center;
+}
+
+.bttn-def{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 42px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+    transition: 0.4s;
+}
+
+.bttn-def:hover{
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+    color: #7289ab;
+}
+
+.bttn-def:hover span{
+    display: inline-block;
+    transform: scale(0.98);
+} 

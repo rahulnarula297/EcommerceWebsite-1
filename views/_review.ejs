@@ -1,0 +1,35 @@
+<% var color = ["#3d5a80","#98c1d9","#e0fbfc","#ee6c4d","#495867","#ffcb69","#ffc2d4"]; %>
+<div id="id-<%= review._id %>" class="card review-card" style="width: 24rem;">
+    <div class="review-image" style="background-color: <%= color[Math.floor((Math.random()*color.length))]; %>">
+        <h3 style="text-transform: uppercase;"><%= review.initials %></h3>
+    </div>
+    <div class="review-content">
+        <div class="card-body review-content-body">
+            <div class="review-subhead card-title">
+                <h4 id="name-initals-<%= review._id %>"><%= review.name %></h4>
+            </div>
+            <div class="review-subhead review-stars">
+                <p>
+                    <% for(let i=0;i < review.rating;i++) { %>
+                        <i class="fas fa-star"></i>
+                    <% } %>
+                </p>
+            </div>
+            <div class="review-subhead card-text review-para">
+                <% if(review.content.length <= 50) { %>
+                    <p><%= review.content %></p>
+                <% }else{ %>
+                    <p><%= review.content.substring(0,50) + "...." %><a id="<%= review._id %>" class="read-more-btn" href="/shop/reviews/<%= review.profile %>/<%= review._id %>"><small><button type="button" style="border: none; background: none; color: cadetblue;" data-toggle="modal" data-target="#exampleModalCenter-<%=review._id%>">
+                        Read more <i class="fas fa-arrow-right"></i>
+                    </button></small></a></p>   
+                <% } %>
+            </div>
+            <div class="review-subhead card-subtitle mb-2 text-muted review-date">
+                <sub class="date"><%= moment(review.createdAt).format('MM-DD-YYYY') %></sub>
+            </div>
+            <div class="review-subhead review-link">
+                <a href="/single-product/<%= review.product %>">View Product<i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </div>  
+    </div>
+</div>

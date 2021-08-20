@@ -1,0 +1,313 @@
+<link rel="stylesheet" href="/css/categories.css">
+<link rel="stylesheet" href="/css/single-product.css">
+<link rel="stylesheet" href="/css/product-cards.css">
+<link rel="stylesheet" href="/css/reviews.css">
+
+<section id="description">
+    <div class="bakery-head" >
+        <div class="heading ">
+           <h1><%= profile.bakeryname %></h1>
+       </div>
+       <div class="info">
+           <div class="area">
+               <p><%= profile.areacovered %></p>
+           </div>
+           <div class="timings">
+               <p>mon-fri</p>
+               <p>9-10pm</p>
+           </div>
+           <div class="contact">
+               <p><%= profile.contact %></p>
+           </div>
+       </div>
+   </div>
+
+
+    <div class="d-main">
+        <% if(productExist == true) { %>
+        <div class="d-image">
+            
+            <div class="img">
+                <img src="<%=product.productimage%>" alt="<%= product.name %>" id="productimg">
+            </div>
+        
+            <div class="head">
+                <div class="image-name">
+                    <h2><%=product.name%></h2>
+                    <p>Rs <%=product.price%>/-</p>
+                    <p>liked by : <%=product.likes%> persons</p>
+                </div>
+                <div class="sub-button">
+                    <div class="sub-btn"> 
+                        <button type="button" data-toggle="modal" data-target="#placeOrderModal">
+                            place order <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="modal" id="placeOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Place Order</h5>
+                                    <button type="button" class="close btn btn-secondary" id="placeOrderClose" style="color: black;" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="/single-product/verifyOrder/<%= product._id %>" method="post" class="placeorder-form">
+                                    <div class="modal-body placeorder-info">
+                                        <div class="prod-name">
+                                            <h4><%= product.name %></h4>
+                                        </div>
+                                        <div class="prod-image">
+                                            <img src="<%= product.productimage %>" alt="">
+                                        </div>
+                                        <div class="name">
+                                            <label for="name">NAME</label>
+                                            <input type="text" name="name">
+                                        </div>
+                                        <div class="phone">
+                                            <label for="phone">PHONE</label>
+                                            <input type="text" name="phone">
+                                        </div>
+                                        <div class="email">
+                                            <label for="email">EMAIL-ID</label>
+                                            <input type="text" name="email">
+                                        </div>
+                                        <div class="address">
+                                            <label for="address">ADDRESS</label>
+                                            <input type="text" name="address">
+                                        </div>
+                                        <div class="delivery-date">
+                                            <label for="delivery-date">DELIVERY DATE</label>
+                                            <input type="date" name="date">
+                                        </div>
+                                        <div class="variants-available">
+                                            <label for="variants-available">FLAVOUR</label>
+                                            <input type="text" name="flavourAvailable" placeholder="<%= product.variants %>">
+                                        </div>
+                                        <div class="choose-weight">
+                                            <label for="choose-weight">WEIGHT<br><sub>(in gms)</sub></label>
+                                            <input type="number" name="weightgms">
+                                        </div>
+                                        <div class="instructions">
+                                            <label for="instructions">INSTRUCTIONS TO SELLER</label>
+                                            <textarea name="additional_instructions" cols="40" rows="4"></textarea>
+                                        </div> 
+                                    </div>
+                                    <div class="modal-footer placeorder-btns">
+                                        <button type="submit" id="verify-btn">Verify Email</button>
+                                    </div>
+                                </form>
+                                <div id="placeOrder-tags">
+                                    <div class="otp-container" style="display: none;">
+                                        <h3>ENTER OTP</h3>
+                                        <div class="userInput">
+                                            <input type="text" id='first' maxlength="1" onkeyup="clickEvent(this,'sec')">
+                                            <input type="text" id="sec" maxlength="1" onkeyup="clickEvent(this,'third')">
+                                            <input type="text" id="third" maxlength="1" onkeyup="clickEvent(this,'fourth')">
+                                            <input type="text" id="fourth" maxlength="1" onkeyup="clickEvent(this,'fifth')">
+                                            <input type="text" id="fifth" maxlength="1">
+                                        </div>
+                                        <div class="wrong-otp" style="text-align: center;">
+                                            <span style="color: red; display: none;">Wrong OTP, Enter again</span>
+                                        </div>
+                                        <div class="otp-btns">
+                                            <div class="confirm-btn otp-style">
+                                                <a href="/single-product/confirmOTP/<%= product._id %>" id="confirmOTP">CONFIRM</a>
+                                            </div>
+                                            <div class="resend-btn otp-style">
+                                                <a href="/single-product/resendOTP">RESEND</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="placeOrder" style="display: none;">
+                                        <a href="/single-product/placeOrder/<%= product._id %>/<%= product.profile%>" id="placingOrder" data-dismiss="modal" aria-label="Close">
+                                            <span>PLACE ORDER</span> 
+                                            <i class="fas fa-money-check"></i>
+                                            <span style="display: none;" id="profile-id"><%= product.profile %></span>
+                                            <span style="display: none;" id="product-id"><%= product._id %></span>
+                                            <a id="sending-order-details" href="" target="_blank"></a>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="info-div ">
+                <div class="product-infor product-d">
+                    <p><span>description :</span> <%=product.description%></p>
+                </div>
+    
+                <div class="flavour product-d">
+                    <p><span>flavour :</span> <%=product.flavour%></p>
+                </div>
+    
+                <div class="product-weight product-d">
+                    <p><span>product weight :</span> <%=product.weight%></p>
+                </div>
+    
+                <div class="serving-size product-d">
+                    <p><span>serving size :</span> <%=product.serving_size%></p>
+                </div>
+                
+                <div class="product-variants product-d">
+                    <p><span>different variants :</span> <%=product.variants%></p>
+                </div>
+    
+                <div class="price-per-kg product-d">
+                    <p><span>price per kg :</span> <%=product.price_per_kg%></p>
+                </div>
+    
+                <div class="customizable product-d">
+                    <p><span>customization :</span> <%=product.customizable%></p>
+                </div>
+    
+                <div class="product-units product-d">
+                    <p><span>Number of units :</span> <%=product.units%></p>
+                </div>
+    
+                <div class="product-expiry product-d">
+                    <p><span>Used by :</span> <%=product.expiry%></p>
+                </div>
+    
+                <div class="product-delivery-time product-d">
+                    <p><span>Delivery time :</span> <%=product.delivery_time%></p>
+                </div>
+    
+                <div class="product-eggless product-d">
+                    <p><span>Eggless :</span> <%=product.eggless%></p>
+                </div>
+            
+            </div>
+            
+            <div id="imgModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+        </div>
+        <!-- <div class="order-button">
+            <div class="desc-links" style="background-color: whete;">
+                <ul>
+                    <li><a href="<%= profile.instaid %> " target="_blank" class="insta"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=+91<%= profile.contact %>&text=%20 Hi, I want to know about this product of yours%0D%0A<%= product.name%>%0D%0A<%= product.price%>%0D%0A<%=product.weight%>%0D%0A<%= product.productimage%> https://bakeitfresh.com/single-product/<%= product._id %>"target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="<%= profile.fbid %>" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="mailto:<%= profile.email %>?bcc=rahulnarula6047@gmail.com&subject=Product Enquiry&body=Hi, I want to know about this product of yours%0D%0A <%= product.name%>%0D%0A<%= product.price%>%0D%0A<%=product.weight%>%0D%0A<%= product.productimage%> https://bakeitfresh.com/single-product/<%= product._id %>" target="_blank" class="mail"><i class="fas fa-envelope"></i></a></li>
+                </ul>
+            </div>
+        </div> -->
+
+        <section id="reviews">
+            <div class="review-head">
+                <h2>product review </h2>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary rev-btn" data-toggle="modal" data-target="#exampleModalCenter">
+                    write a review <i class="fas fa-arrow-right"></i>
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Rate This Product</h5>
+                                <button type="button" class="close btn btn-secondary" style="color: black;" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="/single-product/userReview/<%=product.id%>" method="post" class="review-form">
+                                <div class="modal-body review-info">
+                                    <div class="prod-name">
+                                        <h4><%= product.name %></h4>
+                                    </div>
+                                    <div class="prod-image">
+                                        <img src="<%= product.productimage %>" alt="">
+                                    </div>
+                                    <div class="name">
+                                        <label for="name">NAME</label>
+                                        <input type="text" name="name">
+                                    </div>
+                                    <div class="review-text">
+                                        <label for="review-content">REVIEW</label>
+                                        <textarea name="review_content" id="" cols="40" rows="4"></textarea>
+                                    </div> 
+                                    <div class="rating"> 
+                                        <input type="radio" name="rating" value="5" id="5">
+                                        <label for="5">☆</label>
+                                        <input type="radio" name="rating" value="4" id="4">
+                                        <label for="4">☆</label> 
+                                        <input type="radio" name="rating" value="3" id="3">
+                                        <label for="3">☆</label> 
+                                        <input type="radio" name="rating" value="2" id="2">
+                                        <label for="2">☆</label> 
+                                        <input type="radio" name="rating" value="1" id="1">
+                                        <label for="1">☆</label>
+                                    </div>
+                                </div>
+                                <div class="modal-footer review-btns">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit"  class="btn btn-primary">Post Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="review-main responsive">
+                <% if(reviews == false) { %>
+                    <div class="h3">
+                        <h3> No Reviews Yet</h3>
+                    </div>
+                <% } %>
+                <% for(review of reviews) { %>
+                    <%- include('_review.ejs'); %>
+                <% } %>
+            </div>
+        </section>
+        <section id="similar-prod">
+            <div class="similar-products">
+                <div class="similar-heading">
+                    <h2>similar products</h2>
+                </div>
+                <div class="similar-content responsive">
+                    
+                    <% for(product of similar_products) { %>
+                        <div>
+                            <%- include('_product-card.ejs'); %>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+        <% }else{ %>
+            <section id="no-product">
+                <div>
+                    <h1>Product Not Available. Check our Other Products</h1>
+                </div>
+            </section>
+            <section id="similar-prod">
+                <div class="similar-products">
+                    <div class="similar-heading">
+                        <h2>similar products</h2>
+                    </div>
+                    <div class="similar-content responsive">
+                        
+                        <% for(product of similar_products) { %>
+                            <div>
+                                <%- include('_product-card.ejs'); %>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </section>
+        <% } %>
+    </div>
+</section>
+<script src="/js/vendor.js"></script>
+<script src="/js/single-product.js"></script>
+<script src="/js/like.js"></script>

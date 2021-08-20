@@ -1,0 +1,322 @@
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<link rel="stylesheet" href="/css/members.css">
+<link rel="stylesheet" href="/css/services_&_placeOrder.css">
+<link rel="stylesheet" href="/css/carousel.css">
+<link rel="stylesheet" href="/css/bestseller.css">
+<link rel="stylesheet" href="/css/product-cards.css">
+<link rel="stylesheet" href="/css/reviews.css">
+<link rel="stylesheet" href="/css/description.css">
+
+
+
+<section id="carousel">
+    <div class="banner" > <!--update-->
+        <div class="banner-h2" id="text">
+        <h2></h2>
+        </div>
+        <div class="banner-p" id="subtext">
+        <p></p>
+        </div>
+        <div class="shop-button" >
+            <a style="color: wheat; font-weight: 500; text-decoration: none;" href="/shop">SHOP NOW <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div id="carouselExampleIndicators" class="carousel slide slideshow" data-ride="carousel" data-interval="3500">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img  src="../images/cake1.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img  src="../images/cake2.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img  src="../images/cake3.jpg" alt="Third slide">
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="carousel-text">
+        <div class="heading">
+            <h2>explore wide range of yummilicious cakes and cookies</h2>
+        </div>
+        <div class="post-script">
+            <p>freshly baked with love from our kitchen</p>
+        </div>
+        <div class="shop-button">
+            <a href="/shop">SHOP NOW</a>
+            <i class="fas fa-arrow-circle-right"></i>
+        </div>
+    </div> -->
+</section>
+
+<section id="description">
+    <div class="description-head">
+        <div class="bestselling-heading" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000"> 
+            <h1>who are we ?</h1>
+        </div>
+
+        <div class="best-seller-container " data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus laboriosam, provident qui magni voluptatum ipsa amet odit debitis alias perferendis similique illo animi cupiditate facilis itaque rerum nemo nam non!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iusto delectus sequi accusamus repellat voluptatum recusandae quis reiciendis exercitationem, molestias ab veritatis aperiam minus. Doloribus ex aliquid inventore quo? Itaque!</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem perspiciatis laborum labore ipsum, dolorum, iure iusto impedit hic sequi quia fugit. Tempora deserunt autem similique magni aspernatur, repellendus et quidem.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="bestselling">
+    <div class="bestselling-heading" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000"> 
+        <h1>bestselling items</h1>
+    </div>
+
+    <div class="best-seller-container responsive" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <!-- FOR EACH LOOP ..ARRAY FROM HOME CONTROLLER  -->
+            <% for(product of bestProducts) { %>
+                <div>
+                    <%- include('_product-card.ejs'); %>
+                </div>
+            <% } %>
+    </div>
+</section>
+
+<section id="top-reviews">
+    <div class="top-reviews">
+        <div class="head bestselling-heading" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <h1>Top Reviews</h1>
+        </div>
+        <div class="review-back">
+            <div class="best-seller-container review-main responsive" id="review-box" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+                <% for(review of reviews) { %>
+                    <%- include('_review.ejs'); %>
+                <% } %>
+            </div>
+        </div>      
+    </div>
+</section>
+
+<section id="video-section">
+    <div class="top-reviews">
+        <div class="head bestselling-heading" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <h1>some glimpse of our bakers </h1>
+        </div>
+        <div class="review-back">
+            <div class="best-seller-container review-main " id="review-box" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9YffrCViTVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>      
+        </div>
+    </div>
+</section>
+
+<section id="members-list">
+    <div class="member-head" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+        <h1> Our Bakery Chef's</h1>
+    </div>
+    <div class="member-table" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+        <% profiles.forEach(function(profile){%>
+            <div class="member">
+                <div class="member-pic">
+                    <img src="<%=profile.profileimage%>" alt="member-pic">
+                </div>
+                <div class="member-info">
+                    <div class="name">
+                        <h2><a href="/member-profile/<%=profile._id%>"><%=profile.firstname %> </a></h2>
+                    </div>
+                    <div class="experience">
+                        <h3><%=profile.bakeryname%> </h3>
+                    </div>
+                    <div class="specialisation">
+                        <h3><%=profile.description%> </h3>
+                    </div>
+                </div>
+            </div>
+            
+        <%})%>
+    </div>
+</section>
+
+<section id="place-order">
+    <h1 class="place-order-h1" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">STEPS TO PLACE ORDER</h1>
+    
+    <div class="table" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+        <div class="service-box">
+            <div class="table-h1">
+                <h1>Step 1</h1>
+            </div>
+            <div class="icon">
+                <i class="fas fa-birthday-cake"></i>
+            </div> 
+            <div class="service-h2">
+                <h2>Select Your Cake</h2>
+            </div>
+            <div class="service-p">
+                <p>Choose the cake of your choice from the whole lot menu</p>
+            </div>
+            <div id="step-1" class="next-step">
+                <i class="fas fa-arrow-circle-right"></i>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <div class="table-h1">
+                <h1>Step 2</h1>
+            </div>
+            <div class="icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="service-h2">
+                <h2>Go To Bakers Profile</h2>
+            </div>
+            <div class="service-p">
+                <p>Profile will have the contact info of the bakery</p>
+            </div>
+            <div id="step-2" class="next-step">
+                <i class="fas fa-arrow-circle-right"></i>
+            </div>
+        </div>
+            
+        <div class="service-box">
+            <div class="table-h1">
+                <h1>Step 3</h1>
+            </div>
+            <div class="icon">
+                <i class="fas fa-address-book"></i>
+            </div>
+            <div class="service-h2">
+                <h2>Place Your Order</h2>
+            </div>
+            <div class="service-p">
+                <p>You will recieve the confirmation from the bakery</p>
+            </div>
+            <div id="step-3" class="next-step">
+                <i class="fas fa-arrow-circle-right"></i>
+            </div>
+        </div>
+            
+        <div id="service-box-4" class="service-box">
+            <div class="table-h1">
+                <h1>Step 4</h1>
+            </div>
+            <div class="icon">
+                <i class="fas fa-stopwatch"></i>
+            </div>
+            <div class="service-h2">
+                <h2>24 Hours Delivery</h2>
+            </div>
+            <div class="service-p">
+                <p>Your order will be delivered within 24 hours</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="services">
+    <h1 class="services-h1" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">SERVICES</h1>
+    <div class="table" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+
+        <div class="service-box">
+            <div class="icon">
+                <i class="fas fa-shipping-fast" ></i>
+            </div>
+            <div class="service-h2">
+                <h2>Easy to use.</h2>
+            </div>
+            <div class="service-p">
+                <p>So easy to use, even your dog could do it.</p>
+            </div>
+        </div>
+    
+    
+        <div class="  service-box">
+            <div class="icon">
+                <i class="fas fa-gift "></i>
+            </div>
+            <div class="service-h2">
+                <h2 >Elite Clientele</h2>
+            </div>
+            <div class="service-p">
+                <p>We have all the dogs, the greatest dogs.</p>
+            </div>
+        </div>
+
+            
+        <div class="  service-box">
+            <div class="icon">
+                <i class="fas fa-headset "></i>
+            </div>
+            <div class="service-h2">
+                <h2>gaurenteed to work.</h2>
+            </div>
+            <div class="service-p">
+                <p>So easy to use, even your dog could do it.</p>
+            </div>
+        </div>
+    
+            
+        <div class="  service-box">
+            <div class="icon">
+                <i class="fas fa-check-circle " ></i>
+            </div>
+            <div class="service-h2">
+                <h2>Easy to use.</h2>
+            </div>
+            <div class="service-p">
+                <p>So easy to use, even your dog could do it.</p>
+            </div>
+        </div>
+    </div>
+</section>  
+
+<section id="location">
+    <div class="description-head">
+        <div class="bestselling-heading" data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <h1>location</h1> 
+        </div>
+
+        <div class="best-seller-container " data-aos="zoom-in"  data-aos-offset="125" data-aos-delay="100"  data-aos-duration="1000">
+            <div class="content">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27993.05949158899!2d77.139988128291!3d28.715587872627825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d019b1d5d2c0b%3A0xc1e6a3811f55c247!2sShalimar%20Bagh%2C%20New%20Delhi%2C%20Delhi%20110088!5e0!3m2!1sen!2sin!4v1628351048747!5m2!1sen!2sin"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init();
+    var i=0;
+    var j=0;
+    var text='Freshly baked from our kitchen to yours';
+    var subtext='just try us once and we gaurentee , you will defenitely come again .....designer luxurious cakes at your doorstep just a click away';
+    
+         function typing(){
+            if(i < text.length){
+                document.getElementById("text").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typing, 100);
+            }
+            document.getElementById("text").classList.add("banner-h2");
+        }
+        typing();
+
+         setTimeout( function typing2(){
+                if(j < subtext.length){
+                document.getElementById("subtext").innerHTML += subtext.charAt(j);
+                j++;
+                setTimeout(typing2, 100);
+            }
+            document.getElementById("subtext").classList.add(" banner-p");
+        },5000);
+        typing2();
+        
+   
+</script>
+
+<script src="/js/like.js"></script>

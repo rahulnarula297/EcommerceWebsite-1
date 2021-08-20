@@ -1,0 +1,31 @@
+.description-head{
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(155, 235, 155);
+}
+.description-head h1{
+    color: grey;
+}
+.description-head .content{
+    color: wheat;
+}
+
+/************location **************/
+.description-head .content iframe{
+    width: 1000px;
+    height: 350px;
+    
+}
+
+@media (max-width:1000px){
+    .description-head .content iframe{
+        width: 700px;
+        height: 350px;
+    }
+}
+@media (max-width:650px){
+    .description-head .content iframe{
+        width: 110%;
+        height: 350px;
+    }
+}

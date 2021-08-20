@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/css/header.css">
+<nav>
+    <div class="menu">
+        <div class="heading logo"><a href="#">BAKE_it_FRESH</a></div>
+        <input type="checkbox" id="check">
+            <ul class="top">
+            <label  class="button cancel" for="check"> <i class="fa fa-times"></i></label>
+            <li>
+                <div id="myOverlay" class="overlay">
+                    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">X</span>
+                    <div class="overlay-content">
+                        <form id="search-form" action="/search" method="POST">
+                            <input type="text" id="searchText" placeholder="Search.." name="search">
+                            <button type="submit" onkeypress="search()"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                  
+                <button class="openBtn" onclick="openSearch()"><i class="fa fa-search"></i></button>
+            </li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Insta</a></li>
+            <li><a href="#">Google</a></li>
+            <li><a href="#">Twitter</a></li>
+            <div class="logo">
+            <a href="/">BAKE_it_FRESH</a>
+        </div>
+            <li><a href="/">Home</a></li>
+            <li><a href="/shop">shop</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/vendor/profile">admin</a></li>
+
+        </ul>
+        <label class="button bars" for="check"><i class="fas fa-bars"></i></label>
+    </div>
+</nav>
+<script src="/js/header.js"></script>
+<script>
+    function openSearch() {
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function closeSearch() {
+        document.getElementById("myOverlay").style.display = "none";
+    }
+</script>

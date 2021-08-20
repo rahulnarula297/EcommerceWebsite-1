@@ -1,0 +1,96 @@
+/* #members-list{
+    margin-top: 10%;
+} */
+
+.member-head h1{
+    margin: auto;
+    width: 90%;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    padding:  20px 0 40px 0;
+}
+
+.member-table{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    border-radius: 10px;
+    background: #ece9e9;
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15); 
+    background: url(../images/members.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.member{
+    max-height: 400px;
+    margin:10px 15px;
+    padding: 0 10px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5%;
+    background: inherit;
+    box-shadow: inset -2px -2px 8px white,
+    inset -2px -2px 12px rgba(173, 52, 52, 0.1),
+    inset 2px 2px 4px rgba(255, 255, 255, 0),
+    inset 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.member .member-pic{
+    padding: 10px 10px;
+}
+
+.member .member-pic img{
+    width: 175px;
+    height: 150px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: black;
+    border-style: solid;
+}
+.member .member-info{
+    width: 200px;
+    padding-bottom: 10px;
+    text-align: center;    
+    color: antiquewhite;
+}
+
+.member .member-info .name, .experience{
+    padding-bottom:10px ;
+}
+
+.member .member-info .name h2 a{
+    text-transform: uppercase;
+    font-size: 22px;
+    font-family: cursive;
+    font-weight: 800;
+    color: rgb(26, 166, 209);
+    color: antiquewhite;
+}
+
+.member .member-info .experience h3{
+    font-family: cursive ;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.member .member-info .specialisation{
+    width: 200px;
+}
+.member .member-info .specialisation h3{
+    font-family: cursive ;
+    font-size: 18px;
+    font-weight: 600;
+    
+}
+
+
