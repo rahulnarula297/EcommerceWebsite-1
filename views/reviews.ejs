@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/css/products.css">
 <link rel="stylesheet" href="/css/reviews.css">
+<link rel="stylesheet" href="/css/review-page.css">
 <% if(reviews == false) { %>
     <section class="review">
         <div style="text-align: center;">
@@ -9,12 +10,8 @@
 <% }else{ %>
     <section class="review">
         <div class="review-container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section-title">
-                        <h2>Reviews</h2>
-                    </div>
-                </div>
+            <div id="heading">
+                <h1>REVIEWS</h1>
             </div>
             <div class="flex">
                 <% for(review of reviews) { %>
@@ -60,6 +57,7 @@
     </section> 
 <% } %>
 <script src="/js/product.js"></script>
+<script src="/js/reviews.js"></script>
 <script>
     $('.read-more-btn').on('click',function(e) {
         e.preventDefault();
